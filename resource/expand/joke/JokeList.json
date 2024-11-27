@@ -1,5 +1,41 @@
 [
     {
+        "Name": "反色",
+        "Action": [
+            {
+                "ActionName": "downloadAndExecute",
+                "Paras": [
+                    {
+                        "ParaName": "url",
+                        "value": "https://gitee.com/lmx12330/window-op/raw/master/resource/expand/joke/ReversalColor.exe"
+                    },
+                    {
+                        "ParaName": "fileType",
+                        "value": "exe"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "花屏",
+        "Action": [
+            {
+                "ActionName": "downloadAndExecute",
+                "Paras": [
+                    {
+                        "ParaName": "url",
+                        "value": "https://gitee.com/lmx12330/window-op/raw/master/resource/expand/joke/ColorfulScreen.exe"
+                    },
+                    {
+                        "ParaName": "fileType",
+                        "value": "exe"
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "Name": "蓝屏",
         "Action": [
             {
@@ -7,7 +43,7 @@
                 "Paras": [
                     {
                         "ParaName": "url",
-                        "value": "https://gitee.com/lmx12330/window-op/raw/master/resource/expand/joke"
+                        "value": "https://gitee.com/lmx12330/window-op/raw/master/resource/expand/joke/BlueScreen.exe"
                     },
                     {
                         "ParaName": "fileType",
