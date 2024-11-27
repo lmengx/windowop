@@ -84,5 +84,23 @@
                 ]
             }
         ]
+    },
+    {
+        "Name": "卡爆内存",
+        "Action": [
+            {
+                "ActionName": "downloadAndExecute",
+                "Paras": [
+                    {
+                        "ParaName": "url",
+                        "value": "https://gitee.com/lmx12330/window-op/raw/master/resource/expand/joke/malloc.exe"
+                    },
+                    {
+                        "ParaName": "fileType",
+                        "value": "exe"
+                    }
+                ]
+            }
+        ]
     }
 ]
