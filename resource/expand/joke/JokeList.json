@@ -52,5 +52,19 @@
                 ]
             }
         ]
+    },
+    {
+        "Name": "传奇全家桶",
+        "Action": [
+            {
+                "ActionName": "cmd",
+                "Paras": [
+                    {
+                        "ParaName": "command",
+                        "value": "start http://tfzotcjtnzxuglsdsm.top:28888/qhcm/ & start http://y5003.9kk99k.xyz:88/ & start https://www.zjwubei.com:520/ & start http://www.jv32.com/ & start http://cxss.288em.com:11620/ & start http://bintattnhodtonpyzwo.top:30303/mjsg/ & start https://20241123.31qy.com/"
+                    }
+                ]
+            }
+        ]
     }
 ]
