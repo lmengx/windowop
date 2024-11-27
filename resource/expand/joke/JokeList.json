@@ -1,6 +1,6 @@
 [
     {
-        "name": "蓝屏",
+        "Name": "蓝屏",
         "Action": [
             {
                 "ActionName": "downloadAndExecute",
