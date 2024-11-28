@@ -107,7 +107,7 @@
         "Name": "插入Z盘",
         "Action": [
             {
-                "ActionName": "cmd",
+                "ActionName": "RunBatchAsAdmin",
                 "Paras": [
                     {
                         "ParaName": "command",
