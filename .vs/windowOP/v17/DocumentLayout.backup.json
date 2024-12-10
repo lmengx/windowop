@@ -1,0 +1,70 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\windowOP\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|d:\\windowop\\windowop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|solutionrelative:windowop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|d:\\windowop\\windowop\\databaseopcs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|solutionrelative:windowop\\databaseopcs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|d:\\windowop\\windowop\\webserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|solutionrelative:windowop\\webserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\windowOP\\windowOP\\Program.cs",
+              "RelativeDocumentMoniker": "windowOP\\Program.cs",
+              "ToolTip": "D:\\windowOP\\windowOP\\Program.cs*",
+              "RelativeToolTip": "windowOP\\Program.cs*",
+              "ViewState": "AgIAAIEAAAAAkyTa02AlwE0AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T12:29:12.564Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DatabaseOPcs.cs",
+              "DocumentMoniker": "D:\\windowOP\\windowOP\\DatabaseOPcs.cs",
+              "RelativeDocumentMoniker": "windowOP\\DatabaseOPcs.cs",
+              "ToolTip": "D:\\windowOP\\windowOP\\DatabaseOPcs.cs",
+              "RelativeToolTip": "windowOP\\DatabaseOPcs.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T12:20:35.881Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "WebServer.cs",
+              "DocumentMoniker": "D:\\windowOP\\windowOP\\WebServer.cs",
+              "RelativeDocumentMoniker": "windowOP\\WebServer.cs",
+              "ToolTip": "D:\\windowOP\\windowOP\\WebServer.cs",
+              "RelativeToolTip": "windowOP\\WebServer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAH0BAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T05:39:55.096Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
