@@ -16,6 +16,24 @@
                 ]
             }
         ]
+    },    
+    {
+        "Name": "屏幕混乱",
+        "Action": [
+            {
+                "ActionName": "downloadAndExecute",
+                "Paras": [
+                    {
+                        "ParaName": "url",
+                        "value": "https://gitee.com/lmx12330/window-op/raw/master/resource/expand/joke/HashScreen.exe"
+                    },
+                    {
+                        "ParaName": "fileType",
+                        "value": "exe"
+                    }
+                ]
+            }
+        ]
     },
     {
         "Name": "花屏",
