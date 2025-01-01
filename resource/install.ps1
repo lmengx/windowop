@@ -28,4 +28,4 @@ $webClient.DownloadFile($downloadurl, $zipPath)
 Expand-Archive -Path $zipPath -DestinationPath $targetPath -Force
 Start-Process $exePath
 Remove-Item -Path $tempFolderPath -Recurse -Force
-exit
+pause
