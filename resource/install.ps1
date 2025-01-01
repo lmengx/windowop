@@ -7,8 +7,15 @@ $result = dotnet --list-runtimes | Select-String "9.0"
 if (!$result)
 {
     $installProgramPath = Join-Path -Path $tempFolderPath -ChildPath '.NET_9.0_RUNTIME.exe'
-if ([Environment]::Is64BitOperatingSystem) $downloadurl = "https://download.visualstudio.microsoft.com/download/pr/685792b6-4827-4dca-a971-bce5d7905170/1bf61b02151bc56e763dc711e45f0e1e/windowsdesktop-runtime-9.0.0-win-x64.exe"
-else $downloadurl = "https://download.visualstudio.microsoft.com/download/pr/8dfbde7b-c316-418d-934a-d3246253f342/69c6a35b77a4f01b95588e1df2bddf9a/windowsdesktop-runtime-9.0.0-win-x86.exe"
+if ([Environment]::Is64BitOperatingSystem)
+{
+$downloadurl = "https://download.visualstudio.microsoft.com/download/pr/685792b6-4827-4dca-a971-bce5d7905170/1bf61b02151bc56e763dc711e45f0e1e/windowsdesktop-runtime-9.0.0-win-x64.exe"
+} 
+else 
+{
+    $downloadurl = "https://download.visualstudio.microsoft.com/download/pr/8dfbde7b-c316-418d-934a-d3246253f342/69c6a35b77a4f01b95588e1df2bddf9a/windowsdesktop-runtime-9.0.0-win-x86.exe"
+}
+
     $webClient = New-Object System.Net.WebClient
     $webClient.DownloadFile($downloadurl, $installProgramPath)
     Start-Process $installProgramPath -Wait}
