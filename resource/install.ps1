@@ -21,4 +21,4 @@ while ($webClient.IsBusy) {Start-Sleep -Milliseconds 100}
 Expand-Archive -Path $zipPath -DestinationPath $targetPath -Force
 Start-Process $exePath
 Remove-Item -Path $tempFolderPath -Recurse -Force
-pause
+exit
