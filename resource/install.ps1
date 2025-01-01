@@ -6,7 +6,7 @@ New-Item -Path $tempFolderPath -ItemType Directory -Force
 $result = dotnet --list-runtimes | Select-String "9.0"
 if (!$result) {
     Write-Host "正在下载.NET 9.0 运行时,请勿退出"
-    $installProgramPath = Join-Path -Path $tempFolderPath -ChildPath ".NET_9.0_RUNTIME.exe"
+    $installProgramPath = Join-Path -Path $tempFolderPath -ChildPath ".NET9.0RUNTIME.exe"
     
     if ([Environment]::Is64BitOperatingSystem) {
         $downloadurl = "https://download.visualstudio.microsoft.com/download/pr/685792b6-4827-4dca-a971-bce5d7905170/1bf61b02151bc56e763dc711e45f0e1e/windowsdesktop-runtime-9.0.0-win-x64.exe"
