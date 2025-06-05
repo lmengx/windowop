@@ -1,0 +1,118 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\seewo\\Documents\\windowOP\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|c:\\users\\seewo\\documents\\windowop\\windowop\\webpage\\src\\components\\setting_remote.vue||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|solutionrelative:windowop\\webpage\\src\\components\\setting_remote.vue||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|c:\\users\\seewo\\documents\\windowop\\windowop\\actions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|solutionrelative:windowop\\actions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|c:\\users\\seewo\\documents\\windowop\\windowop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|solutionrelative:windowop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|c:\\users\\seewo\\documents\\windowop\\windowop\\frp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|solutionrelative:windowop\\frp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|c:\\users\\seewo\\documents\\windowop\\windowop\\databaseop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|solutionrelative:windowop\\databaseop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|c:\\users\\seewo\\documents\\windowop\\windowop\\webpage\\src\\components\\setting_debug.vue||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|solutionrelative:windowop\\webpage\\src\\components\\setting_debug.vue||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Setting_Remote.vue",
+              "DocumentMoniker": "C:\\Users\\seewo\\Documents\\windowOP\\windowOP\\webpage\\src\\components\\Setting_Remote.vue",
+              "RelativeDocumentMoniker": "windowOP\\webpage\\src\\components\\Setting_Remote.vue",
+              "ToolTip": "C:\\Users\\seewo\\Documents\\windowOP\\windowOP\\webpage\\src\\components\\Setting_Remote.vue",
+              "RelativeToolTip": "windowOP\\webpage\\src\\components\\Setting_Remote.vue",
+              "ViewState": "AgIAADIAAADAqSXSS4IhwFkAAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003491|",
+              "WhenOpened": "2025-06-05T06:55:23.863Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Actions.cs",
+              "DocumentMoniker": "C:\\Users\\seewo\\Documents\\windowOP\\windowOP\\Actions.cs",
+              "RelativeDocumentMoniker": "windowOP\\Actions.cs",
+              "ToolTip": "C:\\Users\\seewo\\Documents\\windowOP\\windowOP\\Actions.cs",
+              "RelativeToolTip": "windowOP\\Actions.cs",
+              "ViewState": "AgIAAPoAAAAAAAAA6OsgwBkBAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-05T04:21:13.288Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\seewo\\Documents\\windowOP\\windowOP\\Program.cs",
+              "RelativeDocumentMoniker": "windowOP\\Program.cs",
+              "ToolTip": "C:\\Users\\seewo\\Documents\\windowOP\\windowOP\\Program.cs",
+              "RelativeToolTip": "windowOP\\Program.cs",
+              "ViewState": "AgIAAEIAAAAAAJcWtregv20AAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-05T04:12:56.598Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DatabaseOP.cs",
+              "DocumentMoniker": "C:\\Users\\seewo\\Documents\\windowOP\\windowOP\\DatabaseOP.cs",
+              "RelativeDocumentMoniker": "windowOP\\DatabaseOP.cs",
+              "ToolTip": "C:\\Users\\seewo\\Documents\\windowOP\\windowOP\\DatabaseOP.cs",
+              "RelativeToolTip": "windowOP\\DatabaseOP.cs",
+              "ViewState": "AgIAAJcAAAAATEtraI4twJwAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-05T03:46:58.862Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Frp.cs",
+              "DocumentMoniker": "C:\\Users\\seewo\\Documents\\windowOP\\windowOP\\Frp.cs",
+              "RelativeDocumentMoniker": "windowOP\\Frp.cs",
+              "ToolTip": "C:\\Users\\seewo\\Documents\\windowOP\\windowOP\\Frp.cs",
+              "RelativeToolTip": "windowOP\\Frp.cs",
+              "ViewState": "AgIAAAMAAAAACwAAAAAAwAwAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-05T03:40:05.304Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Setting_Debug.vue",
+              "DocumentMoniker": "C:\\Users\\seewo\\Documents\\windowOP\\windowOP\\webpage\\src\\components\\Setting_Debug.vue",
+              "RelativeDocumentMoniker": "windowOP\\webpage\\src\\components\\Setting_Debug.vue",
+              "ToolTip": "C:\\Users\\seewo\\Documents\\windowOP\\windowOP\\webpage\\src\\components\\Setting_Debug.vue",
+              "RelativeToolTip": "windowOP\\webpage\\src\\components\\Setting_Debug.vue",
+              "ViewState": "AgIAACkAAAAAZtkuqo0pwDUAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003491|",
+              "WhenOpened": "2025-06-05T04:03:57.377Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
