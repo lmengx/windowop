@@ -5,15 +5,17 @@
     <Loading v-if="showPage == 'Loading'"
              :Disconnected="Disconnected" />
 
-    <Ini v-if="showPage == 'Ini'"
+	<SelectedConnect v-else-if="currentPath == '/ChangeTarget'" />
+
+    <Ini v-else-if="showPage == 'Ini'"
          @SetPwd="SetPwd" />
 
     <VerifyModule class="fullscreen centerbox"
-                  v-if="showPage == 'VerifyModal'"
+                  v-else-if="showPage == 'VerifyModal'"
                   @VerifyPwd="VerifyPwd" />
 
     <MainContent class="fullscreen"
-                 v-if="showPage == 'MainContent'" />
+                 v-else-if="showPage == 'MainContent'" />
 
   </div>
 
@@ -25,34 +27,27 @@
   import { usePwdStore } from './stores/Pwd.js'
   import ShowModal from './components/ShowModal.vue';
   import Loading from "./components/Loading.vue";
+  import SelectedConnect from "./components/SelectConnect.vue"
   import Ini from "./components/Ini.vue"
   import VerifyModule from './components/VerifyModule.vue';
   import MainContent from './components/MainContent.vue';
   import CryptoJS from 'crypto-js';
   import JSEncrypt from 'jsencrypt';
 
-  
+
+  const currentPath = window.location.pathname;
 
   onMounted(() => {
-    if (currentPath === '/debug')
-      ElNotification({
-        title: "已进入调试页面",
-        message: "可以按F12进入控制台查看输出",
-        type: "info",
-      })
-    if (currentPath === '/develop')
-      ElNotification({
-        title: "进入开发页面",
-        message: "websocket连接将指向本机的7799端口",
-        type: "info",
-      })
+    if (currentPath === '/ChangeTarget')
+      showPage.value = "Select"
+
+
 
     connect();
   });
 
-  const currentPath = window.location.pathname;
   function Log(msg) {
-    if (currentPath === '/debug' || currentPath === "/develop") console.log(msg)
+    if (PwdStore.DebugMode) console.log(msg)
   }
 
   // 控制渲染的变量
@@ -220,15 +215,29 @@
     SendMsg(reqJson)
   }
 
+
+	var WasConnected = false;
+
     function connect() {
 
-        const httpUrl = window.location.href;
-        const url = new URL(httpUrl);
-        var wsUrl = `${url.protocol === 'https:' ? 'wss:' : 'ws:'}//${url.hostname}:${url.port || 7799}/`;
-      if (currentPath === "/develop") wsUrl = "ws://127.0.0.1:7799"
-        ws = new WebSocket(wsUrl);
+	var wsUrl = PwdStore.getDefaultTargetAddress()
+	if(wsUrl == "[visitTarget]")
+	{
+		const httpUrl = window.location.href;
+		const url = new URL(httpUrl);
+		wsUrl = `${url.protocol === 'https:' ? 'wss:' : 'ws:'}//${url.hostname}:${url.port || 7799}/`;
+
+
+	}
+
+		setTimeout(() => {
+		          onConnectedDelayed()
+		        }, 3000)
+	  try {
+		          ws = new WebSocket(wsUrl);
         ws.onopen = () => {
             Log('WebSocket已连接');
+			WasConnected = true
         };
 
         ws.onmessage = (event) => {
@@ -246,6 +255,22 @@
             showPage.value = "Loading"
             Disconnected.value = true; // 设置为连接断开状态
         };
+	  }catch (error) {
+    Log('创建WebSocket失败:', error);
+	}
+
+	const onConnectedDelayed = () => {
+	    if(WasConnected || currentPath == "/ChangeTarget") return;
+      const httpUrl = window.location.origin + '/ChangeTarget'
+		ElNotification({
+		    title: '无法连接?',
+			type: 'warning',
+		        dangerouslyUseHTMLString: true,
+		        message: "<a href='"+ httpUrl +"'>点击更改连接目标</a>",
+		  })
+	  }
+
+
     }
 
     onUnmounted(() => {

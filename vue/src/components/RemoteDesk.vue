@@ -23,6 +23,8 @@
     currentPath: String
   })
 
+  const Log = inject('provideFuncLog');
+
   // 依赖注入
   const AESKey = inject('provideAES_key')
   const screenCanvas = ref(null)
@@ -64,7 +66,7 @@
 
   // --- WebSocket 事件处理函数 ---
   const handleWsOpen = () => {
-    console.log('WebSocket 连接已建立')
+    Log('WebSocket 连接已建立')
     connectionStatus.value = 'connected'
     // canvas 获取焦点，以便接收键盘事件
     if (screenCanvas.value) {
@@ -79,7 +81,7 @@
       // 如果 IV 未设置，则第一个接收到的消息是 IV
       if (!aesIV) {
         aesIV = new Uint8Array(data) // 直接存储为 Uint8Array
-        console.log(`收到 IV 数据，长度: ${aesIV.length}`)
+        Log(`收到 IV 数据，长度: ${aesIV.length}`)
         return
       }
 
@@ -102,7 +104,7 @@
   }
 
   const handleWsClose = (event) => {
-    console.log(`连接关闭，代码: ${event.code}，原因: ${event.reason}`)
+    Log(`连接关闭，代码: ${event.code}，原因: ${event.reason}`)
     connectionStatus.value = 'disconnected'
     ws = null // 清除 WebSocket 实例
   }
@@ -278,7 +280,7 @@
         // 设置 canvas 的绘制尺寸（内部像素）与远程屏幕原始尺寸一致
         screenCanvas.value.width = img.width
         screenCanvas.value.height = img.height
-        console.log(`Canvas internal resolution set to: ${img.width}x${img.height}`);
+        Log(`画布内部分辨率设置为: ${img.width}x${img.height}`);
         updateCanvasDimensions() // 根据新的原始尺寸更新显示尺寸
       }
 
@@ -339,7 +341,7 @@
     const finalX = Math.max(0, Math.min(scaledX, canvasSize.value.width - 1));
     const finalY = Math.max(0, Math.min(scaledY, canvasSize.value.height - 1));
 
-    console.log(`Mouse client: (${clientX}, ${clientY}), Rect: (${rect.left}, ${rect.top}), Mouse relative: (${mouseX}, ${mouseY}), Scaled to remote: (${finalX}, ${finalY}), Display Ratio: ${displayRatio.value}`);
+    Log(`鼠标坐标命令: (${clientX}, ${clientY}), 整流: (${rect.left}, ${rect.top}), 鼠标活动区: (${mouseX}, ${mouseY}), Scaled to remote: (${finalX}, ${finalY}), 显示率: ${displayRatio.value}`);
 
     return { offsetX: finalX, offsetY: finalY };
   }
@@ -347,7 +349,7 @@
   // 更新 canvas 显示尺寸以适应容器并保持比例
   const updateCanvasDimensions = () => {
     if (!screenCanvas.value || !screenCanvas.value.parentElement || canvasSize.value.width === 0 || canvasSize.value.height === 0) {
-      console.warn('Cannot update canvas dimensions: canvas ref or parent missing, or canvasSize is zero.');
+      console.warn('无法更新画布尺寸：缺少画布参考或父级，或者canvasSize为零.\n--传输结束时有一次此提示为正常现象');
       return;
     }
 
@@ -374,7 +376,7 @@
 
     displayRatio.value = canvasSize.value.width / finalDisplayWidth;
 
-    console.log(`Container: ${containerWidth}x${containerHeight}, Image: ${canvasSize.value.width}x${canvasSize.value.height}, Canvas Display: ${finalDisplayWidth}x${finalDisplayHeight}, Display Ratio: ${displayRatio.value}`);
+    Log(`画布面积: ${containerWidth}x${containerHeight}, 图像面积: ${canvasSize.value.width}x${canvasSize.value.height}, Canvas 显示: ${finalDisplayWidth}x${finalDisplayHeight}, 显示率: ${displayRatio.value}`);
   }
 
   // --- 生命周期钩子 ---

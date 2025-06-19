@@ -66,6 +66,14 @@
     </template>
 
   </el-dialog>
+  
+  <br><br>
+  <hr>
+  <el-text size="large">更改连接对象</el-text>
+  <br>
+  <el-button type="primary" plain @click="ChangeConnect">更改连接对象</el-button>
+
+  
 
 
 </template>
@@ -110,7 +118,12 @@
         emit("Setting_Write", item, value);
         Setting_ReadAll();
     }
-
+	
+	function ChangeConnect()
+	{
+		const httpUrl = window.location.origin
+		window.location.assign(httpUrl + '/ChangeTarget')
+	}
 
 </script>
 
