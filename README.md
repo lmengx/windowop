@@ -3,6 +3,8 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
+❗重要事项❗gitee的源码版本落后，仅程序包保持更新，如需查看最新源码请前往[GitHub仓库](https://github.com/lmx12330/window-op)
+
 🌟 **基于c#的远程控制**
 
 ✔️ 内置文件管理  
