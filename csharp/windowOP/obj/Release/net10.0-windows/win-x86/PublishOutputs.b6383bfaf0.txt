@@ -1,0 +1,2 @@
+C:\Users\lyt\Documents\Projects\windowOP\csharp\windowOP\bin\Release\e_sqlite3.dll
+C:\Users\lyt\Documents\Projects\windowOP\csharp\windowOP\bin\Release\windowOP.exe

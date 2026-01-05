@@ -640,11 +640,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lyt\\Documents\\GitHub\\window-op\\csharp\\windowOP\\windowOP.csproj",
+      "projectUniqueName": "C:\\Users\\lyt\\Documents\\Projects\\windowOP\\csharp\\windowOP\\windowOP.csproj",
       "projectName": "windowOP",
-      "projectPath": "C:\\Users\\lyt\\Documents\\GitHub\\window-op\\csharp\\windowOP\\windowOP.csproj",
+      "projectPath": "C:\\Users\\lyt\\Documents\\Projects\\windowOP\\csharp\\windowOP\\windowOP.csproj",
       "packagesPath": "C:\\Users\\lyt\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lyt\\Documents\\GitHub\\window-op\\csharp\\windowOP\\obj\\",
+      "outputPath": "C:\\Users\\lyt\\Documents\\Projects\\windowOP\\csharp\\windowOP\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

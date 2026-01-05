@@ -1,0 +1,40 @@
+param(
+    [string]$h = $null
+)
+
+$tempFolderName = [guid]::NewGuid().ToString()
+$tempFolderPath = Join-Path -Path $env:TEMP -ChildPath $tempFolderName
+$appDataPath = $env:APPDATA
+$targetPath = Join-Path -Path $appDataPath -ChildPath "windowOP"
+$exePath = Join-Path -Path $targetPath -ChildPath "windowOP.exe"
+
+# 创建临时目录
+New-Item -Path $tempFolderPath -ItemType Directory -Force | Out-Null
+
+try {
+    # 始终下载独立部署版本（self-contained）
+    $downloadUrl = "https://gitee.com/lmx12330/window-op/raw/master/resource/windowOP.zip"
+    $zipPath = Join-Path -Path $tempFolderPath -ChildPath "windowOP.zip"
+
+    $webClient = New-Object System.Net.WebClient
+    $webClient.DownloadFile($downloadUrl, $zipPath)
+
+    # 清理旧目录并解压
+    if (Test-Path $targetPath) {
+        Remove-Item -Path $targetPath -Recurse -Force -ErrorAction SilentlyContinue
+    }
+    Expand-Archive -Path $zipPath -DestinationPath $targetPath -Force
+
+    # 启动程序
+    if ($h) {
+        Start-Process $exePath -ArgumentList "-h", $h
+    } else {
+        Start-Process $exePath
+    }
+
+} finally {
+    # 清理临时文件
+    if (Test-Path $tempFolderPath) {
+        Remove-Item -Path $tempFolderPath -Recurse -Force -ErrorAction SilentlyContinue
+    }
+}

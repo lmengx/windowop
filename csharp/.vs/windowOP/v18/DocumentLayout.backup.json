@@ -1,22 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\lyt\\Documents\\GitHub\\window-op\\csharp\\",
+  "WorkspaceRootPath": "C:\\Users\\lyt\\Documents\\Projects\\windowOP\\csharp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|c:\\users\\lyt\\documents\\github\\window-op\\csharp\\windowop\\webserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|solutionrelative:windowop\\webserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|c:\\users\\lyt\\documents\\github\\window-op\\csharp\\windowop\\actions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|solutionrelative:windowop\\actions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|c:\\users\\lyt\\documents\\github\\window-op\\csharp\\windowop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|c:\\users\\lyt\\documents\\projects\\windowop\\csharp\\windowop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|solutionrelative:windowop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|c:\\users\\lyt\\documents\\github\\window-op\\csharp\\windowop\\filemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|c:\\users\\lyt\\documents\\projects\\windowop\\csharp\\windowop\\filemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|solutionrelative:windowop\\filemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|c:\\users\\lyt\\documents\\projects\\windowop\\csharp\\windowop\\webserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|solutionrelative:windowop\\webserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|c:\\users\\lyt\\documents\\projects\\windowop\\csharp\\windowop\\actions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|solutionrelative:windowop\\actions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,28 +26,27 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Actions.cs",
-              "DocumentMoniker": "C:\\Users\\lyt\\Documents\\GitHub\\window-op\\csharp\\windowOP\\Actions.cs",
+              "DocumentMoniker": "C:\\Users\\lyt\\Documents\\Projects\\windowOP\\csharp\\windowOP\\Actions.cs",
               "RelativeDocumentMoniker": "windowOP\\Actions.cs",
-              "ToolTip": "C:\\Users\\lyt\\Documents\\GitHub\\window-op\\csharp\\windowOP\\Actions.cs",
+              "ToolTip": "C:\\Users\\lyt\\Documents\\Projects\\windowOP\\csharp\\windowOP\\Actions.cs",
               "RelativeToolTip": "windowOP\\Actions.cs",
               "ViewState": "AgIAAK0AAAAAAAAAAAAUwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T08:14:29.995Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-11T08:14:29.995Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "FileManager.cs",
-              "DocumentMoniker": "C:\\Users\\lyt\\Documents\\GitHub\\window-op\\csharp\\windowOP\\FileManager.cs",
+              "DocumentMoniker": "C:\\Users\\lyt\\Documents\\Projects\\windowOP\\csharp\\windowOP\\FileManager.cs",
               "RelativeDocumentMoniker": "windowOP\\FileManager.cs",
-              "ToolTip": "C:\\Users\\lyt\\Documents\\GitHub\\window-op\\csharp\\windowOP\\FileManager.cs",
+              "ToolTip": "C:\\Users\\lyt\\Documents\\Projects\\windowOP\\csharp\\windowOP\\FileManager.cs",
               "RelativeToolTip": "windowOP\\FileManager.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -55,28 +54,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "WebServer.cs",
-              "DocumentMoniker": "C:\\Users\\lyt\\Documents\\GitHub\\window-op\\csharp\\windowOP\\WebServer.cs",
+              "DocumentMoniker": "C:\\Users\\lyt\\Documents\\Projects\\windowOP\\csharp\\windowOP\\WebServer.cs",
               "RelativeDocumentMoniker": "windowOP\\WebServer.cs",
-              "ToolTip": "C:\\Users\\lyt\\Documents\\GitHub\\window-op\\csharp\\windowOP\\WebServer.cs",
+              "ToolTip": "C:\\Users\\lyt\\Documents\\Projects\\windowOP\\csharp\\windowOP\\WebServer.cs",
               "RelativeToolTip": "windowOP\\WebServer.cs",
-              "ViewState": "AgIAAMADAAAAAAAAAAAAAMwDAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAJkDAAAAAAAAAAAAAMwDAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-03T14:43:09.504Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-03T14:43:09.504Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\lyt\\Documents\\GitHub\\window-op\\csharp\\windowOP\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\lyt\\Documents\\Projects\\windowOP\\csharp\\windowOP\\Program.cs",
               "RelativeDocumentMoniker": "windowOP\\Program.cs",
-              "ToolTip": "C:\\Users\\lyt\\Documents\\GitHub\\window-op\\csharp\\windowOP\\Program.cs",
+              "ToolTip": "C:\\Users\\lyt\\Documents\\Projects\\windowOP\\csharp\\windowOP\\Program.cs",
               "RelativeToolTip": "windowOP\\Program.cs",
               "ViewState": "AgIAAHoAAAAAAAAAAAAkwBgAAABTAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T10:33:54.341Z"
+              "WhenOpened": "2025-11-04T10:33:54.341Z",
+              "EditorCaption": ""
             }
           ]
         }
