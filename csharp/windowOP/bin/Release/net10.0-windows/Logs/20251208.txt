@@ -1,0 +1,24 @@
+[00:50:13] 已完成读取:'Log_Enable'--1
+[00:50:13] 已完成读取:'Log_PrintDebugMsg'--1
+[00:50:13] 已完成读取:'SleepTime'--1000
+[00:50:13] 已完成读取:'ListenPort'--7799
+[00:50:13] 已完成读取:'Log_WindowWatcher'--0
+[00:50:13] 已完成读取:'Log_WebServer'--1
+[00:50:55] 触发了Action：'restart' .
+[00:50:55] 双进程保护关闭
+[00:50:56] 已完成读取:'Log_Enable'--1
+[00:50:56] 已完成读取:'Log_PrintDebugMsg'--1
+[00:50:56] 已完成读取:'SleepTime'--1000
+[00:50:56] 已完成读取:'ListenPort'--7799
+[00:50:56] 已完成读取:'Log_WindowWatcher'--0
+[00:50:56] 已完成读取:'Log_WebServer'--1
+[00:50:59] frpc.exe 已启动 
+[00:56:12] 触发了Action：'restart' .
+[00:56:12] 双进程保护关闭
+[00:56:13] 已完成读取:'Log_Enable'--1
+[00:56:13] 已完成读取:'Log_PrintDebugMsg'--1
+[00:56:13] 已完成读取:'SleepTime'--1000
+[00:56:13] 已完成读取:'ListenPort'--7799
+[00:56:13] 已完成读取:'Log_WindowWatcher'--0
+[00:56:13] 已完成读取:'Log_WebServer'--1
+[00:56:13] frpc.exe 已启动 

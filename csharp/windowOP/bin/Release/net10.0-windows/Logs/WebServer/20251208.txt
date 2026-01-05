@@ -1,0 +1,511 @@
+[00:50:25] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\index.html
+[00:50:25] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\assets/index-BM7ffERy.css
+[00:50:25] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\assets/index-DozaToBe.js
+[00:50:27] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\assets/impression-ClXOzGcA.svg
+[00:50:30] 来自127.0.0.1的WebSocket已连接.
+[00:50:30] 来自127.0.0.1的WebSocket消息: {"Operation":"Verify","Timestamp":1765126230541}
+[00:50:30] 对127.0.0.1发送WebSocket消息：{"Operation": "Verified"}
+[00:50:31] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765126231071}
+[00:50:37] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-07T16:50:37Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":2.9},"Memory":{"TotalMB":32370,"UsedMB":18325,"UsagePercent":56.6},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":484.7,"UsagePercent":47.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[00:50:37] 来自127.0.0.1的WebSocket消息: {"Operation":"Setting_Read_Batch","Timestamp":1765126232138}
+[00:50:37] 对127.0.0.1发送WebSocket消息：SettingQueryResult:{"SleepTime":1000,"ListenPort":7799,"ServeAllPrefix":0,"Log_Enable":1,"Log_PrintDebugMsg":1,"Log_ShowConsole":0,"Log_WebServer":1,"Log_WindowWatcher":0,"RunAsAdmin":0,"Protect_Process":0,"Protect_Files":0,"Protect_StartTask":0,"Frp_Enable":0,"Frp_parameters":"","DebugMode":1,"LANAddress":"http://100.67.217.199:7799","LatestVersion":"0.0.0.1"}
+[00:50:37] 来自127.0.0.1的WebSocket消息: {"Operation":"Setting_Write","Item":"DebugMode","Value":"1","Timestamp":1765126237663}
+[00:50:37] 来自127.0.0.1的WebSocket消息: {"Operation":"Setting_Read_Batch","Timestamp":1765126237664}
+[00:50:38] 对127.0.0.1发送WebSocket消息：SettingQueryResult:{"SleepTime":1000,"ListenPort":7799,"ServeAllPrefix":0,"Log_Enable":1,"Log_PrintDebugMsg":1,"Log_ShowConsole":0,"Log_WebServer":1,"Log_WindowWatcher":0,"RunAsAdmin":0,"Protect_Process":0,"Protect_Files":0,"Protect_StartTask":0,"Frp_Enable":0,"Frp_parameters":"","DebugMode":1,"LANAddress":"http://100.67.217.199:7799","LatestVersion":"0.0.0.1"}
+[00:50:45] 来自127.0.0.1的WebSocket消息: {"Operation":"Setting_Write","Item":"Frp_Enable","Value":"1","Timestamp":1765126245890}
+[00:50:45] 来自127.0.0.1的WebSocket消息: {"Operation":"Setting_Read_Batch","Timestamp":1765126245890}
+[00:50:46] 对127.0.0.1发送WebSocket消息：SettingQueryResult:{"SleepTime":1000,"ListenPort":7799,"ServeAllPrefix":0,"Log_Enable":1,"Log_PrintDebugMsg":1,"Log_ShowConsole":0,"Log_WebServer":1,"Log_WindowWatcher":0,"RunAsAdmin":0,"Protect_Process":0,"Protect_Files":0,"Protect_StartTask":0,"Frp_Enable":1,"Frp_parameters":"","DebugMode":1,"LANAddress":"http://100.67.217.199:7799","LatestVersion":"0.0.0.1"}
+[00:50:48] 来自127.0.0.1的WebSocket消息: {"Operation":"Setting_Write","Item":"Frp_parameters","Value":"-f l3wjcu7n2jzhc5a82frxdr77mx1g76aq:21432735","Timestamp":1765126248020}
+[00:50:48] 来自127.0.0.1的WebSocket消息: {"Operation":"Setting_Read_Batch","Timestamp":1765126248020}
+[00:50:48] 对127.0.0.1发送WebSocket消息：SettingQueryResult:{"SleepTime":1000,"ListenPort":7799,"ServeAllPrefix":0,"Log_Enable":1,"Log_PrintDebugMsg":1,"Log_ShowConsole":0,"Log_WebServer":1,"Log_WindowWatcher":0,"RunAsAdmin":0,"Protect_Process":0,"Protect_Files":0,"Protect_StartTask":0,"Frp_Enable":1,"Frp_parameters":"-f l3wjcu7n2jzhc5a82frxdr77mx1g76aq:21432735","DebugMode":1,"LANAddress":"http://100.67.217.199:7799","LatestVersion":"0.0.0.1"}
+[00:50:49] 来自127.0.0.1的WebSocket消息: {"Operation":"Setting_Write","Item":"Frp_parameters","Value":"-f l3wjcu7n2jzhc5a82frxdr77mx1g76aq:21432735","Timestamp":1765126249573}
+[00:50:49] 来自127.0.0.1的WebSocket消息: {"Operation":"Setting_Read_Batch","Timestamp":1765126249573}
+[00:50:50] 对127.0.0.1发送WebSocket消息：SettingQueryResult:{"SleepTime":1000,"ListenPort":7799,"ServeAllPrefix":0,"Log_Enable":1,"Log_PrintDebugMsg":1,"Log_ShowConsole":0,"Log_WebServer":1,"Log_WindowWatcher":0,"RunAsAdmin":0,"Protect_Process":0,"Protect_Files":0,"Protect_StartTask":0,"Frp_Enable":1,"Frp_parameters":"-f l3wjcu7n2jzhc5a82frxdr77mx1g76aq:21432735","DebugMode":1,"LANAddress":"http://100.67.217.199:7799","LatestVersion":"0.0.0.1"}
+[00:50:55] 来自127.0.0.1的WebSocket消息: {"Operation":"RunAction","Action":"[{\"ActionName\":\"restart\",\"Paras\":[]}]","Timestamp":1765126255658}
+[00:50:57] 来自127.0.0.1的WebSocket已连接.
+[00:51:01] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\dashboard/setting
+[00:51:01] 来自127.0.0.1的WebSocket连接断开
+[00:51:02] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\dashboard/setting
+[00:51:07] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\index.html
+[00:51:07] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\assets/index-BM7ffERy.css
+[00:51:07] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\assets/index-DozaToBe.js
+[00:51:08] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\assets/impression-ClXOzGcA.svg
+[00:53:08] 来自127.0.0.1的WebSocket已连接.
+[00:53:11] 来自127.0.0.1的WebSocket消息: {"Operation":"Verify","Timestamp":1765126391221}
+[00:53:11] 对127.0.0.1发送WebSocket消息：{"Operation": "Verified"}
+[00:53:11] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765126391815}
+[00:53:13] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-07T16:53:13Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":7.3},"Memory":{"TotalMB":32370,"UsedMB":18170,"UsagePercent":56.1},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":484.6,"UsagePercent":47.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[00:53:14] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765126394321}
+[00:53:14] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-07T16:53:14Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":12.9},"Memory":{"TotalMB":32370,"UsedMB":18227,"UsagePercent":56.3},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":484.6,"UsagePercent":47.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[00:53:16] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765126396822}
+[00:53:16] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-07T16:53:16Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":8.7},"Memory":{"TotalMB":32370,"UsedMB":18212,"UsagePercent":56.3},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":484.6,"UsagePercent":47.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[00:53:17] 来自127.0.0.1的WebSocket消息: {"Operation":"QuiryTargetList","Timestamp":1765126397731}
+[00:53:17] 对127.0.0.1发送WebSocket消息：TargetList: []
+[00:53:19] 来自127.0.0.1的WebSocket消息: {"Operation":"FileManager","op":"GetContent","path":"\\","Timestamp":1765126399353}
+[00:53:19] 对127.0.0.1发送WebSocket消息：FileContent:{
+  "Path": [],
+  "Content": [
+    {
+      "Name": "OS (C:\\)",
+      "Type": "/disk",
+      "Size": "484GB可用/925GB",
+      "Time": "",
+      "Lnk": "C:\\"
+    },
+    {
+      "Name": "新加卷 (D:\\)",
+      "Type": "/disk",
+      "Size": "1190GB可用/1862GB",
+      "Time": "",
+      "Lnk": "D:\\"
+    },
+    {
+      "Name": "桌面（Desktop）",
+      "Type": "lnk",
+      "Size": "",
+      "Time": "",
+      "Lnk": "C:\\Users\\lyt\\Desktop"
+    },
+    {
+      "Name": "应用程序数据（AppData）",
+      "Type": "lnk",
+      "Size": "",
+      "Time": "",
+      "Lnk": "C:\\Users\\lyt\\AppData\\Roaming"
+    },
+    {
+      "Name": "启动文件夹（Startup）",
+      "Type": "lnk",
+      "Size": "",
+      "Time": "",
+      "Lnk": "C:\\Users\\lyt\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup"
+    },
+    {
+      "Name": "文档文件夹（Document）",
+      "Type": "lnk",
+      "Size": "",
+      "Time": "",
+      "Lnk": "C:\\Users\\lyt\\Documents"
+    },
+    {
+      "Name": "下载文件夹（Download）--可能不可靠",
+      "Type": "lnk",
+      "Size": "",
+      "Time": "",
+      "Lnk": "C:\\Users\\lyt\\Downloads"
+    },
+    {
+      "Name": "程序文件夹（windowOP）",
+      "Type": "lnk",
+      "Size": "",
+      "Time": "",
+      "Lnk": "C:\\Users\\lyt\\Documents\\GitHub\\window-op\\csharp\\windowOP\\bin\\Release\\net10.0-windows\\"
+    }
+  ]
+}
+[00:53:23] 来自127.0.0.1的WebSocket消息: {"Operation":"FileManager","op":"GetContent","path":"C:\\\\","Timestamp":1765126403180}
+[00:53:23] 对127.0.0.1发送WebSocket消息：FileContent:{
+  "Path": [
+    "C:"
+  ],
+  "Content": [
+    {
+      "Name": "$Recycle.Bin",
+      "Type": "dir",
+      "Size": 0,
+      "Time": "2025-07-05-12-58-02"
+    },
+    {
+      "Name": "5EDemocache",
+      "Type": "dir",
+      "Size": 0,
+      "Time": "2025-11-01-23-10-43"
+    },
+    {
+      "Name": "AndrowsData",
+      "Type": "dir",
+      "Size": 0,
+      "Time": "2025-08-05-22-20-18"
+    },
+    {
+      "Name": "AsusMCenterDownload",
+      "Type": "dir",
+      "Size": 0,
+      "Time": "2025-07-05-18-17-57"
+    },
+    {
+      "Name": "CloudMusic",
+      "Type": "dir",
+      "Size": 0,
+      "Time": "2025-07-07-20-25-46"
+    },
+    {
+      "Name": "Config.Msi",
+      "Type": "dir",
+      "Size": 0,
+      "Time": "2025-12-07-19-06-58"
+    },
+    {
+      "Name": "db",
+      "Type": "dir",
+      "Size": 0,
+      "Time": "2025-09-13-00-20-04"
+    },
+    {
+      "Name": "Documents and Settings",
+      "Type": "dir",
+      "Size": 0,
+      "Time": "2025-07-05-11-20-49"
+    },
+    {
+      "Name": "eSupport",
+      "Type": "dir",
+      "Size": 0,
+      "Time": "2025-06-18-10-35-14"
+    },
+    {
+      "Name": "Exam",
+      "Type": "dir",
+      "Size": 0,
+      "Time": "2025-11-18-22-39-12"
+    },
+    {
+      "Name": "inetpub",
+      "Type": "dir",
+      "Size": 0,
+      "Time": "2025-07-06-00-21-45"
+    },
+    {
+      "Name": "OneDriveTemp",
+      "Type": "dir",
+      "Size": 0,
+      "Time": "2025-07-08-13-22-11"
+    },
+    {
+      "Name": "PerfLogs",
+      "Type": "dir",
+      "Size": 0,
+      "Time": "2024-04-01-15-26-06"
+    },
+    {
+      "Name": "Program Files",
+      "Type": "dir",
+      "Size": 0,
+      "Time": "2025-11-29-01-33-28"
+    },
+    {
+      "Name": "Program Files (x86)",
+      "Type": "dir",
+      "Size": 0,
+      "Time": "2025-12-06-18-36-45"
+    },
+    {
+      "Name": "ProgramData",
+      "Type": "dir",
+      "Size": 0,
+      "Time": "2025-12-07-18-28-57"
+    },
+    {
+      "Name": "Python313",
+      "Type": "dir",
+      "Size": 0,
+      "Time": "2025-07-13-19-26-09"
+    },
+    {
+      "Name": "Recovery",
+      "Type": "dir",
+      "Size": 0,
+      "Time": "2025-06-18-10-49-38"
+    },
+    {
+      "Name": "Recycled",
+      "Type": "dir",
+      "Size": 0,
+      "Time": "2025-11-18-22-39-11"
+    },
+    {
+      "Name": "SteamLibrary",
+      "Type": "dir",
+      "Size": 0,
+      "Time": "2025-11-11-23-23-53"
+    },
+    {
+      "Name": "System Volume Information",
+      "Type": "dir",
+      "Size": 0,
+      "Time": "2025-12-08-00-07-30"
+    },
+    {
+      "Name": "Users",
+      "Type": "dir",
+      "Size": 0,
+      "Time": "2025-07-05-11-41-25"
+    },
+    {
+      "Name": "WeGameApps",
+      "Type": "dir",
+      "Size": 0,
+      "Time": "2025-07-07-23-57-42"
+    },
+    {
+      "Name": "Windows",
+      "Type": "dir",
+      "Size": 0,
+      "Time": "2025-12-07-19-06-58"
+    },
+    {
+      "Name": "WLKS",
+      "Type": "dir",
+      "Size": 0,
+      "Time": "2025-11-18-23-22-48"
+    },
+    {
+      "Name": "图吧工具箱",
+      "Type": "dir",
+      "Size": 0,
+      "Time": "2025-07-05-11-26-20"
+    },
+    {
+      "Name": "迅雷下载",
+      "Type": "dir",
+      "Size": 0,
+      "Time": "2025-07-26-21-39-29"
+    },
+    {
+      "Name": "appverifUI.dll",
+      "Type": "dll",
+      "Size": 112472,
+      "Time": "2025-10-15-14-36-28"
+    },
+    {
+      "Name": "devlist.txt",
+      "Type": "txt",
+      "Size": 19995,
+      "Time": "2025-06-17-18-24-50"
+    },
+    {
+      "Name": "DumpStack.log",
+      "Type": "log",
+      "Size": 12288,
+      "Time": "2025-11-29-01-17-34"
+    },
+    {
+      "Name": "DumpStack.log.tmp",
+      "Type": "tmp",
+      "Size": 12288,
+      "Time": "2025-12-07-19-07-02"
+    },
+    {
+      "Name": "Finish.log",
+      "Type": "log",
+      "Size": 9,
+      "Time": "2025-06-17-18-33-57"
+    },
+    {
+      "Name": "hiberfil.sys",
+      "Type": "sys",
+      "Size": 13577248768,
+      "Time": "2025-12-07-19-06-58"
+    },
+    {
+      "Name": "https_personal.sdwan.oray.com.localstorage",
+      "Type": "localstorage",
+      "Size": 1071,
+      "Time": "2025-11-23-19-53-42"
+    },
+    {
+      "Name": "logUploaderSettings.ini",
+      "Type": "ini",
+      "Size": 108,
+      "Time": "2025-07-15-14-32-27"
+    },
+    {
+      "Name": "logUploaderSettings_temp.ini",
+      "Type": "ini",
+      "Size": 108,
+      "Time": "2025-07-15-14-32-27"
+    },
+    {
+      "Name": "pagefile.sys",
+      "Type": "sys",
+      "Size": 10200547328,
+      "Time": "2025-12-07-19-07-02"
+    },
+    {
+      "Name": "swapfile.sys",
+      "Type": "sys",
+      "Size": 16777216,
+      "Time": "2025-12-07-19-07-02"
+    },
+    {
+      "Name": "vfcompat.dll",
+      "Type": "dll",
+      "Size": 68104,
+      "Time": "2025-10-15-14-36-40"
+    }
+  ]
+}
+[00:53:24] 来自127.0.0.1的WebSocket消息: {"Operation":"FileManager","op":"GetContent","path":"\\","Timestamp":1765126404861}
+[00:53:24] 对127.0.0.1发送WebSocket消息：FileContent:{
+  "Path": [],
+  "Content": [
+    {
+      "Name": "OS (C:\\)",
+      "Type": "/disk",
+      "Size": "484GB可用/925GB",
+      "Time": "",
+      "Lnk": "C:\\"
+    },
+    {
+      "Name": "新加卷 (D:\\)",
+      "Type": "/disk",
+      "Size": "1190GB可用/1862GB",
+      "Time": "",
+      "Lnk": "D:\\"
+    },
+    {
+      "Name": "桌面（Desktop）",
+      "Type": "lnk",
+      "Size": "",
+      "Time": "",
+      "Lnk": "C:\\Users\\lyt\\Desktop"
+    },
+    {
+      "Name": "应用程序数据（AppData）",
+      "Type": "lnk",
+      "Size": "",
+      "Time": "",
+      "Lnk": "C:\\Users\\lyt\\AppData\\Roaming"
+    },
+    {
+      "Name": "启动文件夹（Startup）",
+      "Type": "lnk",
+      "Size": "",
+      "Time": "",
+      "Lnk": "C:\\Users\\lyt\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup"
+    },
+    {
+      "Name": "文档文件夹（Document）",
+      "Type": "lnk",
+      "Size": "",
+      "Time": "",
+      "Lnk": "C:\\Users\\lyt\\Documents"
+    },
+    {
+      "Name": "下载文件夹（Download）--可能不可靠",
+      "Type": "lnk",
+      "Size": "",
+      "Time": "",
+      "Lnk": "C:\\Users\\lyt\\Downloads"
+    },
+    {
+      "Name": "程序文件夹（windowOP）",
+      "Type": "lnk",
+      "Size": "",
+      "Time": "",
+      "Lnk": "C:\\Users\\lyt\\Documents\\GitHub\\window-op\\csharp\\windowOP\\bin\\Release\\net10.0-windows\\"
+    }
+  ]
+}
+[00:53:27] 来自127.0.0.1的WebSocket消息: {"Operation":"Setting_Read_Batch","Timestamp":1765126407437}
+[00:53:27] 对127.0.0.1发送WebSocket消息：SettingQueryResult:{"SleepTime":1000,"ListenPort":7799,"ServeAllPrefix":0,"Log_Enable":1,"Log_PrintDebugMsg":1,"Log_ShowConsole":0,"Log_WebServer":1,"Log_WindowWatcher":0,"RunAsAdmin":0,"Protect_Process":0,"Protect_Files":0,"Protect_StartTask":0,"Frp_Enable":1,"Frp_parameters":"-f l3wjcu7n2jzhc5a82frxdr77mx1g76aq:21432735","DebugMode":1,"LANAddress":"http://100.67.217.199:7799","LatestVersion":"0.0.0.1"}
+[00:53:38] 来自127.0.0.1的WebSocket消息: {"Operation":"heartbeat","Timestamp":1765126418307}
+[00:54:53] 来自127.0.0.1的WebSocket已连接.
+[00:54:58] 来自127.0.0.1的WebSocket连接断开
+[00:55:02] 来自127.0.0.1的WebSocket已连接.
+[00:55:07] 来自127.0.0.1的WebSocket消息: {"Operation":"Verify","Timestamp":1765126507768}
+[00:55:07] 对127.0.0.1发送WebSocket消息：{"Operation": "Verified"}
+[00:55:08] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765126508056}
+[00:55:08] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-07T16:55:08Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":7.2},"Memory":{"TotalMB":32370,"UsedMB":17966,"UsagePercent":55.5},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":484.6,"UsagePercent":47.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[00:55:10] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765126510557}
+[00:55:10] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-07T16:55:10Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":8.2},"Memory":{"TotalMB":32370,"UsedMB":18039,"UsagePercent":55.7},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":484.6,"UsagePercent":47.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[00:55:13] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765126513057}
+[00:55:13] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-07T16:55:13Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":7.5},"Memory":{"TotalMB":32370,"UsedMB":18034,"UsagePercent":55.7},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":484.6,"UsagePercent":47.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[00:55:13] 来自127.0.0.1的WebSocket消息: {"Operation":"QuiryTargetList","Timestamp":1765126513373}
+[00:55:13] 对127.0.0.1发送WebSocket消息：TargetList: []
+[00:55:14] 来自127.0.0.1的WebSocket消息: {"Operation":"FileManager","op":"GetContent","path":"\\","Timestamp":1765126514370}
+[00:55:14] 对127.0.0.1发送WebSocket消息：FileContent:{
+  "Path": [],
+  "Content": [
+    {
+      "Name": "OS (C:\\)",
+      "Type": "/disk",
+      "Size": "484GB可用/925GB",
+      "Time": "",
+      "Lnk": "C:\\"
+    },
+    {
+      "Name": "新加卷 (D:\\)",
+      "Type": "/disk",
+      "Size": "1190GB可用/1862GB",
+      "Time": "",
+      "Lnk": "D:\\"
+    },
+    {
+      "Name": "桌面（Desktop）",
+      "Type": "lnk",
+      "Size": "",
+      "Time": "",
+      "Lnk": "C:\\Users\\lyt\\Desktop"
+    },
+    {
+      "Name": "应用程序数据（AppData）",
+      "Type": "lnk",
+      "Size": "",
+      "Time": "",
+      "Lnk": "C:\\Users\\lyt\\AppData\\Roaming"
+    },
+    {
+      "Name": "启动文件夹（Startup）",
+      "Type": "lnk",
+      "Size": "",
+      "Time": "",
+      "Lnk": "C:\\Users\\lyt\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup"
+    },
+    {
+      "Name": "文档文件夹（Document）",
+      "Type": "lnk",
+      "Size": "",
+      "Time": "",
+      "Lnk": "C:\\Users\\lyt\\Documents"
+    },
+    {
+      "Name": "下载文件夹（Download）--可能不可靠",
+      "Type": "lnk",
+      "Size": "",
+      "Time": "",
+      "Lnk": "C:\\Users\\lyt\\Downloads"
+    },
+    {
+      "Name": "程序文件夹（windowOP）",
+      "Type": "lnk",
+      "Size": "",
+      "Time": "",
+      "Lnk": "C:\\Users\\lyt\\Documents\\GitHub\\window-op\\csharp\\windowOP\\bin\\Release\\net10.0-windows\\"
+    }
+  ]
+}
+[00:55:15] 来自127.0.0.1的WebSocket消息: {"Operation":"QuiryTargetList","Timestamp":1765126515561}
+[00:55:15] 对127.0.0.1发送WebSocket消息：TargetList: []
+[00:55:31] 来自127.0.0.1的WebSocket消息: {"Operation":"Setting_Read_Batch","Timestamp":1765126531952}
+[00:55:32] 对127.0.0.1发送WebSocket消息：SettingQueryResult:{"SleepTime":1000,"ListenPort":7799,"ServeAllPrefix":0,"Log_Enable":1,"Log_PrintDebugMsg":1,"Log_ShowConsole":0,"Log_WebServer":1,"Log_WindowWatcher":0,"RunAsAdmin":0,"Protect_Process":0,"Protect_Files":0,"Protect_StartTask":0,"Frp_Enable":1,"Frp_parameters":"-f l3wjcu7n2jzhc5a82frxdr77mx1g76aq:21432735","DebugMode":1,"LANAddress":"http://100.67.217.199:7799","LatestVersion":"0.0.0.1"}
+[00:55:32] 来自127.0.0.1的WebSocket消息: {"Operation":"heartbeat","Timestamp":1765126532966}
+[00:55:47] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\dashboard/setting
+[00:55:51] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\index.html
+[00:55:52] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\assets/index-DozaToBe.js
+[00:55:52] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\assets/index-BM7ffERy.css
+[00:55:52] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\assets/impression-ClXOzGcA.svg
+[00:55:57] 来自127.0.0.1的WebSocket已连接.
+[00:55:59] 来自127.0.0.1的WebSocket消息: {"Operation":"Verify","Timestamp":1765126559960}
+[00:55:59] 对127.0.0.1发送WebSocket消息：{"Operation": "Verified"}
+[00:56:00] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765126560264}
+[00:56:00] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-07T16:56:00Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":8.8},"Memory":{"TotalMB":32370,"UsedMB":18066,"UsagePercent":55.8},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":484.6,"UsagePercent":47.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[00:56:02] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765126562778}
+[00:56:02] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-07T16:56:02Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":12.2},"Memory":{"TotalMB":32370,"UsedMB":18059,"UsagePercent":55.8},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":484.6,"UsagePercent":47.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[00:56:05] 来自127.0.0.1的WebSocket消息: {"Operation":"Setting_Read_Batch","Timestamp":1765126565387}
+[00:56:05] 对127.0.0.1发送WebSocket消息：SettingQueryResult:{"SleepTime":1000,"ListenPort":7799,"ServeAllPrefix":0,"Log_Enable":1,"Log_PrintDebugMsg":1,"Log_ShowConsole":0,"Log_WebServer":1,"Log_WindowWatcher":0,"RunAsAdmin":0,"Protect_Process":0,"Protect_Files":0,"Protect_StartTask":0,"Frp_Enable":1,"Frp_parameters":"-f l3wjcu7n2jzhc5a82frxdr77mx1g76aq:21432735","DebugMode":1,"LANAddress":"http://100.67.217.199:7799","LatestVersion":"0.0.0.1"}
+[00:56:12] 来自127.0.0.1的WebSocket消息: {"Operation":"RunAction","Action":"[{\"ActionName\":\"restart\",\"Paras\":[]}]","Timestamp":1765126572308}
+[00:56:34] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\.well-known/appspecific/com.chrome.devtools.json
+[00:56:34] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\assets/index-BM7ffERy.css
+[00:56:41] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\dashboard/setting
+[00:56:41] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\.well-known/appspecific/com.chrome.devtools.json

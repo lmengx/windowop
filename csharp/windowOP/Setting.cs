@@ -326,7 +326,8 @@ netsh advfirewall firewall add rule name=""windowOP"" dir=IN action=ALLOW protoc
         public static void RemoveFireWallSetting(int port)
         {
             string batContent = @$"
-        netsh advfirewall firewall delete rule name = ""windowOP"" protocol=TCP localport = { port }
+        netsh advfirewall firewall delete rule name = ""windowOP"" protocol=TCP localport = { port } remoteip=any
+        netsh advfirewall firewall add rule name=""windowOP_IPv6"" dir=in action=allow protocol=TCP localport={port} remoteip=any
 ";
 
             // 运行批处理文件以管理员身份

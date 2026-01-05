@@ -11,9 +11,6 @@ using System.Security.Policy;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-//using System.Net.Sockets;//web服务
-using System.Threading;//线程
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static windowOP.DatabaseOP;
 
@@ -23,7 +20,7 @@ namespace windowOP
     {
         public static string ListenData = $"http://127.0.0.1:{ListenPort}/";
 
-        public static void webServer()
+        public static async Task webServer()
         {
 
             if (Setting_Read("ServeAllPrefix") == "1")
@@ -51,20 +48,32 @@ namespace windowOP
                     listener.Start();
                     Console.WriteLine($"网页服务启动，监听前缀:{ListenData}");
 
-                    int maxThreads = Environment.ProcessorCount * 4;  // 设置线程池的最大线程数
-                    ThreadPool.SetMaxThreads(maxThreads, maxThreads);
-                    ThreadPool.SetMinThreads(2, 2); // 设置线程池的最小线程数
-
-                    while (true)
+                while (true)
+                {
+                    try
                     {
-                        // 获取HttpListenerContext对象并将处理请求的方法放入线程池进行处理
-                        HttpListenerContext context = listener.GetContext();
-                        if (context.Request.IsWebSocketRequest)
-                            ThreadPool.QueueUserWorkItem(HandleWebSocket, context);
-                        else
-                            ThreadPool.QueueUserWorkItem(HandleRequest, context);
+                        // ⚡ 非阻塞等待新连接
+                        HttpListenerContext context = await listener.GetContextAsync();
+
+                        // 立即派发到线程池（或直接 async 处理）
+                        _ = Task.Run(() => ProcessRequest(context));
+                    }
+                    catch (HttpListenerException ex) when (ex.ErrorCode == 995) // 监听器已关闭
+                    {
+                        break;
+                    }
+                    catch (ObjectDisposedException)
+                    {
+                        break;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"接受请求时出错: {ex}");
+                        // 不应重启整个服务器！记录日志即可
                     }
                 }
+             }
+
             catch (Exception ex)
             {
                 Console.WriteLine($"HttpListenerException: {ex}");
@@ -80,6 +89,29 @@ namespace windowOP
             }
             
         }
+
+        private static void ProcessRequest(HttpListenerContext context)
+        {
+            try
+            {
+                if (context.Request.IsWebSocketRequest)
+                    HandleWebSocket(context);
+                else
+                    HandleRequest(context);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"处理请求失败: {ex}");
+                // 尝试返回 500
+                try
+                {
+                    context.Response.StatusCode = 500;
+                    context.Response.Close();
+                }
+                catch { /* 忽略 */ }
+            }
+        }
+
 
         public static JsonDocument? TryParseJson(string jsonString)
         {
@@ -167,6 +199,27 @@ public static string? GetJsonProperty(JsonDocument jsonDoc, string propertyName)
 
         public static Dictionary<string, JArray> tokenPathMap_download = new Dictionary<string, JArray>();
         public static Dictionary<string, string> tokenPathMap_upload = new Dictionary<string, string>();
+
+
+        private const int allowedSec = 30;
+        private static bool CheckTimestamp(JObject JsonData)
+        {
+            var token = JsonData["Timestamp"];
+            if (token == null) return false;
+
+            try
+            {
+                long clientStamp = token.Value<long>();
+                long serverNow = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+                long diff = Math.Abs(serverNow - clientStamp);
+                return diff <= allowedSec * 1000;
+            }
+            catch
+            {
+                return false; // 转换失败
+            }
+        }
+
 
 
         async private static void HandleWebSocket(object state)
@@ -294,10 +347,20 @@ public static string? GetJsonProperty(JsonDocument jsonDoc, string propertyName)
 
                     string? operation = jsonObject["Operation"]?.ToString();
 
+                    if (!CheckTimestamp(jsonObject)) continue;
+
+
 
                     if (operation == "Verify")
                     {
                         SendCrypted("{\"Operation\": \"Verified\"}", webSocket, AES_key, AES_iv, clientIp);
+                    }
+
+                    else if (operation == "MachineStatus")
+                    {
+                        string json = MachineStatus.GetMachineStatusJson();
+                        SendCrypted(json, webSocket, AES_key, AES_iv, clientIp);
+                        continue;
                     }
 
                     else if (operation == "ReadToMemory")
@@ -351,10 +414,10 @@ public static string? GetJsonProperty(JsonDocument jsonDoc, string propertyName)
                             if (path == "" || path == "\\") info = FileManager.GetIndex();
                             else info = FileManager.GetInfo(path);
 
-                            if(info == null && File.Exists(path))
+                            if (info == null && File.Exists(path))
                             {
                                 path = Path.GetDirectoryName(path);
-                                if(path != null) info = FileManager.GetInfo( path );
+                                if (path != null) info = FileManager.GetInfo(path);
                             }
                             if (info != null)
                             {
@@ -362,7 +425,7 @@ public static string? GetJsonProperty(JsonDocument jsonDoc, string propertyName)
                                 SendCrypted(ans, webSocket, AES_key, AES_iv, clientIp);
                             }
                             else
-                            SendNotification("获取文件夹内容失败", $"文件夹路径：{path}，具体原因可以查看错误日志", "error", webSocket, AES_key, AES_iv, clientIp);
+                                SendNotification("获取文件夹内容失败", $"文件夹路径：{path}，具体原因可以查看错误日志", "error", webSocket, AES_key, AES_iv, clientIp);
                         }
                         else if (op == "Delete")
                         {
@@ -389,7 +452,7 @@ public static string? GetJsonProperty(JsonDocument jsonDoc, string propertyName)
                                 continue;
                             }
                             string msg = FileManager.Rename(path, newName);
-                            if(msg == "文件重命名成功" || msg == "文件夹重命名成功") SendNotification("重命名成功", "", "success", webSocket, AES_key, AES_iv, clientIp);
+                            if (msg == "文件重命名成功" || msg == "文件夹重命名成功") SendNotification("重命名成功", "", "success", webSocket, AES_key, AES_iv, clientIp);
                             else SendNotification("重命名失败", msg, "error", webSocket, AES_key, AES_iv, clientIp);
                             SendCrypted("RefreshFileContent:", webSocket, AES_key, AES_iv, clientIp);
 
@@ -406,9 +469,9 @@ public static string? GetJsonProperty(JsonDocument jsonDoc, string propertyName)
                                 continue;
                             }
                             var (SucNum, FailMsg) = FileManager.Copy(resPath, targetPath, cut == true);
-                            if (FailMsg == "") SendNotification($"{ (cut == true ? "剪切":"复制") }成功", $"成功复制{SucNum}个文件/文件夹", "success", webSocket, AES_key, AES_iv, clientIp);
+                            if (FailMsg == "") SendNotification($"{(cut == true ? "剪切" : "复制")}成功", $"成功复制{SucNum}个文件/文件夹", "success", webSocket, AES_key, AES_iv, clientIp);
                             else SendNotification($"{(cut == true ? "剪切" : "复制")}失败", $"出现了这些错误：{FailMsg}", "error", webSocket, AES_key, AES_iv, clientIp);
-                            continue ;
+                            continue;
                         }
 
                         else if (op == "Download")
@@ -452,7 +515,7 @@ public static string? GetJsonProperty(JsonDocument jsonDoc, string propertyName)
 
                             string? ans = FileManager.ZipFiles(ZipList, targetPath);
 
-                            if( ans == null)
+                            if (ans == null)
                             {
                                 SendNotification("压缩完成", $"已压缩{ZipList.Count}个文件/文件夹", "success", webSocket, AES_key, AES_iv, clientIp);
                                 SendCrypted("RefreshFileContent:", webSocket, AES_key, AES_iv, clientIp);
@@ -470,18 +533,18 @@ public static string? GetJsonProperty(JsonDocument jsonDoc, string propertyName)
                             string? path = jsonObject["path"]?.ToString();
                             if (type == null || path == null)
                             {
-                               SendNotification("需要提供新文件(夹）的路径与类型", "", "error", webSocket, AES_key, AES_iv, clientIp);
-                               continue;
+                                SendNotification("需要提供新文件(夹）的路径与类型", "", "error", webSocket, AES_key, AES_iv, clientIp);
+                                continue;
                             }
                             try
                             {
                                 if (type == "dir") Directory.CreateDirectory(path);
                                 if (type == "file") File.Create(path);
                             }
-                            catch 
+                            catch
                             {
                                 SendNotification("创建失败", "", "error", webSocket, AES_key, AES_iv, clientIp);
-                                continue ;
+                                continue;
                             }
 
                             SendNotification("创建成功", "", "success", webSocket, AES_key, AES_iv, clientIp);
@@ -514,7 +577,7 @@ public static string? GetJsonProperty(JsonDocument jsonDoc, string propertyName)
 
                     else if (operation == "Setting_Write")
                     {
-                        string? item = jsonObject["Item"]?.ToString();  
+                        string? item = jsonObject["Item"]?.ToString();
                         string? value = jsonObject["Value"]?.ToString();
                         if (item == null || value == null)
                         {
@@ -524,10 +587,10 @@ public static string? GetJsonProperty(JsonDocument jsonDoc, string propertyName)
                         Setting_Write(item, value);
                     }
 
-                    else if(operation == "GetTextFronUrl")
+                    else if (operation == "GetTextFronUrl")
                     {
                         string? Url = jsonObject["Url"]?.ToString();
-                        
+
                         if (Url == null)
                         {
                             SendCrypted("url不能为空", webSocket, AES_key, AES_iv, clientIp);
@@ -537,7 +600,7 @@ public static string? GetJsonProperty(JsonDocument jsonDoc, string propertyName)
                         if (Ans == null)
                         {
                             SendCrypted("获取url内容失败", webSocket, AES_key, AES_iv, clientIp);
-                            continue ;
+                            continue;
                         }
 
                         var ansData = new
@@ -550,10 +613,10 @@ public static string? GetJsonProperty(JsonDocument jsonDoc, string propertyName)
                         SendCrypted(ansJson, webSocket, AES_key, AES_iv, clientIp);
                     }
 
-                    else if(operation == "TransferDirectory")
+                    else if (operation == "TransferDirectory")
                     {
                         string? filePath = jsonObject["filePath"]?.ToString();
-                        if(filePath == null)
+                        if (filePath == null)
                         {
                             SendCrypted("需要提供目标路径", webSocket, AES_key, AES_iv, clientIp);
                             continue;
@@ -561,7 +624,7 @@ public static string? GetJsonProperty(JsonDocument jsonDoc, string propertyName)
                         string ans = Setting.Version.TransferDirectory(filePath);
                         SendCrypted(ans, webSocket, AES_key, AES_iv, clientIp);
 
-                        if(ans == "脚本部署完成，正在转移")
+                        if (ans == "脚本部署完成，正在转移")
                         {
                             Thread.Sleep(5000);
                             Actions.exit();
@@ -574,7 +637,7 @@ public static string? GetJsonProperty(JsonDocument jsonDoc, string propertyName)
                         string? OldPassword = jsonObject["OldPassword"]?.ToString();
                         string? NewPassword = jsonObject["NewPassword"]?.ToString();
                         string? HmacKey = jsonObject["HmacKey"]?.ToString();
-                        
+
                         if (OldPassword == null || NewPassword == null || HmacKey == null)
                         {
                             SendCrypted("有参数为空", webSocket, AES_key, AES_iv, clientIp);
@@ -671,6 +734,12 @@ public static string? GetJsonProperty(JsonDocument jsonDoc, string propertyName)
                     {
                         SendCrypted("TargetList: " + GetTargetList(), webSocket, AES_key, AES_iv, clientIp);
                     }
+                    else if (operation == "heartbeat")
+                    {
+                        SendCrypted("heatbeat", webSocket, AES_key, AES_iv, clientIp);
+                        return;
+                    }
+
                     else
                         SendErr("API不存在", webSocket, AES_key, AES_iv, clientIp);
 
@@ -868,7 +937,12 @@ static void SendFile_http(HttpListenerContext context, string targetPath, string
                     if (requestUrl == "" || requestUrl == "debug") requestUrl = "index.html";
 
                     string filePath = Path.Combine(Setting.programDir, "webFile", requestUrl);
+
+                    if (!File.Exists(filePath)) filePath = Path.Combine(Setting.programDir, "webFile", "index.html");
+
                     DatabaseOP.LogWebServer("http请求了目录" + filePath);
+
+
                     if (File.Exists(filePath))
                     {
                         // 根据文件类型设置ContentType
@@ -881,7 +955,7 @@ static void SendFile_http(HttpListenerContext context, string targetPath, string
                         {
                             contentType = "text/css";
                         }
-                        else if (filePath.EndsWith(".png") || filePath.EndsWith(".jpg") || filePath.EndsWith(".jpeg"))
+                        else if (filePath.EndsWith(".png") || filePath.EndsWith(".jpg") || filePath.EndsWith(".jpeg") || filePath.EndsWith(".svg"))
                         {
                             contentType = "image/jpeg";
                         }
@@ -891,20 +965,6 @@ static void SendFile_http(HttpListenerContext context, string targetPath, string
                         byte[] buffer = File.ReadAllBytes(filePath);
 
                         context.Response.ContentLength64 = buffer.Length;
-
-                        using (Stream output = context.Response.OutputStream)
-                        {
-                            output.Write(buffer, 0, buffer.Length);
-                        }
-                    }
-                    else                        // 文件不存在时返回404错误页面
-                    {
-                        string html = @"<html><body><h1>404 Page Not Found</h1></body></html>";
-                        byte[] buffer = Encoding.UTF8.GetBytes(html);
-
-                        context.Response.ContentType = "text/html";
-                        context.Response.ContentLength64 = buffer.Length;
-                        context.Response.StatusCode = (int)HttpStatusCode.NotFound;
 
                         using (Stream output = context.Response.OutputStream)
                         {

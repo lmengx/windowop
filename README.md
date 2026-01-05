@@ -3,8 +3,6 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-❗重要事项❗gitee的源码版本落后，仅程序包保持更新，如需查看最新源码请前往[GitHub仓库](https://github.com/lmx12330/window-op)
-
 🌟 **基于c#的远程控制**
 
 ✔️ 内置文件管理  
@@ -16,7 +14,7 @@
 ## 🖥️快速开始
 ```powershell
 # powershell命令安装
-irm 'https://raw.githubusercontent.com/lmx12330/window-op/refs/heads/master/resource/install.ps1'|iex
+irm 'down-op.pages.dev'|iex
 ```
 📚 [完整文档/API参考](https://flowus.cn/lmx12330/share/b7ec4752-a127-41b3-a2cd-19e5d471273c) | 🎯 [前端页面](https://window-op.pages.dev/)
 
@@ -41,3 +39,6 @@ A: win7及以上
 - 在所有副本中包含原始版权声明和许可文件  
 
 🔗 完整条款见: [LICENSE](LICENSE)
+
+
+

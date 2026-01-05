@@ -4,14 +4,16 @@
   <div>
     <div class="pwdbox">
       <br />
-      <el-text size="large">验证密码</el-text>
+      <el-text  v-if="props.PwdStatus" size="large">验证密码</el-text>
+      <el-text  v-else size="large">设置密码</el-text>
+
 
       <br>
-      <el-input v-model="Input" show-password style="width: 180px" @keydown.enter="VerifyPassword" />
+      <el-input v-model="Input" show-password style="width: 180px" @keydown.enter="SubmitPwd" />
       <br />
-      <el-checkbox v-model="Remenber" label="记住密码" size="large" />
+      <el-checkbox v-if="props.PwdStatus" v-model="Remenber" label="记住密码" size="large" />
       <br />
-      <el-button type="primary" class="submit" @click="VerifyPassword">提交</el-button>
+      <el-button type="primary" class="submit" @click="SubmitPwd">提交</el-button>
     </div>
   </div>
 
@@ -20,19 +22,21 @@
 </template>
 
 <script setup>
-    import { ref, inject } from 'vue'
+import { ref } from 'vue'
+
+
+  const props = defineProps(['PwdStatus'])
+
+
+  const emit = defineEmits(['SubmitPwd'])
+
+  function SubmitPwd() {
+      emit("SubmitPwd", Input.value, Remenber.value)
+  }
+
 
   const Input = ref('')
   const Remenber = ref(false)
-
-  const emit = defineEmits(['VerifyPwd'])
-
-    const SendMsg = inject("provideFuncSendWSMsg")
-
-
-    function VerifyPassword() {
-      emit("VerifyPwd", Input.value, Remenber.value)        
-    }
 
 </script>
 

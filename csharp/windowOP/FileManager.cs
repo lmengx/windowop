@@ -26,7 +26,7 @@ namespace windowOP
                     if (drive.IsReady) // 确保驱动器是准备好的状态
                     {
                         string driveName = drive.VolumeLabel;  // 磁盘的卷标 (例如：“本地磁盘”)
-                        string driveLetter = drive.Name.TrimEnd('\\'); // 磁盘的驱动器字母 (例如："C:")
+                        string driveLetter = drive.Name; // 磁盘的驱动器字母 (例如："C:")
                         if (string.IsNullOrWhiteSpace(driveName)) driveName = "本地磁盘"; // 可以设置成其它默认值，例如 "无标签"
 
                         string displayDriveName = $"{driveName} ({driveLetter})";

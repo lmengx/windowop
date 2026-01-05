@@ -1,0 +1,14 @@
+[22:13:39] 已完成读取:'Log_Enable'--1
+[22:13:39] 已完成读取:'Log_PrintDebugMsg'--1
+[22:13:39] 已完成读取:'SleepTime'--1000
+[22:13:39] 已完成读取:'ListenPort'--7799
+[22:13:39] 已完成读取:'Log_WindowWatcher'--0
+[22:13:39] 已完成读取:'Log_WebServer'--1
+[22:13:40] frpc.exe 已启动 
+[22:14:01] 已完成读取:'Log_Enable'--1
+[22:14:01] 已完成读取:'Log_PrintDebugMsg'--1
+[22:14:01] 已完成读取:'SleepTime'--1000
+[22:14:01] 已完成读取:'ListenPort'--7799
+[22:14:01] 已完成读取:'Log_WindowWatcher'--0
+[22:14:01] 已完成读取:'Log_WebServer'--1
+[22:14:01] frpc.exe 已启动 

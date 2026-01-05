@@ -1,0 +1,31 @@
+[16:15:25] 已完成读取:'Log_Enable'--1
+[16:15:25] 已完成读取:'Log_PrintDebugMsg'--1
+[16:15:25] 已完成读取:'SleepTime'--1000
+[16:15:25] 已完成读取:'ListenPort'--7799
+[16:15:25] 已完成读取:'Log_WindowWatcher'--0
+[16:15:25] 已完成读取:'Log_WebServer'--1
+[16:15:26] frpc.exe 已启动 
+[16:17:20] 触发了Action：'OpenWebPage' .
+[16:17:20] 打开网页时出错: Invalid URL format
+[16:17:32] 触发了Action：'OpenWebPage' .
+[16:24:54] 已完成读取:'Log_Enable'--1
+[16:24:54] 已完成读取:'Log_PrintDebugMsg'--1
+[16:24:54] 已完成读取:'SleepTime'--1000
+[16:24:54] 已完成读取:'ListenPort'--7799
+[16:24:54] 已完成读取:'Log_WindowWatcher'--0
+[16:24:54] 已完成读取:'Log_WebServer'--1
+[16:24:54] frpc.exe 已启动 
+[16:27:16] 已完成读取:'Log_Enable'--1
+[16:27:16] 已完成读取:'Log_PrintDebugMsg'--1
+[16:27:16] 已完成读取:'SleepTime'--1000
+[16:27:16] 已完成读取:'ListenPort'--7799
+[16:27:16] 已完成读取:'Log_WindowWatcher'--0
+[16:27:16] 已完成读取:'Log_WebServer'--1
+[16:27:16] frpc.exe 已启动 
+[16:41:13] 已完成读取:'Log_Enable'--1
+[16:41:13] 已完成读取:'Log_PrintDebugMsg'--1
+[16:41:13] 已完成读取:'SleepTime'--1000
+[16:41:13] 已完成读取:'ListenPort'--7799
+[16:41:13] 已完成读取:'Log_WindowWatcher'--0
+[16:41:13] 已完成读取:'Log_WebServer'--1
+[16:41:13] frpc.exe 已启动 

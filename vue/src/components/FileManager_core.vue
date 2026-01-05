@@ -1,5 +1,5 @@
 <template>
-  <h2>{{ mode == 'Operation' ? '文件管理' : '选取目录' }}</h2>
+  <h2>文件管理</h2>
 
 
   <div style="margin: 10px 0">
@@ -168,12 +168,10 @@
 
 
   <el-breadcrumb separator="/" v-if="!EditPath">
-    <el-breadcrumb-item :to="{ path: '/' }"
-                        @click="ChangePath('')">此电脑</el-breadcrumb-item>
+    <el-breadcrumb-item @click="ChangePath('')" class="clickable-breadcrumb">此电脑</el-breadcrumb-item>
     <el-breadcrumb-item v-if="Path.length == 0">
       根目录
     </el-breadcrumb-item>
-
 
     <el-breadcrumb-item v-for="(item, index) in Path"
                         :key="index"
@@ -279,15 +277,15 @@
 </template>
 
 <script setup>
-  import { ref, watch, onMounted, inject } from 'vue';
+  import { ref, onMounted, onUnmounted } from 'vue';
+  import { useWebSocketStore } from '@/stores/websocketStore';
 
-  const props = defineProps({
-    mode: String//operation/choose
-  });
+  const websocketStore = useWebSocketStore()
 
-  const SendMsg = inject("provideFuncSendWSMsg")
-  const receivedEvent = inject("provideReceivedMsg")
-  const RunActions = inject("provideFuncRunActions")
+  const wsUrl = websocketStore.Target.address
+
+  const SendMsg = websocketStore.sendMessage
+
 
   const Path = ref([]);
   const Content = ref([]);
@@ -319,6 +317,16 @@
 
   const uploadRef = ref()
   const uploadUrl = ref("http://127.0.0.1:7799/upload")
+
+    function RunActions(ActionCalls) {
+      const reqObj = {
+        Operation: "RunAction",
+        Action: ActionCalls
+      };
+      const reqJson = JSON.stringify(reqObj);
+      SendMsg(reqJson)
+    }
+
 
   function submitUpload() {
     const reqObj = {
@@ -392,7 +400,7 @@
       title: "已提交下载任务",
       type: "success",
     })
-    
+
   }
 
   const Copied = ref([]);
@@ -517,7 +525,7 @@
       type: "success",
     })
   }
-  
+
   function GetSelectedFilePath() {
     var AnsList = []
     if (SelectMode.value == "single") {
@@ -537,7 +545,7 @@
     const reqObj = {
       Operation: "FileManager",
       op: "GetContent",
-      path: path
+      path: path+"\\"
     };
     const reqJson = JSON.stringify(reqObj);
     SendMsg(reqJson)
@@ -569,12 +577,24 @@
     }
 
   onMounted(() => {
-    ChangePath("")
+
   });
 
-  watch(receivedEvent, (newValue) => {
-    receivedMessage(newValue.text)
+  onMounted(() => {
+  const handler = (data) =>
+  {
+      receivedMessage(data);
+  }  // 注册特定类型消息的处理
+
+  websocketStore.registerMessageHandler(handler) // 将处理器注册到WebSocket Store
+  const handlerRef = { handler }  // 保存处理器引用，以便卸载时注销
+
+  onUnmounted(() => {
+    websocketStore.unregisterMessageHandler(handlerRef.handler)  // 组件卸载时注销处理器
   })
+
+  ChangePath("")
+})
 
 
   function receivedMessage(eventData) {
@@ -612,27 +632,29 @@
 
     else if (eventData.startsWith("FileDownloadToken:")) {
       const token = eventData.slice("FileDownloadToken:".length);
-      var fullUrl = `${window.location.protocol}//${window.location.hostname}${window.location.port ? ':' + window.location.port : ''}/download?token=${token}`;
 
-      const currentPath = window.location.pathname;
-      if (currentPath === "/develop") fullUrl = `http://127.0.0.1:7799/download?token=${token}`;
+      var httpUrl = "http" + wsUrl.substring(2);
+      if(!httpUrl.endsWith("/")) httpUrl += "/"
+      if(wsUrl == "[visitTarget]") httpUrl = window.location.href
+      var fullUrl = `${httpUrl}download?token=${token}`;
+
       window.open(fullUrl, "_blank")
-      
+
+      ElNotification({
+          title: "下载已开始",
+          message: `多个文件可能需要一定时间来打包，如果长时间按未开始下载，可以尝试访问${fullUrl}`,
+          type: "success",
+        })
+
     }
 
     else if (eventData.startsWith("FileUploadToken:")) {
-      const currentPath = window.location.pathname;
-      if (currentPath === "/develop") {
-        ElNotification({
-          title: "上传失败",
-          message: "由于技术原因，开发模式下无法上传，可以把vite导出后尝试此功能",
-          type: "error",
-        })
-        return;
-      }
-
       const token = eventData.slice("FileUploadToken:".length);
-      uploadUrl.value = `${window.location.protocol}//${window.location.hostname}${window.location.port ? ':' + window.location.port : ''}/upload?token=${token}`;
+      const connecturl = websocketStore.Target.address
+    .replace(/^wss:\/\//, 'https://')
+    .replace(/^ws:\/\//, 'http://');
+
+      uploadUrl.value = `${connecturl}/upload?token=${token}`;
 
       uploadRef.value.submit()
       ElNotification({
@@ -653,22 +675,19 @@
     "pdf": "PDF文件",
     "doc": "Word文档",
     "xls": "Excel表格",
-    "bat": "批处理文件",
     "dir": "文件夹",
-      "bat": "Windows批处理文件",
-      "/disk": "磁盘",
+    "bat": "Windows批处理文件",
+    "/disk": "磁盘",
     "tmp": "临时文件",
     "json": "json数据文件",
     "sys": "系统文件",
     "dll": "应用程序拓展",
-      "exe": "可执行文件",
+    "exe": "可执行文件",
     "lnk": "快捷方式",
     "html": "网页文件",
     "bmp": "图片文件",
     "zip": "压缩文件",
-    "lnk": "快捷方式",
-    "lnk": "快捷方式",
-      "db": "数据库文件"
+    "db": "数据库文件"
       // 可以继续添加其他文件类型
     };
 
@@ -682,4 +701,11 @@
     transition: background-color 0.3s ease;
     height: 30px;
   }
+  .clickable-breadcrumb {
+  cursor: pointer;
+  color: #409eff; /* Element Plus 主色 */
+}
+.clickable-breadcrumb:hover {
+  color: #66b1ff;
+}
 </style>

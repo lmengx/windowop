@@ -1,123 +1,97 @@
 
 <template>
+  <div class="fullscreen">
+    <el-container>
 
-  <div class="fullscreen" v-auto-animate>
-    <Loading v-if="showPage == 'Loading'"
-             :Disconnected="Disconnected" />
+      <el-header v-if="route.path == '/' || route.path == '/connect'">
+        <el-affix :offset="0.00001">
+          <AppHeader />
+        </el-affix>
+      </el-header>
 
-	<SelectedConnect v-else-if="currentPath == '/ChangeTarget'" />
+    <el-main>
+      <router-view v-slot="{ Component, route }">
+            <transition
+              name="page"
+              mode="out-in"
+              appear
+            >
+          <component
+            :is="Component"
+            :key="route.fullPath"
+          />
+        </transition>
+      </router-view>
+    </el-main>
 
-    <Ini v-else-if="showPage == 'Ini'"
-         @SetPwd="SetPwd" />
+    <el-footer class="footer" v-if="route.path == '/'">
+      <hr />
+      <span>Released under the <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT License</a>.</span>
+  <span>Powered by <a href="https://cn.vuejs.org/" target="_blank" rel="noopener noreferrer">Vue3</a></span>
+    </el-footer>
 
-    <VerifyModule class="fullscreen centerbox"
-                  v-else-if="showPage == 'VerifyModal'"
-                  @VerifyPwd="VerifyPwd" />
-
-    <MainContent class="fullscreen"
-                 v-else-if="showPage == 'MainContent'" />
-
+    </el-container>
   </div>
 
 </template>
 
 
 <script setup>
-  import { ref, onMounted, onUnmounted, provide, watch } from 'vue';
-  import { usePwdStore } from './stores/Pwd.js'
-  import ShowModal from './components/ShowModal.vue';
-  import Loading from "./components/Loading.vue";
-  import SelectedConnect from "./components/SelectConnect.vue"
-  import Ini from "./components/Ini.vue"
-  import VerifyModule from './components/VerifyModule.vue';
-  import MainContent from './components/MainContent.vue';
-  import CryptoJS from 'crypto-js';
-  import JSEncrypt from 'jsencrypt';
+  import { ref, onMounted, onUnmounted, watch } from 'vue';
+  import { useRoute } from 'vue-router'
+  import { useRouter } from 'vue-router'
 
 
-  const currentPath = window.location.pathname;
+  import { useDataStore } from './stores/dataStore.js'
+  import { useWebSocketStore } from '@/stores/websocketStore'
 
-  onMounted(() => {
-    if (currentPath === '/ChangeTarget')
-      showPage.value = "Select"
+  import AppHeader from './components/Header.vue'
 
-
-
-    connect();
-  });
-
-  function Log(msg) {
-    if (PwdStore.DebugMode) console.log(msg)
-  }
-
-  // 控制渲染的变量
-
-  const showPage = ref('Loading')
-  const alertModal = ref(null);
-  const Disconnected = ref(false);
-
-  var ws = null;
-
-  const receivedMsg = ref({
-    text: '',
-    updateCount: 0 // 用于触发 watch 的计数器
-  });
-
-  const PwdStore = usePwdStore()
-  var RemenberPwd = false
-  const AES_key = ref("")
+const route = useRoute()
+const router = useRouter()
 
 
-  provide("provideFuncSendWSMsg",  SendMsg);
-  provide("provideReceivedMsg", receivedMsg);
-  provide("provideFuncLog", Log);
-  provide("provideFuncChangePwd", ChangePwd);
-  provide("provideFuncChangePage_app", ChangePage_app);
-  provide("provideAES_key", AES_key);
+const websocketStore = useWebSocketStore()
+const DataStore = useDataStore()
 
-
-  function ChangePage_app(pageName) {
-    showPage.value = pageName
-  }
-
-    function SendRawMsg(msg)
-    {
-      if (ws && ws.readyState === WebSocket.OPEN) {
-            ws.send(msg);
-        Log(`↑发送↑: ${msg}`);
-        }
-        else Log("发送失败，ws未连接")
-  }
-
-  function SendMsg(msg) {
-    const sendData = AES_en(msg)
-    SendRawMsg(sendData)
-    Log(`↑发送↑: ${msg}`);
-  }
-
-
-  watch(receivedMsg, (newVal) => {
-     RecievedMsg(newVal.text)
-  });
-
-  function safeJsonParse(str) {
-    try {
-      return JSON.parse(str);
-    } catch (e) {
-      return null;
+watch(
+  () => route.path,
+  (newPath) => {
+    if (newPath === '/connect') return    // 跳过 connect 页面本身（避免无限跳转）
+    if (newPath !== '/' && !websocketStore.Verified) {    // 如果未验证，且不在 / 或 /connect，则跳转
+      ElNotification({
+        title: "请重新连接",
+        type: "info",
+      })
+      router.push('/connect')
     }
-  }
-    function RecievedMsg(eventData)
+  },
+  { immediate: true } // 立即检查当前路由
+)
+
+
+
+onMounted(() => {
+  const handler = (data) =>
+  {
+      RecievedMsg(data);
+  }  // 注册特定类型消息的处理
+
+  websocketStore.registerMessageHandler(handler) // 将处理器注册到WebSocket Store
+  const handlerRef = { handler }  // 保存处理器引用，以便卸载时注销
+
+  onUnmounted(() => {
+    websocketStore.unregisterMessageHandler(handlerRef.handler)  // 组件卸载时注销处理器
+  })
+})
+
+onUnmounted(() => {
+  websocketStore.close()
+})
+
+    function RecievedMsg(eventJson)
     {
-      const eventJson = safeJsonParse(eventData)
-      if (eventJson != null) {
-        if (eventJson.Operation == "Verified") {
-          if (RemenberPwd) {
-            PwdStore.HashedPwd = AES_key.value;
-            PwdStore.HmacKey = HmacKey;
-          }
-          showPage.value = "MainContent"
-        }
+      if (eventJson == null) return;
 
         else if (eventJson.Operation == "Notification") {
           ElNotification({
@@ -136,198 +110,31 @@
           console.error(eventJson.message);
         }
 
-      }
-
-
     }
 
-  var HmacKey;
-  var RSA_pk;
-
-  function RecievedRawMsg(eventData) {
-    const msgJson = JSON.parse(eventData)
-    if (msgJson.Operation == "IniKey") {
-      RSA_pk = msgJson.RSA_pk
-      HmacKey = msgJson.HmacKey
-      if (HmacKey == "PwdNotSet") {
-        showPage.value = "Ini"
-      }
-      else {
-        iv = GetKey(16)
-        const sendData = RSA_en(iv, RSA_pk)
-        SendRawMsg(sendData)
-        if (HmacKey == PwdStore.HmacKey) {
-          AES_key.value = PwdStore.HashedPwd
-          const msg = `{"Operation": "Verify"}`
-          SendMsg(msg)
-        }
-      }
-    }
-    else if (msgJson.Operation == "ivReceived") {
-      showPage.value = "VerifyModal"
-    }
-    else if (msgJson.Operation == "CryptedMsg") {
-      const decryptedText = AES_de(msgJson.CryptedMsg)
-      receivedMsg.value = {
-        text: decryptedText,
-        updateCount: receivedMsg.value.updateCount + 1 // 增加计数器
-      };
-      Log("解密得到消息：" + decryptedText)
-    }
-    else if (msgJson.Operation == "AESCouldNotDecrypt") {
-      Log("发出的消息无法解密")
-      if (showPage.value == "VerifyModal") {
-        ElNotification({
-          title: '密码错误',
-          type: 'error',
-        })
-          PwdStore.HashedPwd = "";
-          PwdStore.HmacKey = "";
-      }
-    }
-
-  }
-
-  function SetPwd(pwd) {
-    const HmacKey = GetKey(16)
-    const HashedPwd = HmacSha256(pwd, HmacKey).substring(0, 16);
-    const PwdData = `{"HashedPwd": "${HashedPwd}","HmacKey": "${HmacKey}"}`;
-    const sendData = RSA_en(PwdData, RSA_pk)
-    SendRawMsg(sendData)
-  }
-
-  function VerifyPwd(pwd, Remenber) {
-    RemenberPwd = Remenber
-    AES_key.value = HmacSha256(pwd, HmacKey).substring(0, 16);
-    const msg = `{"Operation": "Verify"}`
-    SendMsg(msg)
-  }
-
-  function ChangePwd(oldPwd, newPwd) {
-    const HmacKey = GetKey(16)
-    newPwd = HmacSha256(newPwd, HmacKey).substring(0, 16);
-    const reqJson = JSON.stringify({
-      Operation: 'ChangePassword',
-      OldPassword: oldPwd,
-      NewPassword: newPwd,
-      HmacKey: HmacKey
-    });
-    SendMsg(reqJson)
-  }
-
-
-	var WasConnected = false;
-
-    function connect() {
-
-	var wsUrl = PwdStore.getDefaultTargetAddress()
-	if(wsUrl == "[visitTarget]")
-	{
-		const httpUrl = window.location.href;
-		const url = new URL(httpUrl);
-		wsUrl = `${url.protocol === 'https:' ? 'wss:' : 'ws:'}//${url.hostname}:${url.port || 7799}/`;
-
-
-	}
-
-		setTimeout(() => {
-		          onConnectedDelayed()
-		        }, 3000)
-	  try {
-		          ws = new WebSocket(wsUrl);
-        ws.onopen = () => {
-            Log('WebSocket已连接');
-			WasConnected = true
-        };
-
-        ws.onmessage = (event) => {
-            RecievedRawMsg(event.data)
-        };
-
-        ws.onclose = () => {
-            Log('WebSocket已断开');
-            showPage.value = "Loading"
-            Disconnected.value = true; // 设置为连接断开状态
-        };
-
-        ws.onerror = (error) => {
-            Log('WebSocket 连接错误:', error);
-            showPage.value = "Loading"
-            Disconnected.value = true; // 设置为连接断开状态
-        };
-	  }catch (error) {
-    Log('创建WebSocket失败:', error);
-	}
-
-	const onConnectedDelayed = () => {
-	    if(WasConnected || currentPath == "/ChangeTarget") return;
-      const httpUrl = window.location.origin + '/ChangeTarget'
-		ElNotification({
-		    title: '无法连接?',
-			type: 'warning',
-		        dangerouslyUseHTMLString: true,
-		        message: "<a href='"+ httpUrl +"'>点击更改连接目标</a>",
-		  })
-	  }
-
-
-    }
-
-    onUnmounted(() => {
-        if (ws) {
-            ws.close(); // 组件卸载时关闭 WebSocket 连接
-        }
-    });
-
-
-  function HmacSha256(data, key) {
-    return CryptoJS.HmacSHA256(data, key).toString(CryptoJS.enc.Hex);
-  }
-
-  function RSA_en(data, publicKey) {
-    const encrypt = new JSEncrypt();
-    encrypt.setPublicKey(publicKey);
-    return encrypt.encrypt(data);
-  }
-
-  const mode = "CBC";               //mode ECB CBC CFB OFB CTR
-  const pad = "Pkcs7";              //padding Pkcs7 Iso10126 NoPadding ZeroPadding
-  const keyType = "Utf8";           //Utf8 Base64 Hex
-  var iv = "";         //iv AES-16byte DES-8byte 3DES-8byte
-  const ivType = "Utf8";            //Utf8 Base64 Hex
-  const isBase64 = false;           //待解密数据编码 true: Base64, false: Hex
-
-  function AES_en(data) {
-    const crypto_key = CryptoJS.enc[keyType].parse(AES_key.value);
-    let cfg = {};
-    cfg.iv = CryptoJS.enc[ivType].parse(iv);
-    cfg.mode = CryptoJS.mode[mode];
-    cfg.padding = CryptoJS.pad[pad];
-
-    let result = CryptoJS.AES.encrypt(data, crypto_key, cfg).ciphertext.toString(isBase64 ? CryptoJS.enc.Base64 : CryptoJS.enc.Hex)
-
-    return result
-  };
-
-  function AES_de(data) {
-    const crypto_key = CryptoJS.enc[keyType].parse(AES_key.value);
-    let cfg = {};
-    cfg.iv = CryptoJS.enc[ivType].parse(iv);
-    cfg.mode = CryptoJS.mode[mode];
-    cfg.padding = CryptoJS.pad[pad];
-
-    const cryptoData = isBase64 ? data : CryptoJS.enc.Base64.stringify(CryptoJS.enc.Hex.parse(data));
-    const decrypt = CryptoJS.AES.decrypt(cryptoData, crypto_key, cfg)
-    const result = CryptoJS.enc.Utf8.stringify(decrypt);
-    return result
-  }
-
-  function GetKey(length) {
-    let result = '';
-    for (let i = 0; i < length; i++) {result += Math.floor(Math.random() * 10).toString();}
-    result = result.split('').sort(() => Math.random() - 0.5).join('');
-    const base64String = btoa(result);
-    return base64String.substring(0, length);
-  }
 
 </script>
+
+<style>
+/* 页面切换动画：淡入 + 微微上移 */
+.page-enter-active {
+  transition: all 0.35s ease;
+}
+.page-leave-active {
+  transition: all 0.25s ease;
+}
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+.footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+</style>

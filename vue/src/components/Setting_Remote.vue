@@ -5,7 +5,7 @@
 
     <br /><hr />
 
-    <h1>局域网服务</h1>
+    <h1>远程服务</h1>
 
     <el-popover placement="right"
                 title="注意"
@@ -14,7 +14,7 @@
                 content="这个操作需要管理员权限">
       <template #reference>
         <el-text>
-          局域网服务<el-icon><IEpInfoFilled /></el-icon>
+          局域网服务+IPv6服务<el-icon><IEpInfoFilled /></el-icon>
         </el-text>
       </template>
     </el-popover>

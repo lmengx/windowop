@@ -21,13 +21,13 @@
                  @click="Setting_Write('Log_Enable', SettingData.Log_Enable ? 0:1)" />
       <br />
       <div v-if="Log_Enable">
-        <el-text>启动时显示控制台 </el-text>
+        <el-text>启动时显示程序窗口 </el-text>
         <el-switch v-model="Log_ShowConsole"
                    :before-change="() =>{return true}"
                    @click="Setting_Write('Log_ShowConsole', SettingData.Log_ShowConsole ? 0:1)" />
 
         <br />
-        <el-text>在控制台中输出调试信息 </el-text>
+        <el-text>在程序中输出调试信息 </el-text>
         <el-switch v-model="Log_PrintDebugMsg"
                    :before-change="() =>{return true}"
                    @click="Setting_Write('Log_PrintDebugMsg', SettingData.Log_PrintDebugMsg ? 0:1)" />
@@ -43,8 +43,8 @@
                    :before-change="() =>{return true}"
                    @click="Setting_Write('Log_WebServer', SettingData.Log_WebServer ? 0:1)" />
         <br />
-        <el-text>在控制台输出调试信息 </el-text>
-        <el-switch v-model="PwdStore.DebugMode"/>
+        <el-text>在网页控制台输出调试信息 </el-text>
+        <el-switch v-model="DataStore.DebugMode"/>
 
       </div>
       <hr />
@@ -103,8 +103,8 @@
 
 
 <script setup>
-import { inject } from 'vue'
-  import { usePwdStore } from '../stores/Pwd.js'
+import { ref,inject,onMounted, watch } from 'vue'
+  import { useDataStore } from '../stores/dataStore.js'
 
     const props = defineProps({
         SettingData: Object
@@ -117,7 +117,7 @@ import { inject } from 'vue'
   const Log_Enable = ref(false)
   const ServeAllPrefix = ref(false)
   const RunAsAdmin = ref(false)
-      const PwdStore = usePwdStore()
+      const DataStore = useDataStore()
 
 
   onMounted(() => {
@@ -150,11 +150,7 @@ import { inject } from 'vue'
         emit("Setting_Write", item, value);
         Setting_ReadAll();
   }
-  function DebugMode()
-  {
-      PwdStore.DebugMode = !PwdStore.DebugMode
-      if(PwdStore.DebugMode) console.log('现在显示调试信息')
-  }
+
     function visitLANAddress()
     {
         window.location.assign(props.SettingData.LANAddress);

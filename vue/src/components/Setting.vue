@@ -39,7 +39,7 @@
 </template>
 
 <script setup>
-    import { ref, watch, onMounted, inject } from 'vue';
+    import { ref, onMounted, onUnmounted,provide } from 'vue';
     import Setting_Common from './Setting_Common.vue';
     import Setting_Protect from './Setting_Protect.vue';
   import Setting_Remote from './Setting_Remote.vue';
@@ -47,20 +47,37 @@
   import Setting_Update from './Setting_Update.vue';
   import Setting_Debug from './Setting_Debug.vue';
 
-  
+  import { useWebSocketStore } from '@/stores/websocketStore';
+
+  const websocketStore = useWebSocketStore()
 
     const showPage = ref('Setting_Common');
 
-    const SendMsg = inject("provideFuncSendWSMsg")
-    const receivedEvent = inject("provideReceivedMsg")
+    const SendMsg = websocketStore.sendMessage
 
-    onMounted(() => {
-        Setting_Read_Batch()
-    });
 
-    watch(receivedEvent, (newValue) => {
-                receivedMessage(newValue.text)
-            })
+
+
+
+onMounted(() => {
+  const handler = (data) =>
+  {
+      receivedMessage(data);
+  }
+
+  websocketStore.registerMessageHandler(handler)
+  const handlerRef = { handler }
+
+  onUnmounted(() => {
+    websocketStore.unregisterMessageHandler(handlerRef.handler)
+  })
+
+  Setting_Read_Batch()
+})
+
+onUnmounted(() => {
+  websocketStore.close()
+})
 
     const SettingData = ref({});
 

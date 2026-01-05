@@ -6,7 +6,7 @@
             <p @click="click"><strong>软件版本：</strong>{{ version }}</p>
             <p>
                 <strong>开源地址：</strong>
-                <a :href="giteeLink" target="_blank" rel="noopener noreferrer">Gitee</a>
+                <a :href="githubLink" target="_blank" rel="noopener noreferrer">Gitee</a>
             </p>
             <p>
                 <strong>使用文档：</strong>
@@ -24,7 +24,7 @@
     import { ref } from 'vue';
 const author = 'lmx12330';
 const version = '0.0.0.1(测试版)';
-const giteeLink = 'https://gitee.com/lmx12330/window-op';
+const githubLink = 'https://github.com/lmx12330/window-op';
 const docsLink = 'https://flowus.cn/lmx12330/share/b7ec4752-a127-41b3-a2cd-19e5d471273c?code=3VCPWB';
 const feedbackLink = 'http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=okUeMAys_Hcfu9efJ41ofHRRwB_pbGjr&authKey=mOW9VLPQ3WAJ%2FzfR19Yf3QDRbuMVi3v7Alf6Eb%2F14DhflQASEQdhD7S4yrJH4H3r&noverify=0&group_code=964413132';
 

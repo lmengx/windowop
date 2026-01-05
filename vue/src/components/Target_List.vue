@@ -2,7 +2,7 @@
 
 
   <div v-if="editID === 0" v-auto-animate>
-    <h2>检测规则</h2>
+    <h2>自动脚本</h2>
     <el-button type="primary" plain @click="queryTargetList(currentPage)">刷新</el-button>
     <el-button type="primary" plain @click="startCreating">添加规则</el-button>
 
@@ -37,7 +37,7 @@
     </ul>
 
       <el-pagination background layout="prev, pager, next" :hide-on-single-page="true" v-model:current-page="currentPage" :page-count="totalPages" />
-    
+
 
 
     <el-empty v-show="targetList.length == 0" description="还没有创建规则" />
@@ -62,12 +62,30 @@
 </template>
 
 <script setup>
-    import { ref, onMounted, watch, computed, inject } from 'vue';
+    import { ref, onMounted, onUnmounted, computed } from 'vue';
+    import { useWebSocketStore } from '@/stores/websocketStore.js';
+
     import EditTarget from './Target_Edit.vue';
 
+    const websocketStore = useWebSocketStore()
 
-    const receivedEvent = inject("provideReceivedMsg")
-    const SendMsg = inject("provideFuncSendWSMsg")
+    const SendMsg = websocketStore.sendMessage
+
+
+onMounted(() => {
+  const handler = (msg) =>
+  {
+    receivedMessage(msg)
+  }
+  websocketStore.registerMessageHandler(handler)
+  const handlerRef = { handler }
+  onUnmounted(() => {
+    websocketStore.unregisterMessageHandler(handlerRef.handler)
+  })
+
+  queryTargetList(currentPage.value); // 初始化时加载当前页数据
+
+})
 
     const newTarget = ref({ TargetSign: '', PassingSign: '', ApplicationName: '', Action: ''});
     const currentTarget = ref({ TargetSign: '', PassingSign: '', ApplicationName: '', Action: '' });
@@ -76,14 +94,6 @@
 
     const currentPage = ref(1);
     const itemsPerPage = 5;
-
-    onMounted(() => {
-      queryTargetList(currentPage.value); // 初始化时加载当前页数据
-    });
-
-    watch(receivedEvent, (newValue) => {
-                receivedMessage(newValue.text)
-            })
 
     function receivedMessage(eventData) {
         if (eventData.startsWith("TargetList:")) {
@@ -108,9 +118,7 @@
   function queryTargetList(page = 1) {
         const reqJson = `{"Operation": "QuiryTargetList"}`;
         SendMsg(reqJson)
-
-        // 初始化页面时设置默认页
-        currentPage.value = page;
+        currentPage.value = page;// 初始化页面时设置默认页
     }
 
     function startCreating() {

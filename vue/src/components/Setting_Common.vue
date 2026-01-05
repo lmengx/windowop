@@ -53,7 +53,7 @@
       <el-input style="width: 240px" show-password v-model="newPassword" />
     </div>
 
-    
+
     <template #footer>
       <div class="dialog-footer">
         <el-button @click="HidePwdBox">
@@ -66,28 +66,37 @@
     </template>
 
   </el-dialog>
-  
-  <br><br>
-  <hr>
-  <el-text size="large">更改连接对象</el-text>
-  <br>
-  <el-button type="primary" plain @click="ChangeConnect">更改连接对象</el-button>
 
-  
+
+
 
 
 </template>
 
 <script setup>
-    import { ref, inject} from 'vue';
+import { ref, inject, onMounted, onUnmounted} from 'vue';
+import { useWebSocketStore } from '@/stores/websocketStore';
+
+  const websocketStore = useWebSocketStore()
+
+onMounted(() => {
+  const handler = (data) =>
+  {
+      if(data.startsWith("PwdChangeSuc:")) HidePwdBox()
+  }
+
+  websocketStore.registerMessageHandler(handler)
+  const handlerRef = { handler }
+
+  onUnmounted(() => {
+    websocketStore.unregisterMessageHandler(handlerRef.handler)
+  })
+})
+
+
+
 
     const ChangePwdBox = ref(false)
-   
-    const receivedEvent = inject("provideReceivedMsg")
-
-        watch(receivedEvent, (newValue) => {
-        if(newValue.text.startsWith("PwdChangeSuc:")) HidePwdBox()
-})
 
     function HidePwdBox()
     {
@@ -106,9 +115,8 @@
     });
 
     const RunActionNoPara = inject("provideFuncRunActionNoPara")
-  const SendMsg = inject("provideFuncSendWSMsg")
-  const ChangePwd = inject("provideFuncChangePwd")
-  
+  const ChangePwd = websocketStore.ChangePwd
+
 
     function Setting_ReadAll() {
         emit("Setting_Read_Batch");
@@ -118,12 +126,6 @@
         emit("Setting_Write", item, value);
         Setting_ReadAll();
     }
-	
-	function ChangeConnect()
-	{
-		const httpUrl = window.location.origin
-		window.location.assign(httpUrl + '/ChangeTarget')
-	}
 
 </script>
 

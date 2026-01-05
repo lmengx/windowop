@@ -1,6 +1,7 @@
 ﻿using CommandLine;
 using System;
 using System.Numerics;
+using System.Runtime.InteropServices;
 using System.Text.Json;
 using static windowOP.DatabaseOP;
 
@@ -72,7 +73,7 @@ namespace windowOP
 
         public static void ini(string[] args)
         {
-            Actions.HideConsole();
+            //Actions.HideConsole();
 
             if (!ExistDatabase())
             {
@@ -113,8 +114,18 @@ namespace windowOP
 
         }
 
+        [DllImport("kernel32.dll")]
+        static extern bool FreeConsole();
+
         public static void Main(string[] args)
         {
+            for (int i = 0; i < args.Length; i++)
+            {
+                Console.WriteLine(args[i]);
+            }
+
+
+            //FreeConsole();
             ini(args);
             Task.Run(() => WebServer.webServer());
 
@@ -122,9 +133,9 @@ namespace windowOP
             windowWatcherThread.Start();
             // 防止主线程退出
 
-
             Console.WriteLine("初始化完成.");
-            Console.ReadKey();
+
+            Task.Delay(-1).Wait();
             /*
              * 下一步准备实现：
 

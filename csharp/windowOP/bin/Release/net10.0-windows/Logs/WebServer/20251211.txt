@@ -1,0 +1,153 @@
+[16:16:19] 来自127.0.0.1的WebSocket已连接.
+[16:16:22] 来自127.0.0.1的WebSocket消息: {"Operation":"Verify","Timestamp":1765440982646}
+[16:16:22] 对127.0.0.1发送WebSocket消息：{"Operation": "Verified"}
+[16:16:23] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765440983034}
+[16:16:28] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-11T08:16:28Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":4.8},"Memory":{"TotalMB":32370,"UsedMB":16955,"UsagePercent":52.4},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":475.8,"UsagePercent":48.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[16:16:28] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765440985536}
+[16:16:28] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-11T08:16:28Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":28.0},"Memory":{"TotalMB":32370,"UsedMB":16956,"UsagePercent":52.4},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":475.8,"UsagePercent":48.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[16:16:28] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765440988042}
+[16:16:28] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-11T08:16:28Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":0.0},"Memory":{"TotalMB":32370,"UsedMB":16956,"UsagePercent":52.4},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":475.8,"UsagePercent":48.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[16:16:30] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765440990536}
+[16:16:30] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-11T08:16:30Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":10.2},"Memory":{"TotalMB":32370,"UsedMB":16960,"UsagePercent":52.4},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":475.8,"UsagePercent":48.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[16:16:33] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765440993037}
+[16:16:33] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-11T08:16:33Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":10.6},"Memory":{"TotalMB":32370,"UsedMB":16958,"UsagePercent":52.4},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":475.8,"UsagePercent":48.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[16:16:35] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765440995540}
+[16:16:35] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-11T08:16:35Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":7.8},"Memory":{"TotalMB":32370,"UsedMB":16939,"UsagePercent":52.3},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":475.8,"UsagePercent":48.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[16:16:38] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765440998035}
+[16:16:38] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-11T08:16:38Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":8.1},"Memory":{"TotalMB":32370,"UsedMB":16908,"UsagePercent":52.2},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":475.8,"UsagePercent":48.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[16:16:40] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765441000539}
+[16:16:40] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-11T08:16:40Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":7.6},"Memory":{"TotalMB":32370,"UsedMB":16909,"UsagePercent":52.2},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":475.8,"UsagePercent":48.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[16:16:42] 来自127.0.0.1的WebSocket消息: {"Operation":"QuiryTargetList","Timestamp":1765441002767}
+[16:16:42] 对127.0.0.1发送WebSocket消息：TargetList: []
+[16:16:49] 来自127.0.0.1的WebSocket消息: {"Operation":"heartbeat","Timestamp":1765441009575}
+[16:17:04] 来自127.0.0.1的WebSocket已连接.
+[16:17:04] 来自127.0.0.1的WebSocket消息: {"Operation":"Verify","Timestamp":1765441024073}
+[16:17:04] 对127.0.0.1发送WebSocket消息：{"Operation": "Verified"}
+[16:17:04] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765441024342}
+[16:17:04] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-11T08:17:04Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":7.1},"Memory":{"TotalMB":32370,"UsedMB":16964,"UsagePercent":52.4},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":475.8,"UsagePercent":48.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[16:17:05] 来自127.0.0.1的WebSocket消息: {"Operation":"QuiryTargetList","Timestamp":1765441025775}
+[16:17:05] 对127.0.0.1发送WebSocket消息：TargetList: []
+[16:17:20] 来自127.0.0.1的WebSocket消息: {"Operation":"RunAction","Action":[{"ActionName":"OpenWebPage","Paras":[{"ParaName":"url","value":"baidu.com"}]}],"Timestamp":1765441040341}
+[16:17:32] 来自127.0.0.1的WebSocket消息: {"Operation":"RunAction","Action":[{"ActionName":"OpenWebPage","Paras":[{"ParaName":"url","value":"https://baidu.com"}]}],"Timestamp":1765441052735}
+[16:17:34] 来自127.0.0.1的WebSocket消息: {"Operation":"heartbeat","Timestamp":1765441054062}
+[16:24:59] 来自127.0.0.1的WebSocket已连接.
+[16:24:59] 来自127.0.0.1的WebSocket消息: {"Operation":"Verify","Timestamp":1765441499527}
+[16:24:59] 对127.0.0.1发送WebSocket消息：{"Operation": "Verified"}
+[16:24:59] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765441499899}
+[16:25:05] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-11T08:25:04Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":5.3},"Memory":{"TotalMB":32370,"UsedMB":15750,"UsagePercent":48.7},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":475.5,"UsagePercent":48.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[16:25:05] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765441502400}
+[16:25:05] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-11T08:25:05Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":15.4},"Memory":{"TotalMB":32370,"UsedMB":15751,"UsagePercent":48.7},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":475.5,"UsagePercent":48.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[16:25:05] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765441504899}
+[16:25:05] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-11T08:25:05Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":100.0},"Memory":{"TotalMB":32370,"UsedMB":15751,"UsagePercent":48.7},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":475.5,"UsagePercent":48.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[16:25:07] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765441507402}
+[16:25:07] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-11T08:25:07Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":9.2},"Memory":{"TotalMB":32370,"UsedMB":15568,"UsagePercent":48.1},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":475.5,"UsagePercent":48.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[16:25:09] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765441509901}
+[16:25:09] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-11T08:25:09Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":9.0},"Memory":{"TotalMB":32370,"UsedMB":15575,"UsagePercent":48.1},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":475.5,"UsagePercent":48.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[16:25:12] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765441512399}
+[16:25:12] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-11T08:25:12Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":9.3},"Memory":{"TotalMB":32370,"UsedMB":15551,"UsagePercent":48.0},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":475.5,"UsagePercent":48.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[16:25:14] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765441514901}
+[16:25:14] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-11T08:25:14Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":11.4},"Memory":{"TotalMB":32370,"UsedMB":15539,"UsagePercent":48.0},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":475.5,"UsagePercent":48.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[16:25:15] 来自127.0.0.1的WebSocket消息: {"Operation":"QuiryTargetList","Timestamp":1765441515650}
+[16:25:15] 对127.0.0.1发送WebSocket消息：TargetList: []
+[16:25:18] 来自127.0.0.1的WebSocket消息: {"Operation":"Setting_Read_Batch","Timestamp":1765441518416}
+[16:26:01] 对127.0.0.1发送WebSocket消息：SettingQueryResult:{"SleepTime":1000,"ListenPort":7799,"ServeAllPrefix":0,"Log_Enable":1,"Log_PrintDebugMsg":1,"Log_ShowConsole":0,"Log_WebServer":1,"Log_WindowWatcher":0,"RunAsAdmin":0,"Protect_Process":0,"Protect_Files":0,"Protect_StartTask":0,"Frp_Enable":1,"Frp_parameters":"-f l3wjcu7n2jzhc5a82frxdr77mx1g76aq:21432735","DebugMode":1,"LANAddress":"http://100.67.232.48:7799","LatestVersion":"0.0.0.1"}
+[16:26:01] 来自127.0.0.1的WebSocket消息: {"Operation":"heartbeat","Timestamp":1765441529500}
+[16:26:01] 来自127.0.0.1的WebSocket连接断开
+[16:27:21] 来自127.0.0.1的WebSocket已连接.
+[16:27:21] 来自127.0.0.1的WebSocket消息: {"Operation":"Verify","Timestamp":1765441641718}
+[16:27:21] 对127.0.0.1发送WebSocket消息：{"Operation": "Verified"}
+[16:27:22] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765441642092}
+[16:27:27] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-11T08:27:27Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":3.4},"Memory":{"TotalMB":32370,"UsedMB":16229,"UsagePercent":50.1},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":475.5,"UsagePercent":48.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[16:27:27] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765441644594}
+[16:27:27] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-11T08:27:27Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":12.7},"Memory":{"TotalMB":32370,"UsedMB":16230,"UsagePercent":50.1},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":475.5,"UsagePercent":48.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[16:27:27] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765441647097}
+[16:27:27] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-11T08:27:27Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":0.0},"Memory":{"TotalMB":32370,"UsedMB":16230,"UsagePercent":50.1},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":475.5,"UsagePercent":48.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[16:27:29] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765441649598}
+[16:27:29] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-11T08:27:29Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":9.2},"Memory":{"TotalMB":32370,"UsedMB":16092,"UsagePercent":49.7},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":475.5,"UsagePercent":48.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[16:27:32] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765441652093}
+[16:27:32] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-11T08:27:32Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":8.5},"Memory":{"TotalMB":32370,"UsedMB":16081,"UsagePercent":49.7},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":475.5,"UsagePercent":48.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[16:27:34] 来自127.0.0.1的WebSocket消息: {"Operation":"MachineStatus","Timestamp":1765441654598}
+[16:27:34] 对127.0.0.1发送WebSocket消息：{"Operation":"MachineStatus","Timestamp":"2025-12-11T08:27:34Z","CPU":{"CpuModel":"Intel(R) Core(TM) i7-14650HX","CoreCount":24,"UsagePercent":19.4},"Memory":{"TotalMB":32370,"UsedMB":16122,"UsagePercent":49.8},"Disks":[{"DriveLetter":"C:","TotalGB":925.3,"FreeGB":475.5,"UsagePercent":48.6,"FileSystem":"NTFS"},{"DriveLetter":"D:","TotalGB":1863.0,"FreeGB":1190.4,"UsagePercent":36.1,"FileSystem":"NTFS"}]}
+[16:27:35] 来自127.0.0.1的WebSocket消息: {"Operation":"QuiryTargetList","Timestamp":1765441655148}
+[16:27:35] 对127.0.0.1发送WebSocket消息：TargetList: []
+[16:27:37] 来自127.0.0.1的WebSocket消息: {"Operation":"FileManager","op":"GetContent","path":"\\","Timestamp":1765441657712}
+[16:27:37] 对127.0.0.1发送WebSocket消息：FileContent:{
+  "Path": [],
+  "Content": [
+    {
+      "Name": "OS (C:\\)",
+      "Type": "/disk",
+      "Size": "475GB可用/925GB",
+      "Time": "",
+      "Lnk": "C:\\"
+    },
+    {
+      "Name": "新加卷 (D:\\)",
+      "Type": "/disk",
+      "Size": "1190GB可用/1862GB",
+      "Time": "",
+      "Lnk": "D:\\"
+    },
+    {
+      "Name": "桌面（Desktop）",
+      "Type": "lnk",
+      "Size": "",
+      "Time": "",
+      "Lnk": "C:\\Users\\lyt\\Desktop"
+    },
+    {
+      "Name": "应用程序数据（AppData）",
+      "Type": "lnk",
+      "Size": "",
+      "Time": "",
+      "Lnk": "C:\\Users\\lyt\\AppData\\Roaming"
+    },
+    {
+      "Name": "启动文件夹（Startup）",
+      "Type": "lnk",
+      "Size": "",
+      "Time": "",
+      "Lnk": "C:\\Users\\lyt\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup"
+    },
+    {
+      "Name": "文档文件夹（Document）",
+      "Type": "lnk",
+      "Size": "",
+      "Time": "",
+      "Lnk": "C:\\Users\\lyt\\Documents"
+    },
+    {
+      "Name": "下载文件夹（Download）--可能不可靠",
+      "Type": "lnk",
+      "Size": "",
+      "Time": "",
+      "Lnk": "C:\\Users\\lyt\\Downloads"
+    },
+    {
+      "Name": "程序文件夹（windowOP）",
+      "Type": "lnk",
+      "Size": "",
+      "Time": "",
+      "Lnk": "C:\\Users\\lyt\\Documents\\GitHub\\window-op\\csharp\\windowOP\\bin\\Release\\net10.0-windows\\"
+    }
+  ]
+}
+[16:27:39] 来自127.0.0.1的WebSocket消息: {"Operation":"QuiryTargetList","Timestamp":1765441659196}
+[16:27:39] 对127.0.0.1发送WebSocket消息：TargetList: []
+[16:27:51] 来自127.0.0.1的WebSocket消息: {"Operation":"heartbeat","Timestamp":1765441671684}
+[16:27:51] 对127.0.0.1发送WebSocket消息：heatbeat
+[16:41:19] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\index.html
+[16:41:19] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\assets/index-DozaToBe.js
+[16:41:19] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\assets/index-BM7ffERy.css
+[16:41:20] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\assets/impression-ClXOzGcA.svg
+[16:41:20] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\favicon.ico
+[16:41:26] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\index.html
+[16:41:26] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\assets/index-DozaToBe.js
+[16:41:26] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\assets/index-BM7ffERy.css
+[16:41:29] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\index.html
+[16:41:29] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\assets/index-BM7ffERy.css
+[16:41:29] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\assets/index-DozaToBe.js
+[16:41:32] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\assets/impression-ClXOzGcA.svg
+[16:41:35] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\index.html
+[16:41:35] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\assets/index-BM7ffERy.css
+[16:41:35] http请求了目录C:\Users\lyt\Documents\GitHub\window-op\csharp\windowOP\bin\Release\net10.0-windows\webFile\assets/index-DozaToBe.js
