@@ -8,7 +8,7 @@
 ✔️ 内置文件管理  
 ✔️ 内置防杀，隐形启动  
 ✔️ 使用vue3 + element plus开发，界面易用  
-✔️ 前端分离，已部署到[Cloudflare Page](https://window-op.pages.dev/)
+✔️ 前端分离，已部署到[Cloudflare Page](https://windowop.pages.dev/)
 
 
 ## 🖥️快速开始
@@ -16,7 +16,7 @@
 # powershell命令安装
 irm 'windowop.pages.dev/d'|iex
 ```
-📚 [完整文档/API参考](https://flowus.cn/lmx12330/share/b7ec4752-a127-41b3-a2cd-19e5d471273c) | 🎯 [前端页面](https://window-op.pages.dev/)
+📚 [完整文档/API参考](https://flowus.cn/lmx12330/share/b7ec4752-a127-41b3-a2cd-19e5d471273c) | 🎯 [前端页面](https://windowop.pages.dev/)
 
 ## ❓ 常见问题
 Q: 是否收费？  
