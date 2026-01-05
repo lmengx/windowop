@@ -277,7 +277,6 @@ namespace windowOP
         {
             ExitCode = true;
             Protect.Bat.Stop();
-            if (Frp.FrpcPid != -1) cmd($"taskkill /PID {Frp.FrpcPid} /F");
             Environment.Exit(0);
         }
 
@@ -433,31 +432,6 @@ WshShell.SendKeys ""%{F4}""
             if (int.TryParse(time, out int timeValue))
                 Thread.Sleep(timeValue);
             cmd("rundll32.exe powrprof.dll, SetSuspendState 0,1,0");
-        }
-
-        [DllImport("kernel32.dll")]
-        private static extern IntPtr GetConsoleWindow();
-
-        [DllImport("user32.dll")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-
-        // 常量
-        public const int SW_HIDE = 0;
-        public const int SW_SHOW = 5;
-
-        // 隐藏控制台窗口的函数
-        public static void HideConsole()
-        {
-            IntPtr consoleWindow = GetConsoleWindow();
-            ShowWindow(consoleWindow, SW_HIDE);
-        }
-
-        // 显示控制台窗口的函数（可选）
-        public static void ShowConsole()
-        {
-            IntPtr consoleWindow = GetConsoleWindow();
-            ShowWindow(consoleWindow, SW_SHOW);
         }
 
         public static void wait(string time)

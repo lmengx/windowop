@@ -212,7 +212,6 @@ C:\Users\lyt\Documents\Projects\windowOP\csharp\windowOP\bin\Release\net10.0-win
 C:\Users\lyt\Documents\Projects\windowOP\csharp\windowOP\bin\Release\net10.0-windows\win-x86\hostfxr.dll
 C:\Users\lyt\Documents\Projects\windowOP\csharp\windowOP\bin\Release\net10.0-windows\win-x86\hostpolicy.dll
 C:\Users\lyt\Documents\Projects\windowOP\csharp\windowOP\bin\Release\net10.0-windows\win-x86\mscordaccore.dll
-C:\Users\lyt\Documents\Projects\windowOP\csharp\windowOP\bin\Release\net10.0-windows\win-x86\mscordaccore_x86_x86_10.0.25.52411.dll
 C:\Users\lyt\Documents\Projects\windowOP\csharp\windowOP\bin\Release\net10.0-windows\win-x86\mscordbi.dll
 C:\Users\lyt\Documents\Projects\windowOP\csharp\windowOP\bin\Release\net10.0-windows\win-x86\mscorrc.dll
 C:\Users\lyt\Documents\Projects\windowOP\csharp\windowOP\bin\Release\net10.0-windows\win-x86\msquic.dll
@@ -282,3 +281,4 @@ C:\Users\lyt\Documents\Projects\windowOP\csharp\windowOP\obj\Release\net10.0-win
 C:\Users\lyt\Documents\Projects\windowOP\csharp\windowOP\obj\Release\net10.0-windows\win-x86\refint\windowOP.dll
 C:\Users\lyt\Documents\Projects\windowOP\csharp\windowOP\obj\Release\net10.0-windows\win-x86\windowOP.genruntimeconfig.cache
 C:\Users\lyt\Documents\Projects\windowOP\csharp\windowOP\obj\Release\net10.0-windows\win-x86\ref\windowOP.dll
+C:\Users\lyt\Documents\Projects\windowOP\csharp\windowOP\bin\Release\net10.0-windows\win-x86\mscordaccore_x86_x86_10.0.125.57005.dll

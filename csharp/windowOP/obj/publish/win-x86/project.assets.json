@@ -72,7 +72,7 @@
           }
         }
       },
-      "Microsoft.NET.ILLink.Tasks/10.0.0": {
+      "Microsoft.NET.ILLink.Tasks/10.0.1": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -331,7 +331,7 @@
           }
         }
       },
-      "Microsoft.NET.ILLink.Tasks/10.0.0": {
+      "Microsoft.NET.ILLink.Tasks/10.0.1": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -549,10 +549,10 @@
         "microsoft.data.sqlite.core.nuspec"
       ]
     },
-    "Microsoft.NET.ILLink.Tasks/10.0.0": {
-      "sha512": "kICGrGYEzCNI3wPzfEXcwNHgTvlvVn9yJDhSdRK+oZQy4jvYH529u7O0xf5ocQKzOMjfS07+3z9PKRIjrFMJDA==",
+    "Microsoft.NET.ILLink.Tasks/10.0.1": {
+      "sha512": "ISahzLHsHY7vrwqr2p1YWZ+gsxoBRtH7gWRDK8fDUst9pp2He0GiesaqEfeX0V8QMCJM3eNEHGGpnIcPjFo2NQ==",
       "type": "package",
-      "path": "microsoft.net.illink.tasks/10.0.0",
+      "path": "microsoft.net.illink.tasks/10.0.1",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -565,7 +565,7 @@
         "build/Microsoft.NET.ILLink.Analyzers.props",
         "build/Microsoft.NET.ILLink.Tasks.props",
         "build/Microsoft.NET.ILLink.targets",
-        "microsoft.net.illink.tasks.10.0.0.nupkg.sha512",
+        "microsoft.net.illink.tasks.10.0.1.nupkg.sha512",
         "microsoft.net.illink.tasks.nuspec",
         "tools/net/ILLink.Tasks.deps.json",
         "tools/net/ILLink.Tasks.dll",
@@ -861,7 +861,7 @@
       "Costura.Fody >= 5.7.0",
       "Fody >= 6.9.1",
       "Microsoft.Data.Sqlite >= 9.0.0",
-      "Microsoft.NET.ILLink.Tasks >= 10.0.0",
+      "Microsoft.NET.ILLink.Tasks >= 10.0.1",
       "Newtonsoft.Json >= 13.0.3",
       "System.Diagnostics.Tracing >= 4.3.0"
     ]
@@ -939,7 +939,7 @@
           "Microsoft.NET.ILLink.Tasks": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[10.0.0, )",
+            "version": "[10.0.1, )",
             "autoReferenced": true
           },
           "Newtonsoft.Json": {
@@ -965,15 +965,15 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
-            "version": "[10.0.0, 10.0.0]"
+            "version": "[10.0.1, 10.0.1]"
           },
           {
             "name": "Microsoft.NETCore.App.Runtime.win-x86",
-            "version": "[10.0.0, 10.0.0]"
+            "version": "[10.0.1, 10.0.1]"
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Runtime.win-x86",
-            "version": "[10.0.0, 10.0.0]"
+            "version": "[10.0.1, 10.0.1]"
           }
         ],
         "frameworkReferences": {
@@ -984,7 +984,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",

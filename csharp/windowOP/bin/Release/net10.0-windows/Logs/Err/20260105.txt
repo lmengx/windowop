@@ -1,0 +1,1 @@
+[19:27:31] 屏幕数据发送异常: The WebSocket is in an invalid state ('Closed') for this operation. Valid states are: 'Open, CloseReceived'

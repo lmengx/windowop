@@ -10,14 +10,19 @@ namespace windowOP
     public class Frp
     {
         static string FrpcFile = Path.Combine(Setting.programDir, "Frpc.exe");
+        public static Process FrpcProcess = null; // 替代原来的 FrpcPid
+
         public static int FrpcPid = -1;
         public static async Task StartFrpc()
             {         
                 if(!File.Exists(FrpcFile)) await DownloadFrpc();
                 string parameters = DatabaseOP.Setting_Read("Frp_parameters");
 
-                if (parameters != null)
-                {
+            if (string.IsNullOrEmpty(parameters))
+            {
+                DatabaseOP.Log("Frp_parameters 为空，跳过启动 frpc.exe");
+                return;
+            }
                 try
                 {
                     ProcessStartInfo startInfo = new ProcessStartInfo
@@ -29,20 +34,26 @@ namespace windowOP
                         UseShellExecute = false          // 不使用操作系统外壳启动
                     };
 
-                    using (Process process = Process.Start(startInfo))
+                    FrpcProcess = Process.Start(startInfo);
+
+                    if (FrpcProcess != null)
                     {
-                        if(process!=null) FrpcPid = process.Id;
-                        DatabaseOP.Log("frpc.exe 已启动 ");
-                        // 如果需要等待frpc进程退出，可以取消注释下面这行
-                        // process.WaitForExit();
-                        // Console.WriteLine("frpc.exe 已退出。");
+                        DatabaseOP.Log($"frpc.exe 已启动，PID: {FrpcProcess.Id}");
+                        ExitHook.Register(() =>
+                        {
+                            if (!FrpcProcess.HasExited)
+                            {
+                                FrpcProcess.Kill();
+                                FrpcProcess.Dispose();
+                            }
+                        });
                     }
                 }
                 catch (Exception ex)
                 {
                     DatabaseOP.LogErr($"启动 frpc.exe 时发生错误：{ex.Message}");
                 }
-            }
+            
             }
         public static async Task DownloadFrpc()
         {

@@ -25,6 +25,7 @@ namespace windowOP
                 Running = true;
                 SetProcessProtect();
                 DatabaseOP.Log("双进程保护开启");
+                ExitHook.Register(() => { Stop(); });
             }
 
             public static void Stop()

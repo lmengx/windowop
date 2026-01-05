@@ -12,11 +12,17 @@ namespace windowOP
 
     public class Options
         {
+            [Option('h', "host", HelpText = "Specify the host address to be stored in the database.")]
+            public string? Host { get; set; }
+
+            [Option('f', "frpc", HelpText = "frpc Paras, To enable frpc.")]
+            public string? frpc { get; set; }
+
             [Option('u', "update", Default = false, HelpText = "Update the target list.")]
             public bool Update { get; set; }
 
             [Option("pspid", HelpText = "Specify the batpid value.")]
-            public string PSpid { get; set; }
+            public string? PSpid { get; set; }
 
             public static void ProcessArgs(string[] args)
             {
@@ -37,39 +43,20 @@ namespace windowOP
                     if(int.TryParse(opts.PSpid, out int PSpid))
                         Protect.Bat.ContinueProtect(PSpid);
                 }
-
-            }
-
-            static void HandleUpdate()
-            {
-                FirstToUse = false;
-                string TargetListJson = Path.Combine(Setting.programDir, "TargetList.json");
-                string SettingJson = Path.Combine(Setting.programDir, "Setting.json");
-
-                if (File.Exists(TargetListJson) && File.Exists(SettingJson))
+                if(!string.IsNullOrEmpty(opts.Host))
                 {
-                    try
-                    {
-                        string content = File.ReadAllText(SettingJson);
-                        if (DatabaseOP.WriteSettingFromJson(content))
-                        {
-                            content = File.ReadAllText(TargetListJson);
-                            DatabaseOP.WriteTargetsFromJson(content);
-                            File.Delete(TargetListJson);
-                        }
-                        File.Delete(SettingJson);
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine($"继承更新前的数据出错: {ex}");
-                        return;
-                    }
+                    DatabaseOP.AddHost(opts.Host);
                 }
+                if(!string.IsNullOrEmpty(opts.frpc))
+                {
+                    string frpcCmd = "-f " + opts.frpc;
+                    DatabaseOP.SetFrpc(frpcCmd);
+                }
+
             }
+
+
         }
-
-
-        public static bool FirstToUse = false;
 
         public static void ini(string[] args)
         {
@@ -77,7 +64,7 @@ namespace windowOP
 
             if (!ExistDatabase())
             {
-                FirstToUse = true;
+
                 DatabaseOP.CreateDB();
             }
 
@@ -105,8 +92,6 @@ namespace windowOP
 
             
 
-            if (Setting_Read("Log_ShowConsole") == "1") Actions.ShowConsole();
-                if(FirstToUse) Actions.OpenManagePage();
 
             if (Setting_Read("Frp_Enable") == "1") Task.Run(() => Frp.StartFrpc());
 
@@ -114,18 +99,11 @@ namespace windowOP
 
         }
 
-        [DllImport("kernel32.dll")]
-        static extern bool FreeConsole();
-
         public static void Main(string[] args)
         {
-            for (int i = 0; i < args.Length; i++)
-            {
-                Console.WriteLine(args[i]);
-            }
+            
+            ExitHook.AutoRegisterSystemEvents();
 
-
-            //FreeConsole();
             ini(args);
             Task.Run(() => WebServer.webServer());
 

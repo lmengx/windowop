@@ -57,6 +57,7 @@ namespace windowOP
 
 
 
+
         public static void LogErr(string msg)
         {
             DateTime now = DateTime.Now;
@@ -156,6 +157,7 @@ namespace windowOP
                         Protect_StartTask INTEGER DEFAULT 0,
                         Frp_Enable INTEGER DEFAULT 0,
                         Frp_parameters TEXT DEFAULT '',
+                        HOSTS TEXT DEFAULT '',
                         DebugMode INTEGER DEFAULT 0
                     );
                 ";
@@ -198,8 +200,75 @@ namespace windowOP
         "Protect_StartTask",
         "Frp_Enable",
         "Frp_parameters",
+        "HOSTS",
         "DebugMode"
     };
+
+        public static void SetFrpc(string parameters)
+        {
+            using (var connection = new SqliteConnection($"Data Source={DbPath}"))
+            {
+                connection.Open();
+                using (var command = connection.CreateCommand())
+                {
+                    // 注意：SQLite 中布尔值通常用 0/1 表示
+                    command.CommandText = @"
+                UPDATE Setting 
+                SET Frp_Enable = 1, 
+                    Frp_parameters = @parameters;";
+
+                    command.Parameters.AddWithValue("@parameters", parameters ?? string.Empty);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static void AddHost(string host)
+        {
+            string Hosts = DatabaseOP.Setting_Read("HOSTS");
+            if (Hosts != "") Hosts += " ";
+            Hosts += host;
+            DatabaseOP.WriteHost(Hosts);//在host后添加内容
+        }
+
+        public static void DelHost(string hostToRemove)
+        {
+            if (string.IsNullOrEmpty(hostToRemove))
+                return;
+
+            string currentHosts = DatabaseOP.Setting_Read("HOSTS");
+            if (string.IsNullOrEmpty(currentHosts))
+                return;
+
+            // 按空格分割成列表
+            var hostsList = new List<string>(currentHosts.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
+
+            // 移除匹配的项（精确匹配）
+            bool removed = hostsList.RemoveAll(h => h.Equals(hostToRemove, StringComparison.OrdinalIgnoreCase)) > 0;
+
+            if (removed)
+            {
+                // 重新拼接
+                string newHosts = string.Join(" ", hostsList);
+                DatabaseOP.WriteHost(newHosts); // 覆盖写回
+            }
+        }
+
+        public static void WriteHost(string host)
+        {
+            using (var connection = new SqliteConnection($"Data Source={DbPath}"))
+            {
+                connection.Open();
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText =
+                        "UPDATE Setting SET HOSTS = @host;";
+                    command.Parameters.AddWithValue("@host", host);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
 
         public static void Setting_Write(string item, string value)
         {
@@ -569,6 +638,32 @@ namespace windowOP
                 LogErr(e.ToString());
                 Console.WriteLine( "继承Setting时出现错误." + e);
                 return false;
+            }
+        }
+
+        public static void HandleUpdate()
+        {
+            string TargetListJson = Path.Combine(Setting.programDir, "TargetList.json");
+            string SettingJson = Path.Combine(Setting.programDir, "Setting.json");
+
+            if (File.Exists(TargetListJson) && File.Exists(SettingJson))
+            {
+                try
+                {
+                    string content = File.ReadAllText(SettingJson);
+                    if (DatabaseOP.WriteSettingFromJson(content))
+                    {
+                        content = File.ReadAllText(TargetListJson);
+                        DatabaseOP.WriteTargetsFromJson(content);
+                        File.Delete(TargetListJson);
+                    }
+                    File.Delete(SettingJson);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"继承更新前的数据出错: {ex}");
+                    return;
+                }
             }
         }
 

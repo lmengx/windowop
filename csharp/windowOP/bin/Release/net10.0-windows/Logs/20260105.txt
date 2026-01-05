@@ -1,0 +1,92 @@
+[19:26:13] 已完成读取:'Log_Enable'--1
+[19:26:13] 已完成读取:'Log_PrintDebugMsg'--1
+[19:26:13] 已完成读取:'SleepTime'--1000
+[19:26:13] 已完成读取:'ListenPort'--7799
+[19:26:13] 已完成读取:'Log_WindowWatcher'--0
+[19:26:13] 已完成读取:'Log_WebServer'--1
+[19:26:13] frpc.exe 已启动 
+[19:27:30] 新的远程桌面连接，ID: ebf9
+[19:27:30] IV已发送
+[19:30:14] 已完成读取:'Log_Enable'--1
+[19:30:15] 已完成读取:'Log_PrintDebugMsg'--1
+[19:30:16] 已完成读取:'Log_WindowWatcher'--1
+[19:30:16] 已完成读取:'Log_WebServer'--1
+[19:31:14] 已完成读取:'Log_Enable'--1
+[19:31:14] 已完成读取:'Log_PrintDebugMsg'--1
+[19:31:14] 已完成读取:'SleepTime'--1000
+[19:31:14] 已完成读取:'ListenPort'--7799
+[19:31:14] 已完成读取:'Log_WindowWatcher'--1
+[19:31:14] 已完成读取:'Log_WebServer'--1
+[19:31:36] 新的远程桌面连接，ID: 7741
+[19:31:36] IV已发送
+[19:32:34] 已完成读取:'Log_Enable'--1
+[19:32:34] 已完成读取:'Log_PrintDebugMsg'--1
+[19:32:34] 已完成读取:'SleepTime'--1000
+[19:32:34] 已完成读取:'ListenPort'--7799
+[19:32:34] 已完成读取:'Log_WindowWatcher'--1
+[19:32:34] 已完成读取:'Log_WebServer'--1
+[19:36:06] 已完成读取:'Log_Enable'--1
+[19:36:06] 已完成读取:'Log_PrintDebugMsg'--1
+[19:36:06] 已完成读取:'SleepTime'--1000
+[19:36:06] 已完成读取:'ListenPort'--7799
+[19:36:06] 已完成读取:'Log_WindowWatcher'--1
+[19:36:06] 已完成读取:'Log_WebServer'--1
+[19:36:30] 已完成读取:'Log_Enable'--1
+[19:36:30] 已完成读取:'Log_PrintDebugMsg'--1
+[19:36:30] 已完成读取:'SleepTime'--1000
+[19:36:30] 已完成读取:'ListenPort'--7799
+[19:36:30] 已完成读取:'Log_WindowWatcher'--1
+[19:36:30] 已完成读取:'Log_WebServer'--1
+[19:48:46] 已完成读取:'Log_Enable'--1
+[19:48:46] 已完成读取:'Log_PrintDebugMsg'--1
+[19:48:46] 已完成读取:'SleepTime'--1000
+[19:48:46] 已完成读取:'ListenPort'--7799
+[19:48:46] 已完成读取:'Log_WindowWatcher'--1
+[19:48:46] 已完成读取:'Log_WebServer'--1
+[20:11:51] 已完成读取:'Log_Enable'--1
+[20:11:51] 已完成读取:'Log_PrintDebugMsg'--1
+[20:11:51] 已完成读取:'SleepTime'--1000
+[20:11:51] 已完成读取:'ListenPort'--7799
+[20:11:51] 已完成读取:'Log_WindowWatcher'--1
+[20:11:51] 已完成读取:'Log_WebServer'--1
+[20:15:45] 已完成读取:'Log_Enable'--1
+[20:15:45] 已完成读取:'Log_PrintDebugMsg'--1
+[20:15:45] 已完成读取:'SleepTime'--1000
+[20:15:45] 已完成读取:'ListenPort'--7799
+[20:15:45] 已完成读取:'Log_WindowWatcher'--1
+[20:15:45] 已完成读取:'Log_WebServer'--1
+[20:16:57] 已完成读取:'Log_Enable'--1
+[20:16:57] 已完成读取:'Log_PrintDebugMsg'--1
+[20:16:57] 已完成读取:'SleepTime'--1000
+[20:16:57] 已完成读取:'ListenPort'--7799
+[20:16:57] 已完成读取:'Log_WindowWatcher'--1
+[20:16:57] 已完成读取:'Log_WebServer'--1
+[20:17:03] 已完成读取:'Log_Enable'--1
+[20:17:03] 已完成读取:'Log_PrintDebugMsg'--1
+[20:17:03] 已完成读取:'SleepTime'--1000
+[20:17:03] 已完成读取:'ListenPort'--7799
+[20:17:03] 已完成读取:'Log_WindowWatcher'--1
+[20:17:03] 已完成读取:'Log_WebServer'--1
+[20:17:03] frpc.exe 已启动，PID: 23928
+[20:17:56] 触发了Action：'ctrl_w' .
+[20:18:54] 已完成读取:'Log_Enable'--1
+[20:18:54] 已完成读取:'Log_PrintDebugMsg'--1
+[20:18:54] 已完成读取:'SleepTime'--1000
+[20:18:54] 已完成读取:'ListenPort'--7799
+[20:18:54] 已完成读取:'Log_WindowWatcher'--1
+[20:18:54] 已完成读取:'Log_WebServer'--1
+[20:18:54] frpc.exe 已启动，PID: 37288
+[20:20:28] 已完成读取:'Log_Enable'--1
+[20:20:28] 已完成读取:'Log_PrintDebugMsg'--1
+[20:20:28] 已完成读取:'SleepTime'--1000
+[20:20:28] 已完成读取:'ListenPort'--7799
+[20:20:28] 已完成读取:'Log_WindowWatcher'--1
+[20:20:28] 已完成读取:'Log_WebServer'--1
+[20:20:28] frpc.exe 已启动，PID: 24312
+[20:20:43] 已完成读取:'Log_Enable'--1
+[20:20:43] 已完成读取:'Log_PrintDebugMsg'--1
+[20:20:43] 已完成读取:'SleepTime'--1000
+[20:20:43] 已完成读取:'ListenPort'--7799
+[20:20:43] 已完成读取:'Log_WindowWatcher'--1
+[20:20:43] 已完成读取:'Log_WebServer'--1
+[20:20:43] frpc.exe 已启动，PID: 35712

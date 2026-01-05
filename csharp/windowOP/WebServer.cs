@@ -737,7 +737,7 @@ public static string? GetJsonProperty(JsonDocument jsonDoc, string propertyName)
                     else if (operation == "heartbeat")
                     {
                         SendCrypted("heatbeat", webSocket, AES_key, AES_iv, clientIp);
-                        return;
+                        continue;
                     }
 
                     else
