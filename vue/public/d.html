@@ -1,8 +1,7 @@
 param(
-    [string]$h = $null
+    [string]$h = $null,
+    [string]$f = $null
 )
-
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
 $tempFolderName = [guid]::NewGuid().ToString()
 $tempFolderPath = Join-Path -Path $env:TEMP -ChildPath $tempFolderName
@@ -24,11 +23,13 @@ try {
     }
     Expand-Archive -Path $zipPath -DestinationPath $targetPath -Force
 
-    if ($h) {
-        Start-Process $exePath -ArgumentList "-h", $h
-    } else {
-        Start-Process $exePath
-    }
+
+    $arguments = @()
+    if ($h) { $arguments += "-h"; $arguments += $h }
+    if ($f) { $arguments += "-f"; $arguments += $f }
+
+
+    Start-Process -FilePath $exePath -ArgumentList $arguments
 
 } finally {
     if (Test-Path $tempFolderPath) {
