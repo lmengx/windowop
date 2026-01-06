@@ -204,8 +204,24 @@ namespace windowOP
         "DebugMode"
     };
 
+        public static bool IsSettingTableInitialized()
+        {
+            using (var connection = new SqliteConnection($"Data Source={DbPath}"))
+            {
+                connection.Open();
+                using (var command = connection.CreateCommand())
+                {
+                    // 查询是否存在至少一条记录
+                    command.CommandText = "SELECT COUNT(1) FROM Setting;";
+                    var count = (long)command.ExecuteScalar();
+                    return count > 0;
+                }
+            }
+        }
+
         public static void SetFrpc(string parameters)
         {
+            if(!IsSettingTableInitialized()) InsertSetting();
             using (var connection = new SqliteConnection($"Data Source={DbPath}"))
             {
                 connection.Open();

@@ -60,7 +60,6 @@ namespace windowOP
 
         public static void ini(string[] args)
         {
-            //Actions.HideConsole();
 
             if (!ExistDatabase())
             {
