@@ -55,67 +55,90 @@ namespace windowOP
                 }
             
             }
-        public static async Task DownloadFrpc()
+        public static async Task DownloadFrpc(CancellationToken cancellationToken = default)
         {
-            // 获取程序下载目录，假设 Setting.programDir 已经定义并可用
             string downloadDir = Setting.programDir;
 
-            // 定义不同架构对应的下载 URL
-            var downloadUrls = new System.Collections.Generic.Dictionary<Architecture, string>
-            {
-                { Architecture.X64, "https://nya.globalslb.net/natfrp/client/frpc/0.51.0-sakura-11.1/frpc_windows_amd64.exe" },
-                { Architecture.X86, "https://nya.globalslb.net/natfrp/client/frpc/0.51.0-sakura-11.1/frpc_windows_386.exe" },
-                { Architecture.Arm64, "https://nya.globalslb.net/natfrp/client/frpc/0.51.0-sakura-11.1/frpc_windows_arm64.exe" }
-            };
+            var downloadUrls = new Dictionary<Architecture, string>
+    {
+        { Architecture.X64, "https://nya.globalslb.net/natfrp/client/frpc/0.51.0-sakura-11.1/frpc_windows_amd64.exe" },
+        { Architecture.X86, "https://nya.globalslb.net/natfrp/client/frpc/0.51.0-sakura-11.1/frpc_windows_386.exe" },
+        { Architecture.Arm64, "https://nya.globalslb.net/natfrp/client/frpc/0.51.0-sakura-11.1/frpc_windows_arm64.exe" }
+    };
 
-            // 获取当前系统架构
             Architecture currentArchitecture = RuntimeInformation.ProcessArchitecture;
 
-            // 根据架构获取对应的下载 URL
-            if (downloadUrls.TryGetValue(currentArchitecture, out string downloadUrl))
+            if (!downloadUrls.TryGetValue(currentArchitecture, out string downloadUrl))
             {
-                Console.WriteLine($"检测到系统架构: {currentArchitecture}");
-                Console.WriteLine($"开始下载文件: {downloadUrl}");
+                Console.WriteLine($"不支持当前的系统架构: {currentArchitecture}. 无法下载文件.");
+                return;
+            }
+
+            Console.WriteLine($"检测到系统架构: {currentArchitecture}");
+            Console.WriteLine($"开始下载文件: {downloadUrl}");
+
+            if (!Directory.Exists(downloadDir))
+            {
+                Directory.CreateDirectory(downloadDir);
+            }
+
+            string filePath = Path.Combine(downloadDir, "Frpc.exe");
+
+            // 指数退避重试参数
+            int retryCount = 0;
+            const int maxDelaySeconds = 256; // 最大退避时间
+
+            while (true)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
 
                 try
                 {
-                    // 确保下载目录存在
-                    if (!Directory.Exists(downloadDir))
+                    using (var client = new HttpClient())
                     {
-                        Directory.CreateDirectory(downloadDir);
-                    }
+                        // 可选：设置超时（避免卡死）
+                        client.Timeout = TimeSpan.FromSeconds(60);
 
-                    // 从 URL 中提取文件名
-                    string fileName = "Frpc.exe";
-                    string filePath = Path.Combine(downloadDir, fileName);
+                        byte[] fileBytes = await client.GetByteArrayAsync(downloadUrl, cancellationToken);
+                        await File.WriteAllBytesAsync(filePath, fileBytes, cancellationToken);
 
-                    using (HttpClient client = new HttpClient())
-                    {
-                        // 发送 GET 请求并下载文件
-                        byte[] fileBytes = await client.GetByteArrayAsync(downloadUrl);
-
-                        // 将文件保存到指定路径
-                        await File.WriteAllBytesAsync(filePath, fileBytes);
-
-                        Console.WriteLine($"文件下载成功并保存到: {filePath}");
+                        Console.WriteLine($"✅ 文件下载成功并保存到: {filePath}");
+                        return; // 成功则退出
                     }
                 }
-                catch (HttpRequestException e)
+                catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
                 {
-                    Console.WriteLine($"下载文件时发生网络错误: {e.Message}");
+                    Console.WriteLine("⚠️ 下载被取消。");
+                    throw;
                 }
-                catch (Exception e)
+                catch (Exception ex) when (ex is HttpRequestException || ex is TaskCanceledException || ex is IOException)
                 {
-                    Console.WriteLine($"下载或保存文件时发生错误: {e.Message}");
+                    retryCount++;
+                    int delaySeconds = Math.Min(1 << (retryCount - 1), maxDelaySeconds); // 1, 2, 4, 8, ..., 256
+
+                    Console.WriteLine($"❌ 下载失败 (尝试 #{retryCount}): {ex.Message}");
+                    Console.WriteLine($"⏳ 等待 {delaySeconds} 秒后重试...");
+
+                        try
+                        {
+                            await Task.Delay(TimeSpan.FromSeconds(delaySeconds), cancellationToken);
+                        }
+                        catch (OperationCanceledException)
+                        {
+                            Console.WriteLine("⚠️ 重试被取消。");
+                            throw;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // 非网络异常（如磁盘满、权限问题）—— 不重试
+                        Console.WriteLine($"💥 发生不可恢复错误，停止重试: {ex.Message}");
+                        throw;
+                    }
                 }
             }
-            else
-            {
-                Console.WriteLine($"不支持当前的系统架构: {currentArchitecture}. 无法下载文件.");
-            }
+
+
         }
-
-
-    }
 
 }

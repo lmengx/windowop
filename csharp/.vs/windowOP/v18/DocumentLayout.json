@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\lyt\\Documents\\Projects\\windowOP\\csharp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|c:\\users\\lyt\\documents\\projects\\windowop\\csharp\\windowop\\protect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|solutionrelative:windowop\\protect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|c:\\users\\lyt\\documents\\projects\\windowop\\csharp\\windowop\\exithook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|solutionrelative:windowop\\exithook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|c:\\users\\lyt\\documents\\projects\\windowop\\csharp\\windowop\\frp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|solutionrelative:windowop\\frp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|c:\\users\\lyt\\documents\\projects\\windowop\\csharp\\windowop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|solutionrelative:windowop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|c:\\users\\lyt\\documents\\projects\\windowop\\csharp\\windowop\\filemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|solutionrelative:windowop\\filemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,20 +27,8 @@
       "RelativeMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|solutionrelative:windowop\\windowwatcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|c:\\users\\lyt\\documents\\projects\\windowop\\csharp\\windowop\\frp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|solutionrelative:windowop\\frp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|c:\\users\\lyt\\documents\\projects\\windowop\\csharp\\windowop\\actions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|solutionrelative:windowop\\actions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|c:\\users\\lyt\\documents\\projects\\windowop\\csharp\\windowop\\protect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|solutionrelative:windowop\\protect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|c:\\users\\lyt\\documents\\projects\\windowop\\csharp\\windowop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{631A1BD6-CC7B-4600-9FE6-2DA86256C2FB}|windowOP\\windowOP.csproj|solutionrelative:windowop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,24 +38,36 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
+              "Title": "ExitHook.cs",
+              "DocumentMoniker": "C:\\Users\\lyt\\Documents\\Projects\\windowOP\\csharp\\windowOP\\ExitHook.cs",
+              "RelativeDocumentMoniker": "windowOP\\ExitHook.cs",
+              "ToolTip": "C:\\Users\\lyt\\Documents\\Projects\\windowOP\\csharp\\windowOP\\ExitHook.cs",
+              "RelativeToolTip": "windowOP\\ExitHook.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAUwFEAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-05T15:13:51.791Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "Protect.cs",
               "DocumentMoniker": "C:\\Users\\lyt\\Documents\\Projects\\windowOP\\csharp\\windowOP\\Protect.cs",
               "RelativeDocumentMoniker": "windowOP\\Protect.cs",
               "ToolTip": "C:\\Users\\lyt\\Documents\\Projects\\windowOP\\csharp\\windowOP\\Protect.cs",
               "RelativeToolTip": "windowOP\\Protect.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAWwBsAAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAWwBsAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-05T12:09:13.985Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "Actions.cs",
               "DocumentMoniker": "C:\\Users\\lyt\\Documents\\Projects\\windowOP\\csharp\\windowOP\\Actions.cs",
               "RelativeDocumentMoniker": "windowOP\\Actions.cs",
@@ -59,8 +75,7 @@
               "RelativeToolTip": "windowOP\\Actions.cs",
               "ViewState": "AgIAAAQBAAAAAAAAAAD4vxYBAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-05T12:06:33.587Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-05T12:06:33.587Z"
             },
             {
               "$type": "Document",
@@ -70,14 +85,13 @@
               "RelativeDocumentMoniker": "windowOP\\Frp.cs",
               "ToolTip": "C:\\Users\\lyt\\Documents\\Projects\\windowOP\\csharp\\windowOP\\Frp.cs",
               "RelativeToolTip": "windowOP\\Frp.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAASwC8AAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAIwH0AAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-05T11:51:00.881Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-05T11:51:00.881Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "WindowWatcher.cs",
               "DocumentMoniker": "C:\\Users\\lyt\\Documents\\Projects\\windowOP\\csharp\\windowOP\\WindowWatcher.cs",
               "RelativeDocumentMoniker": "windowOP\\WindowWatcher.cs",
@@ -85,12 +99,11 @@
               "RelativeToolTip": "windowOP\\WindowWatcher.cs",
               "ViewState": "AgIAAFgAAAAAAAAAAAAiwHYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-05T10:20:04.495Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-05T10:20:04.495Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "FileManager.cs",
               "DocumentMoniker": "C:\\Users\\lyt\\Documents\\Projects\\windowOP\\csharp\\windowOP\\FileManager.cs",
               "RelativeDocumentMoniker": "windowOP\\FileManager.cs",
@@ -98,12 +111,11 @@
               "RelativeToolTip": "windowOP\\FileManager.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T05:58:40.577Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-07T05:58:40.577Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\lyt\\Documents\\Projects\\windowOP\\csharp\\windowOP\\Program.cs",
               "RelativeDocumentMoniker": "windowOP\\Program.cs",
@@ -111,8 +123,7 @@
               "RelativeToolTip": "windowOP\\Program.cs",
               "ViewState": "AgIAACQAAAAAAAAAAAAAADQAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T10:33:54.341Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-04T10:33:54.341Z"
             }
           ]
         }

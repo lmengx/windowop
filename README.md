@@ -12,8 +12,8 @@
 
 
 ## 🖥️快速开始
+### 复制到powershell安装
 ```powershell
-# powershell命令安装
 irm 'windowop.pages.dev/d'|iex
 ```
 📚 [完整文档/API参考](https://flowus.cn/lmx12330/share/b7ec4752-a127-41b3-a2cd-19e5d471273c) | 🎯 [前端页面](https://windowop.pages.dev/)

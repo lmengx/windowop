@@ -90,3 +90,10 @@
 [20:20:43] 已完成读取:'Log_WindowWatcher'--1
 [20:20:43] 已完成读取:'Log_WebServer'--1
 [20:20:43] frpc.exe 已启动，PID: 35712
+[23:12:16] 已完成读取:'Log_Enable'--1
+[23:12:16] 已完成读取:'Log_PrintDebugMsg'--1
+[23:12:16] 已完成读取:'SleepTime'--1000
+[23:12:16] 已完成读取:'ListenPort'--7799
+[23:12:16] 已完成读取:'Log_WindowWatcher'--1
+[23:12:16] 已完成读取:'Log_WebServer'--1
+[23:12:17] frpc.exe 已启动，PID: 5208
