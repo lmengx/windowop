@@ -68,10 +68,13 @@ export const useWebSocketStore = defineStore('websocket', () => {
       isConnected.value = false
       stopHeartbeat()
       console.log('🔌 WebSocket closed')
-      attemptReconnect(url)
+
+
+
 
       if(Verified.value)
       {
+        Verified.value = false;
           ElMessageBox.confirm(
             '连接已断开，是否返回主页',
             'Warning',

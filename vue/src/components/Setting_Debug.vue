@@ -7,6 +7,7 @@
       <hr />
       <h3>程序实时调控</h3>
 
+      <br />
       <el-button type="primary" plain @click="RunActionNoPara('restart')">重启程序</el-button>
       <el-button type="primary" plain @click="RunActionNoPara('RestartAsAdmin')">以管理员权限重启程序</el-button>
       <el-button type="primary" plain @click="RunActionNoPara('exit')">退出程序</el-button>
