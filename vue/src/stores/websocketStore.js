@@ -1,6 +1,8 @@
 // src/stores/websocket.js
 import { ref, reactive } from 'vue'
 
+import { useRouter } from 'vue-router'
+
 import { defineStore } from 'pinia'
 
 import { useDataStore } from './dataStore.js';
@@ -11,6 +13,8 @@ import { safeJsonParse } from '@/composables/useSafeJsonParse.js'
   import JSEncrypt from 'jsencrypt';
 
 export const useWebSocketStore = defineStore('websocket', () => {
+
+  const router = useRouter()
 
   const DataStore = useDataStore()
 
@@ -65,15 +69,40 @@ export const useWebSocketStore = defineStore('websocket', () => {
       stopHeartbeat()
       console.log('🔌 WebSocket closed')
       attemptReconnect(url)
+
+      if(Verified.value)
+      {
+          ElMessageBox.confirm(
+            '连接已断开，是否返回主页',
+            'Warning',
+            {
+              confirmButtonText: '确定',
+              cancelButtonText: '取消',
+              type: 'warning',
+              center: true,
+              closeOnClickModal: false,
+              showClose: false,
+            }
+          )
+            .then(() => {
+              router.push("/connect")
+            }).catch(() =>{
+
+            })
+      }
+
+
     }
 
     socket.value.onerror = (err) => {
       error.value = err.message || 'Unknown error'
       console.error('❌ WebSocket error:', err)
-        ElNotification({
+          ElNotification({
           title: '连接失败',
           type: 'error',
         })
+
+
     }
   }
 

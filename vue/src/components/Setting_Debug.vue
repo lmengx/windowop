@@ -6,9 +6,7 @@
 
       <hr />
       <h3>程序实时调控</h3>
-      <el-button type="primary" plain @click="RunActionNoPara('HideConsole')">隐藏程序窗口</el-button>
-      <el-button type="primary" plain @click="RunActionNoPara('ShowConsole')">显示程序窗口</el-button>
-      <br /><br />
+
       <el-button type="primary" plain @click="RunActionNoPara('restart')">重启程序</el-button>
       <el-button type="primary" plain @click="RunActionNoPara('RestartAsAdmin')">以管理员权限重启程序</el-button>
       <el-button type="primary" plain @click="RunActionNoPara('exit')">退出程序</el-button>
@@ -21,12 +19,7 @@
                  @click="Setting_Write('Log_Enable', SettingData.Log_Enable ? 0:1)" />
       <br />
       <div v-if="Log_Enable">
-        <el-text>启动时显示程序窗口 </el-text>
-        <el-switch v-model="Log_ShowConsole"
-                   :before-change="() =>{return true}"
-                   @click="Setting_Write('Log_ShowConsole', SettingData.Log_ShowConsole ? 0:1)" />
 
-        <br />
         <el-text>在程序中输出调试信息 </el-text>
         <el-switch v-model="Log_PrintDebugMsg"
                    :before-change="() =>{return true}"
