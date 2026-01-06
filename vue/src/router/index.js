@@ -10,8 +10,6 @@ import { createRouter, createWebHistory } from 'vue-router'
       import FileManager_core from '@/components/FileManager_core.vue'
       import Setting from '@/components/Setting.vue';
 
-    import test from '@/test/AiChatClient.vue'
-
 
 
 const router = createRouter({
@@ -20,7 +18,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: test,
+      component: HomeView,
     },
     {
       path: '/connect',
