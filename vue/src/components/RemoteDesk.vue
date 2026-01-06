@@ -19,14 +19,20 @@
   import { ref, inject, onMounted, onBeforeUnmount, watchEffect } from 'vue'
   import CryptoJS from 'crypto-js'
 
+  import { useDataStore } from '@/stores/dataStore'
+  import { useWebSocketStore } from '@/stores/websocketStore'
+
+  const dataStore = useDataStore()
+  const websocketStore = useWebSocketStore()
+
   const props = defineProps({
     currentPath: String
   })
 
-  const Log = inject('provideFuncLog');
+  const Log = dataStore.Log;
 
   // 依赖注入
-  const AESKey = inject('provideAES_key')
+  const AESKey = websocketStore.AES_key
   const screenCanvas = ref(null)
   let ctx = null
   let ws = null
@@ -48,11 +54,9 @@
   // --- WebSocket 初始化 ---
   const initWebSocket = () => {
     const getWsUrl = () => {
-      if (props.currentPath === "/develop") {
-        return "ws://127.0.0.1:7799/remotedesk"
-      }
-      const isHttps = window.location.protocol === 'https:'
-      return `${isHttps ? 'wss' : 'ws'}://${window.location.hostname}:7799/remotedesk`
+
+      return websocketStore.Target.address+"/remotedesk";
+
     }
 
     ws = new WebSocket(getWsUrl())
@@ -121,7 +125,7 @@
       console.warn('IV 尚未接收，无法解密')
       return null
     }
-    if (!AESKey || !AESKey.value) {
+    if (!AESKey) {
       console.error('AESKey 未提供或无效，无法解密。')
       return null;
     }
@@ -130,7 +134,7 @@
 
     return CryptoJS.AES.decrypt(
       { ciphertext: encryptedWordArray },
-      CryptoJS.enc.Utf8.parse(AESKey.value),
+      CryptoJS.enc.Utf8.parse(AESKey),
       getCryptoConfig()
     )
   }
@@ -140,7 +144,7 @@
       console.warn('IV 尚未接收，无法加密')
       return null
     }
-    if (!AESKey || !AESKey.value) {
+    if (!AESKey) {
       console.error('AESKey 未提供或无效，无法加密。')
       return null;
     }
@@ -149,7 +153,7 @@
 
     const encrypted = CryptoJS.AES.encrypt(
       plainWordArray,
-      CryptoJS.enc.Utf8.parse(AESKey.value),
+      CryptoJS.enc.Utf8.parse(AESKey),
       getCryptoConfig()
     )
 
