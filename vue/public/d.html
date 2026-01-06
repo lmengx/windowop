@@ -2,6 +2,8 @@ param(
     [string]$h = $null
 )
 
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
 $tempFolderName = [guid]::NewGuid().ToString()
 $tempFolderPath = Join-Path -Path $env:TEMP -ChildPath $tempFolderName
 $appDataPath = $env:APPDATA
@@ -11,13 +13,10 @@ $exePath = Join-Path -Path $targetPath -ChildPath "windowOP.exe"
 New-Item -Path $tempFolderPath -ItemType Directory -Force | Out-Null
 
 try {
-    $downloadUrl = "https://gitee.com/lmx12330/window-op/raw/master/resource/windowOP.zip"
+    $downloadUrl = "https://pub-7dd52c97b3004fe49470275bb0fb33ee.r2.dev/windowOP.zip"
     $zipPath = Join-Path -Path $tempFolderPath -ChildPath "windowOP.zip"
 
     $webClient = New-Object System.Net.WebClient
-    $webClient.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
-    $webClient.Headers.Add("Referer", "https://gitee.com/")
-
     $webClient.DownloadFile($downloadUrl, $zipPath)
 
     if (Test-Path $targetPath) {
