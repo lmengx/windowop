@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("windowOP")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e81025080e6ba08fd813b36a0ef4fe6bf99f5ca3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+72e8eb69fff902516ec70f30ebd56a33ca107128")]
 [assembly: System.Reflection.AssemblyProductAttribute("windowOP")]
 [assembly: System.Reflection.AssemblyTitleAttribute("windowOP")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
