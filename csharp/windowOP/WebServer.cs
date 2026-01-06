@@ -934,17 +934,17 @@ static void SendFile_http(HttpListenerContext context, string targetPath, string
 
                 else
                 {
-                    if (requestUrl == "" || requestUrl == "debug") requestUrl = "index.html";
+                    if (requestUrl == "") requestUrl = "index.html";
 
                     string filePath = Path.Combine(Setting.programDir, "webFile", requestUrl);
 
                     if (!File.Exists(filePath)) filePath = Path.Combine(Setting.programDir, "webFile", "index.html");
 
-                    DatabaseOP.LogWebServer("http请求了目录" + filePath);
-
 
                     if (File.Exists(filePath))
                     {
+
+                        DatabaseOP.LogWebServer("http请求了目录" + filePath);
                         // 根据文件类型设置ContentType
                         string contentType = "text/html";
                         if (filePath.EndsWith(".js"))
@@ -962,16 +962,27 @@ static void SendFile_http(HttpListenerContext context, string targetPath, string
                         // 设置Response的ContentType和ContentLength
                         context.Response.ContentType = contentType;
 
-                        byte[] buffer = File.ReadAllBytes(filePath);
-
-                        context.Response.ContentLength64 = buffer.Length;
-
-                        using (Stream output = context.Response.OutputStream)
-                        {
-                            output.Write(buffer, 0, buffer.Length);
-                        }
                     }
 
+                    else
+                    {
+                        string redirectUrl = "https://windowop.pages.dev/";
+
+                        context.Response.StatusCode = 302; // 临时重定向（可用 301 表示永久）
+                        context.Response.RedirectLocation = redirectUrl; // 自动设置 Location 头
+                        context.Response.Close();
+                        return;
+
+                    }
+
+                    byte[] buffer = File.ReadAllBytes(filePath);
+
+                    context.Response.ContentLength64 = buffer.Length;
+
+                    using (Stream output = context.Response.OutputStream)
+                    {
+                        output.Write(buffer, 0, buffer.Length);
+                    }
                 }
 
                 context.Response.Close();
