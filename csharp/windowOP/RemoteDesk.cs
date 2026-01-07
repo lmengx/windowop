@@ -18,8 +18,6 @@ namespace RemoteDesktopServer
 {
     public class RemoteDesktopHandler : IDisposable
     {
-        private const int FrameDelay = 100;
-        private const int KeySize = 128;
         private readonly WebSocket _webSocket;
         private readonly AesCrypto _aesCrypto;
         private readonly ScreenCapturer _screenCapturer;
@@ -73,14 +71,17 @@ namespace RemoteDesktopServer
                 {
                     var sw = Stopwatch.StartNew();
                     using var image = _screenCapturer.CaptureScreen();
-                   // DatabaseOP.Log($"屏幕捕获完成，尺寸: {image.Width}x{image.Height}");
+                    // DatabaseOP.Log($"屏幕捕获完成，尺寸: {image.Width}x{image.Height}");
+                    //DatabaseOP.Log($"捕获完成，耗时: {sw.ElapsedMilliseconds}ms");
 
                     using var ms = new MemoryStream();
                     image.Save(ms, ImageFormat.Jpeg);
-                  //  DatabaseOP.Log($"JPEG编码完成，大小: {ms.Length} bytes");
+                    //  DatabaseOP.Log($"JPEG编码完成，大小: {ms.Length} bytes");
+                    //DatabaseOP.Log($"编码完成，耗时: {sw.ElapsedMilliseconds}ms");
 
                     var encrypted = _aesCrypto.Encrypt(ms.ToArray());
-                  //  DatabaseOP.Log($"加密完成，加密后大小: {encrypted.Length} bytes");
+                    //  DatabaseOP.Log($"加密完成，加密后大小: {encrypted.Length} bytes");
+                    //DatabaseOP.Log($"加密完成，耗时: {sw.ElapsedMilliseconds}ms");
 
                     await _webSocket.SendAsync(
                         new ArraySegment<byte>(encrypted),
@@ -88,8 +89,11 @@ namespace RemoteDesktopServer
                         true,
                         CancellationToken.None);
 
-                //    DatabaseOP.Log($"数据发送完成，耗时: {sw.ElapsedMilliseconds}ms");
-                    await Task.Delay(100);
+                    //DatabaseOP.Log($"数据发送完成，耗时: {sw.ElapsedMilliseconds}ms");
+                    //var bounds = Screen.PrimaryScreen.Bounds;
+                    //DatabaseOP.Log($"捕获分辨率: {bounds.Width} x {bounds.Height}");
+                    //image.Save("test.jpg", ImageFormat.Jpeg);
+                    //await Task.Delay(100);
                 }
             }
             catch (Exception ex)
@@ -305,22 +309,41 @@ namespace RemoteDesktopServer
     public class ScreenCapturer : IDisposable
     {
         private bool _disposed;
+        private readonly int _targetWidth;
+        private readonly int _targetHeight;
+
+        // 可选：通过构造函数指定目标分辨率
+        public ScreenCapturer(int targetWidth = 1920, int targetHeight = 1080)
+        {
+            _targetWidth = targetWidth;
+            _targetHeight = targetHeight;
+        }
 
         public Bitmap CaptureScreen()
         {
             var bounds = Screen.PrimaryScreen.Bounds;
-            var bitmap = new Bitmap(bounds.Width, bounds.Height);
 
-            using (var graphics = Graphics.FromImage(bitmap))
+            // 先捕获全屏
+            using var fullBitmap = new Bitmap(bounds.Width, bounds.Height);
+            using (var graphics = Graphics.FromImage(fullBitmap))
             {
-                // 使用正确的参数名称
-                graphics.CopyFromScreen(
-                    upperLeftSource: Point.Empty,
-                    upperLeftDestination: Point.Empty,
-                    blockRegionSize: bounds.Size);
+                graphics.CopyFromScreen(Point.Empty, Point.Empty, bounds.Size);
             }
 
-            return bitmap;
+            // 缩放到目标分辨率（1080p）
+            var scaledBitmap = new Bitmap(_targetWidth, _targetHeight);
+            using (var g = Graphics.FromImage(scaledBitmap))
+            {
+                // 使用低质量但快速的插值模式
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Low;
+                g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighSpeed;
+                g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+
+                g.DrawImage(fullBitmap, 0, 0, _targetWidth, _targetHeight);
+            }
+
+            return scaledBitmap;
         }
 
         public void Dispose()
