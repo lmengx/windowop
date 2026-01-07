@@ -635,7 +635,7 @@
 
       var httpUrl = "http" + wsUrl.substring(2);
       if(!httpUrl.endsWith("/")) httpUrl += "/"
-      if(wsUrl == "[visitTarget]") httpUrl = window.location.href
+      if(wsUrl == "[visitTarget]") httpUrl = window.location.origin
       var fullUrl = `${httpUrl}download?token=${token}`;
 
       window.open(fullUrl, "_blank")
