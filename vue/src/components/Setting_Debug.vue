@@ -9,7 +9,7 @@
 
       <br />
       <el-button type="primary" plain @click="RunActionNoPara('restart')">重启程序</el-button>
-      <el-button type="primary" plain @click="RunActionNoPara('RestartAsAdmin')">以管理员权限重启程序</el-button>
+      <el-button type="primary" plain @click="RunActionNoPara('TryRestartAsAdmin')">以管理员权限重启程序</el-button>
       <el-button type="primary" plain @click="RunActionNoPara('exit')">退出程序</el-button>
       <hr />
 
@@ -65,7 +65,7 @@
                  :before-change="() =>{return true}"
                  @click="Setting_Write('ServeAllPrefix', SettingData.ServeAllPrefix ? 0:1)" />
       <br />
-      <el-button type="primary" plain v-if="SettingData.ServeAllPrefix == '1'" @click="visitLANAddress">局域网访问本页面</el-button>
+      <el-button type="primary" plain v-if="SettingData.ServeAllPrefix == '1'" @click="visitLANAddress">复制局域网ws地址</el-button>
       <br v-if="SettingData.ServeAllPrefix == '1'" />
       <el-text>以管理员权限运行 </el-text>
       <el-switch v-model="RunAsAdmin"
@@ -145,11 +145,28 @@ import { ref,inject,onMounted, watch } from 'vue'
         Setting_ReadAll();
   }
 
-    function visitLANAddress()
-    {
-        window.location.assign(props.SettingData.LANAddress);
+function visitLANAddress() {
+    let url = props.SettingData.LANAddress;
+
+    // 判断原始协议并转换为对应的 WebSocket 协议
+    if (url.startsWith('https://')) {
+        url = 'wss://' + url.substring(8);
+    } else if (url.startsWith('http://')) {
+        url = 'ws://' + url.substring(7);
+    } else if (!url.startsWith('ws://') && !url.startsWith('wss://')) {
+        // 如果既不是 http 也不是 ws，默认当作 http 处理
+        url = 'ws://' + url;
     }
 
+    // 复制到剪贴板
+    navigator.clipboard.writeText(url).then(() => {
+        console.log('WebSocket 地址已复制到剪贴板:', url);
+        // 可选：提示用户已复制
+        // alert('WebSocket 地址已复制到剪贴板');
+    }).catch(err => {
+        console.error('无法复制到剪贴板:', err);
+    });
+}
     function UAC(op)
     {
         const ActionCalls = `[
