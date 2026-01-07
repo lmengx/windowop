@@ -1,4 +1,4 @@
-name: Sync file to Cloudflare R2 (bucket: windowOP)
+name: Sync file to Cloudflare R2
 
 on:
   push:
