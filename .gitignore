@@ -1,8 +1,8 @@
-/csharp/.vs
-/csharp/windowOP/obj
-/.vs
-/csharp/windowOP/bin
-/csharp/windowOP/Properties
 *.bin
+
+/.vs
 /csharp/.vs
 /csharp/windowOP/bin
+/csharp/windowOP/obj
+/csharp/windowOP/Properties
+
