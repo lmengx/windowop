@@ -3,3 +3,6 @@
 /.vs
 /csharp/windowOP/bin
 /csharp/windowOP/Properties
+*.bin
+/csharp/.vs
+/csharp/windowOP/bin
