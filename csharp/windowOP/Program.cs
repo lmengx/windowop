@@ -15,8 +15,11 @@ namespace windowOP
             [Option('h', "host", HelpText = "Specify the host address to be stored in the database.")]
             public string? Host { get; set; }
 
-            [Option('f', "frpc", HelpText = "frpc Paras, To enable frpc.")]
-            public string? frpc { get; set; }
+            [Option("SakuraFrp", HelpText = "SakuraFrp Paras, To enable SakuraFrp.")]
+            public string? SakuraFrp { get; set; }
+
+            [Option("Frp", HelpText = "Frp Paras, To enable native Frp.")]
+            public string? Frp { get; set; }
 
             [Option('u', "update", Default = false, HelpText = "Update the target list.")]
             public bool Update { get; set; }
@@ -47,10 +50,29 @@ namespace windowOP
                 {
                     DatabaseOP.AddHost(opts.Host);
                 }
-                if(!string.IsNullOrEmpty(opts.frpc))
+                if(!string.IsNullOrEmpty(opts.SakuraFrp))
                 {
-                    string frpcCmd = "-f " + opts.frpc;
+                    string frpcCmd = "-f " + opts.SakuraFrp;
                     DatabaseOP.SetFrpc(frpcCmd);
+                }
+
+                if(!string.IsNullOrEmpty(opts.Frp))
+                {
+                    // 解析Frp参数，格式为：IP:端口:token:name
+                    string[] frpParams = opts.Frp.Split(':');
+                    if(frpParams.Length >= 4)
+                    {
+                        string serverAddr = frpParams[0];
+                        string serverPort = frpParams[1];
+                        string token = frpParams[2];
+                        string name = frpParams[3];
+                        
+                        DatabaseOP.Setting_Write("GeneralFrp_Enable", "1");
+                        DatabaseOP.Setting_Write("GeneralFrp_ServerAddr", serverAddr);
+                        DatabaseOP.Setting_Write("GeneralFrp_ServerPort", serverPort);
+                        DatabaseOP.Setting_Write("GeneralFrp_Token", token);
+                        DatabaseOP.Setting_Write("GeneralFrp_Name", name);
+                    }
                 }
 
             }
