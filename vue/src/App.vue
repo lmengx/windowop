@@ -54,11 +54,25 @@ const router = useRouter()
 const websocketStore = useWebSocketStore()
 const DataStore = useDataStore()
 
+// 未验证时允许访问的页面列表
+const allowedPaths = [
+  '/',
+  '/connect',
+]
+
+function isPathAllowed(path) {
+  // 检查是否是完全匹配的路径
+  if (allowedPaths.includes(path)) return true
+  // 检查是否匹配通配符路径 /docs/*
+  if (path.startsWith('/docs/')) return true
+  return false
+}
+
 watch(
   () => route.path,
   (newPath) => {
     if (newPath === '/connect') return    // 跳过 connect 页面本身（避免无限跳转）
-    if (newPath !== '/' && !websocketStore.Verified) {    // 如果未验证，且不在 / 或 /connect，则跳转
+    if (!isPathAllowed(newPath) && !websocketStore.Verified) {    // 如果未验证，且不在允许列表中，则跳转
       ElNotification({
         title: "请重新连接",
         type: "info",
