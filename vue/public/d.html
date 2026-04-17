@@ -5,7 +5,36 @@ $exePath = Join-Path $targetPath "windowOP.exe"
 
 New-Item $tempFolderPath -ItemType Directory -Force | Out-Null
 
+# 检测 .NET 10.0 runtime 是否安装
+function Test-DotNetRuntime {
+    try {
+        $dotnetVersion = dotnet --version
+        return $dotnetVersion -like "10.*"
+    } catch {
+        return $false
+    }
+}
+
 try {
+    # 检查 .NET 10.0 runtime
+    if (-not (Test-DotNetRuntime)) {
+        Write-Host "正在下载并安装 .NET 10.0 runtime..."
+        $dotnetInstallerPath = Join-Path $tempFolderPath "dotnet-runtime-desktop-10.0.6-windows-x64-installer.exe"
+        (New-Object Net.WebClient).DownloadFile("https://dotnet.microsoft.com/zh-cn/download/dotnet/thank-you/runtime-desktop-10.0.6-windows-x64-installer", $dotnetInstallerPath)
+        
+        # 启动安装程序
+        Write-Host "正在启动 .NET 10.0 runtime 安装程序..."
+        $process = Start-Process -FilePath $dotnetInstallerPath -Wait -PassThru
+        
+        if ($process.ExitCode -ne 0) {
+            Write-Host ".NET 10.0 runtime 安装失败，请手动安装后重试。"
+            exit 1
+        }
+        
+        Write-Host ".NET 10.0 runtime 安装成功！"
+    }
+    
+    # 下载并安装应用程序
     $zipPath = Join-Path $tempFolderPath "windowOP.zip"
     (New-Object Net.WebClient).DownloadFile("https://pub-7dd52c97b3004fe49470275bb0fb33ee.r2.dev/windowOP.zip", $zipPath)
     
