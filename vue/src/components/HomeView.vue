@@ -59,7 +59,7 @@ const { windowWidth } = useWindowWidth()
 const router = useRouter()
 
 function openDocs(){
-  window.open('https://flowus.cn/lmx12330/share/0d2b743d-9fa2-4a7e-9958-c1b0b4050ccc', '_blank')
+  window.location.href = '/docs/quick-start.html'
 }
 
 function openBili(){
