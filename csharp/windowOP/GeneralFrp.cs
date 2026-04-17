@@ -1,9 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.IO.Compression;
 using System.Net.Http;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
 namespace windowOP
@@ -17,7 +15,7 @@ namespace windowOP
         public static async Task StartFrpc()
         {
             if (!File.Exists(FrpcFile)) await DownloadFrpc();
-            
+
             bool enable = DatabaseOP.Setting_Read("GeneralFrp_Enable") == "1";
             if (!enable)
             {
@@ -37,7 +35,6 @@ namespace windowOP
                 return;
             }
 
-            // 生成配置文件 (TOML格式)
             string configContent = $@"serverAddr = ""{serverAddr}""
 serverPort = {serverPort}
 auth.token = ""{token}""
@@ -86,23 +83,8 @@ localPort = {localPort}";
         public static async Task DownloadFrpc(CancellationToken cancellationToken = default)
         {
             string downloadDir = Path.Combine(Setting.programDir, "GeneralFrp");
+            string downloadUrl = "https://gitee.com/lmx12330/window-op/raw/master/res/frpc.exe";
 
-            var downloadUrls = new Dictionary<Architecture, string>
-            {
-                { Architecture.X64, "https://nya.globalslb.net/natfrp/client/frpc/0.51.0-sakura-11.1/frpc_windows_amd64.exe" },
-                { Architecture.X86, "https://nya.globalslb.net/natfrp/client/frpc/0.51.0-sakura-11.1/frpc_windows_386.exe" },
-                { Architecture.Arm64, "https://nya.globalslb.net/natfrp/client/frpc/0.51.0-sakura-11.1/frpc_windows_arm64.exe" }
-            };
-
-            Architecture currentArchitecture = RuntimeInformation.ProcessArchitecture;
-
-            if (!downloadUrls.TryGetValue(currentArchitecture, out string downloadUrl))
-            {
-                Console.WriteLine($"不支持当前的系统架构: {currentArchitecture}. 无法下载文件.");
-                return;
-            }
-
-            Console.WriteLine($"检测到系统架构: {currentArchitecture}");
             Console.WriteLine($"开始下载文件: {downloadUrl}");
 
             if (!Directory.Exists(downloadDir))
@@ -110,49 +92,54 @@ localPort = {localPort}";
                 Directory.CreateDirectory(downloadDir);
             }
 
-            string zipPath = Path.Combine(downloadDir, "frp.zip");
-            string extractPath = Path.Combine(downloadDir, "extract");
+            string filePath = Path.Combine(downloadDir, "frpc.exe");
 
-            try
+            int retryCount = 0;
+            const int maxDelaySeconds = 256;
+
+            while (true)
             {
-                using (var client = new HttpClient())
+                cancellationToken.ThrowIfCancellationRequested();
+
+                try
                 {
-                    client.Timeout = TimeSpan.FromSeconds(120);
-                    byte[] fileBytes = await client.GetByteArrayAsync(downloadUrl, cancellationToken);
-                    await File.WriteAllBytesAsync(zipPath, fileBytes, cancellationToken);
-                    Console.WriteLine($"✅ 压缩文件下载成功");
-
-                    // 解压zip文件
-                    if (Directory.Exists(extractPath))
+                    using (var client = new HttpClient())
                     {
-                        Directory.Delete(extractPath, true);
+                        client.Timeout = TimeSpan.FromSeconds(120);
+                        byte[] fileBytes = await client.GetByteArrayAsync(downloadUrl, cancellationToken);
+                        await File.WriteAllBytesAsync(filePath, fileBytes, cancellationToken);
+                        Console.WriteLine($"✅ 文件下载成功并保存到: {filePath}");
+                        return;
                     }
-                    ZipFile.ExtractToDirectory(zipPath, extractPath);
-                    Console.WriteLine($"✅ 解压完成");
-
-                    // 查找frpc.exe
-                    string[] frpcFiles = Directory.GetFiles(extractPath, "frpc.exe", SearchOption.AllDirectories);
-                    if (frpcFiles.Length > 0)
-                    {
-                        File.Copy(frpcFiles[0], FrpcFile, true);
-                        Console.WriteLine($"✅ frpc.exe已复制到: {FrpcFile}");
-                    }
-                    else
-                    {
-                        throw new FileNotFoundException("未在压缩文件中找到frpc.exe");
-                    }
-
-                    // 清理临时文件
-                    File.Delete(zipPath);
-                    Directory.Delete(extractPath, true);
-
-                    return;
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"❌ 下载失败: {ex.Message}");
-                throw;
+                catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+                {
+                    Console.WriteLine("⚠️ 下载被取消。");
+                    throw;
+                }
+                catch (Exception ex) when (ex is HttpRequestException || ex is TaskCanceledException || ex is IOException)
+                {
+                    retryCount++;
+                    int delaySeconds = Math.Min(1 << (retryCount - 1), maxDelaySeconds);
+
+                    Console.WriteLine($"❌ 下载失败 (尝试 #{retryCount}): {ex.Message}");
+                    Console.WriteLine($"⏳ 等待 {delaySeconds} 秒后重试...");
+
+                    try
+                    {
+                        await Task.Delay(TimeSpan.FromSeconds(delaySeconds), cancellationToken);
+                    }
+                    catch (OperationCanceledException)
+                    {
+                        Console.WriteLine("⚠️ 重试被取消。");
+                        throw;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"💥 发生不可恢复错误，停止重试: {ex.Message}");
+                    throw;
+                }
             }
         }
     }
