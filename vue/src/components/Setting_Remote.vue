@@ -58,11 +58,10 @@
 
     <el-switch v-model="Frp_Enable"
                :before-change="() =>{return true}"
-               @click="Setting_Write('Frp_Enable', SettingData.Frp_Enable ? 0:1)" />
+               @click="toggleSakuraFrp()" />
 
     <h5>Frpc启动参数</h5>
-    <el-input style="width: 240px" v-model="SettingData.Frp_parameters" placeholder="-f xxxxxxxxxx:12345678" />
-    <el-button type="primary" plain @click="Setting_Write('Frp_parameters', SettingData.Frp_parameters)">确认</el-button>
+    <el-input style="width: 240px" v-model="SettingData.Frp_parameters" placeholder="-f xxxxxxxxxx:12345678" @blur="Setting_Write('Frp_parameters', SettingData.Frp_parameters)" />
     <br /><br />
 
     <strong>SakuraFrp使用方法：</strong>
@@ -77,26 +76,22 @@
 
     <el-switch v-model="GeneralFrp_Enable"
                :before-change="() =>{return true}"
-               @click="Setting_Write('GeneralFrp_Enable', SettingData.GeneralFrp_Enable ? 0:1)" />
+               @click="toggleGeneralFrp()" />
 
     <h5>服务端IP</h5>
-    <el-input style="width: 240px" v-model="SettingData.GeneralFrp_ServerAddr" placeholder="127.0.0.1" />
-    <el-button type="primary" plain @click="Setting_Write('GeneralFrp_ServerAddr', SettingData.GeneralFrp_ServerAddr)">确认</el-button>
+    <el-input style="width: 240px" v-model="SettingData.GeneralFrp_ServerAddr" placeholder="127.0.0.1" @blur="Setting_Write('GeneralFrp_ServerAddr', SettingData.GeneralFrp_ServerAddr)" />
     <br /><br />
 
     <h5>服务端端口</h5>
-    <el-input style="width: 240px" v-model="SettingData.GeneralFrp_ServerPort" placeholder="7000" />
-    <el-button type="primary" plain @click="Setting_Write('GeneralFrp_ServerPort', SettingData.GeneralFrp_ServerPort)">确认</el-button>
+    <el-input style="width: 240px" v-model="SettingData.GeneralFrp_ServerPort" placeholder="7000" @blur="Setting_Write('GeneralFrp_ServerPort', SettingData.GeneralFrp_ServerPort)" />
     <br /><br />
 
     <h5>Token</h5>
-    <el-input style="width: 240px" v-model="SettingData.GeneralFrp_Token" placeholder="123456" />
-    <el-button type="primary" plain @click="Setting_Write('GeneralFrp_Token', SettingData.GeneralFrp_Token)">确认</el-button>
+    <el-input style="width: 240px" v-model="SettingData.GeneralFrp_Token" placeholder="123456" @blur="Setting_Write('GeneralFrp_Token', SettingData.GeneralFrp_Token)" />
     <br /><br />
 
     <h5>名称</h5>
-    <el-input style="width: 240px" v-model="SettingData.GeneralFrp_Name" placeholder="test-tcp" />
-    <el-button type="primary" plain @click="Setting_Write('GeneralFrp_Name', SettingData.GeneralFrp_Name)">确认</el-button>
+    <el-input style="width: 240px" v-model="SettingData.GeneralFrp_Name" placeholder="test-tcp" @blur="Setting_Write('GeneralFrp_Name', SettingData.GeneralFrp_Name)" />
     <br /><br />
 
     <hr />
@@ -162,6 +157,38 @@ import { inject, ref, onMounted, watch } from 'vue'
                 "ActionName": "UAC",
                 "Paras": [
                     {"ParaName": "op", "value": "${op}"}
+                ]
+            }
+        ]`;
+        RunActions(JSON.parse(ActionCalls));
+    }
+
+    function toggleSakuraFrp() {
+        const enable = !props.SettingData.Frp_Enable;
+        Setting_Write('Frp_Enable', enable ? 1 : 0);
+        
+        // 调用后端API实时开关SakuraFrp
+        const ActionCalls = `[
+            {
+                "ActionName": "ToggleSakuraFrp",
+                "Paras": [
+                    {"ParaName": "enable", "value": "${enable ? 1 : 0}"}
+                ]
+            }
+        ]`;
+        RunActions(JSON.parse(ActionCalls));
+    }
+
+    function toggleGeneralFrp() {
+        const enable = !props.SettingData.GeneralFrp_Enable;
+        Setting_Write('GeneralFrp_Enable', enable ? 1 : 0);
+        
+        // 调用后端API实时开关通用Frp
+        const ActionCalls = `[
+            {
+                "ActionName": "ToggleGeneralFrp",
+                "Paras": [
+                    {"ParaName": "enable", "value": "${enable ? 1 : 0}"}
                 ]
             }
         ]`;

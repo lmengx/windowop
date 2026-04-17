@@ -66,11 +66,7 @@ localPort = {localPort}";
                     DatabaseOP.Log($"通用Frpc已启动，PID: {FrpcProcess.Id}");
                     ExitHook.Register(() =>
                     {
-                        if (!FrpcProcess.HasExited)
-                        {
-                            FrpcProcess.Kill();
-                            FrpcProcess.Dispose();
-                        }
+                        StopFrpc();
                     });
                 }
             }
@@ -141,6 +137,29 @@ localPort = {localPort}";
                     throw;
                 }
             }
+        }
+        
+        public static void StopFrpc()
+        {
+            // 关闭当前进程对象
+            if (FrpcProcess != null && !FrpcProcess.HasExited)
+            {
+                try
+                {
+                    FrpcProcess.Kill();
+                    FrpcProcess.WaitForExit(1000);
+                    FrpcProcess.Dispose();
+                    DatabaseOP.Log($"已关闭通用Frpc进程");
+                }
+                catch (Exception ex)
+                {
+                    DatabaseOP.LogErr($"关闭通用Frpc进程时发生错误：{ex.Message}");
+                }
+            }
+            
+            // 清空进程对象
+            FrpcProcess = null;
+            FrpcPid = -1;
         }
     }
 }

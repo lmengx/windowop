@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Reflection;
@@ -472,6 +472,32 @@ WshShell.SendKeys ""%{F4}""
         public static void Delete()
         {
             Setting.Version.Delete();
+        }
+
+        public static async void ToggleSakuraFrp(string enable)
+        {
+            bool isEnable = enable == "1";
+            if (isEnable)
+            {
+                await SakuraFrp.StartFrpc();
+            }
+            else
+            {
+                SakuraFrp.StopFrpc();
+            }
+        }
+
+        public static async void ToggleGeneralFrp(string enable)
+        {
+            bool isEnable = enable == "1";
+            if (isEnable)
+            {
+                await GeneralFrp.StartFrpc();
+            }
+            else
+            {
+                GeneralFrp.StopFrpc();
+            }
         }
 
         // 使用高质量随机数生成器

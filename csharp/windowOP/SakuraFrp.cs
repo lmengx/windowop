@@ -23,38 +23,58 @@ namespace windowOP
                 DatabaseOP.Log("Frp_parameters 为空，跳过启动 SakuraFrpc.exe");
                 return;
             }
+            try
+            {
+                ProcessStartInfo startInfo = new ProcessStartInfo
+                {
+                    FileName = FrpcFile,
+                    Arguments = parameters,
+                    WorkingDirectory = Path.Combine(Setting.programDir, "SakuraFrp"), // 设置工作目录为SakuraFrpc.exe所在的目录
+                    CreateNoWindow = true,           // 隐藏窗口
+                    UseShellExecute = false          // 不使用操作系统外壳启动
+                };
+
+                FrpcProcess = Process.Start(startInfo);
+
+                if (FrpcProcess != null)
+                {
+                    DatabaseOP.Log($"SakuraFrpc.exe 已启动，PID: {FrpcProcess.Id}");
+                    ExitHook.Register(() =>
+                    {
+                        StopFrpc();
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                DatabaseOP.LogErr($"启动 SakuraFrpc.exe 时发生错误：{ex.Message}");
+            }
+            
+            }
+        
+        public static void StopFrpc()
+        {
+            // 关闭当前进程对象
+            if (FrpcProcess != null && !FrpcProcess.HasExited)
+            {
                 try
                 {
-                    ProcessStartInfo startInfo = new ProcessStartInfo
-                    {
-                        FileName = FrpcFile,
-                        Arguments = parameters,
-                        WorkingDirectory = Path.Combine(Setting.programDir, "SakuraFrp"), // 设置工作目录为SakuraFrpc.exe所在的目录
-                        CreateNoWindow = true,           // 隐藏窗口
-                        UseShellExecute = false          // 不使用操作系统外壳启动
-                    };
-
-                    FrpcProcess = Process.Start(startInfo);
-
-                    if (FrpcProcess != null)
-                    {
-                        DatabaseOP.Log($"SakuraFrpc.exe 已启动，PID: {FrpcProcess.Id}");
-                        ExitHook.Register(() =>
-                        {
-                            if (!FrpcProcess.HasExited)
-                            {
-                                FrpcProcess.Kill();
-                                FrpcProcess.Dispose();
-                            }
-                        });
-                    }
+                    FrpcProcess.Kill();
+                    FrpcProcess.WaitForExit(1000);
+                    FrpcProcess.Dispose();
+                    DatabaseOP.Log($"已关闭 SakuraFrpc.exe 进程");
                 }
                 catch (Exception ex)
                 {
-                    DatabaseOP.LogErr($"启动 SakuraFrpc.exe 时发生错误：{ex.Message}");
+                    DatabaseOP.LogErr($"关闭 SakuraFrpc.exe 进程时发生错误：{ex.Message}");
                 }
-            
             }
+            
+            // 清空进程对象
+            FrpcProcess = null;
+            FrpcPid = -1;
+        }
+        
         public static async Task DownloadFrpc(CancellationToken cancellationToken = default)
         {
             string downloadDir = Path.Combine(Setting.programDir, "SakuraFrp");
