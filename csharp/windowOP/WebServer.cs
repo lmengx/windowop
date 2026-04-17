@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
+using Microsoft.VisualBasic.ApplicationServices;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RemoteDesktopServer;

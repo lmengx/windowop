@@ -76,7 +76,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  websocketStore.close()
+
 })
 
     const SettingData = ref({});

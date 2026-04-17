@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
@@ -157,6 +157,11 @@ namespace windowOP
                         Protect_StartTask INTEGER DEFAULT 0,
                         Frp_Enable INTEGER DEFAULT 0,
                         Frp_parameters TEXT DEFAULT '',
+                        GeneralFrp_Enable INTEGER DEFAULT 0,
+                        GeneralFrp_ServerAddr TEXT DEFAULT '127.0.0.1',
+                        GeneralFrp_ServerPort INTEGER DEFAULT 7000,
+                        GeneralFrp_Token TEXT DEFAULT '123456',
+                        GeneralFrp_Name TEXT DEFAULT 'test-tcp',
                         HOSTS TEXT DEFAULT '',
                         DebugMode INTEGER DEFAULT 0
                     );
@@ -200,6 +205,11 @@ namespace windowOP
         "Protect_StartTask",
         "Frp_Enable",
         "Frp_parameters",
+        "GeneralFrp_Enable",
+        "GeneralFrp_ServerAddr",
+        "GeneralFrp_ServerPort",
+        "GeneralFrp_Token",
+        "GeneralFrp_Name",
         "HOSTS",
         "DebugMode"
     };

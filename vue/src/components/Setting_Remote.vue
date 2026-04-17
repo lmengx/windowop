@@ -51,6 +51,7 @@
     <hr />
     <h1>公网服务</h1>
 
+    <h3>SakuraFrp</h3>
     <el-text>
       内网穿透
     </el-text>
@@ -64,10 +65,39 @@
     <el-button type="primary" plain @click="Setting_Write('Frp_parameters', SettingData.Frp_parameters)">确认</el-button>
     <br /><br />
 
-    <strong>内置Frp使用方法：</strong>
+    <strong>SakuraFrp使用方法：</strong>
 
     <a :href="helpLink" target="_blank" rel="noopener noreferrer">查看文档</a>
+    <br /><br />
 
+    <h3>通用Frpc</h3>
+    <el-text>
+      内网穿透
+    </el-text>
+
+    <el-switch v-model="GeneralFrp_Enable"
+               :before-change="() =>{return true}"
+               @click="Setting_Write('GeneralFrp_Enable', SettingData.GeneralFrp_Enable ? 0:1)" />
+
+    <h5>服务端IP</h5>
+    <el-input style="width: 240px" v-model="SettingData.GeneralFrp_ServerAddr" placeholder="127.0.0.1" />
+    <el-button type="primary" plain @click="Setting_Write('GeneralFrp_ServerAddr', SettingData.GeneralFrp_ServerAddr)">确认</el-button>
+    <br /><br />
+
+    <h5>服务端端口</h5>
+    <el-input style="width: 240px" v-model="SettingData.GeneralFrp_ServerPort" placeholder="7000" />
+    <el-button type="primary" plain @click="Setting_Write('GeneralFrp_ServerPort', SettingData.GeneralFrp_ServerPort)">确认</el-button>
+    <br /><br />
+
+    <h5>Token</h5>
+    <el-input style="width: 240px" v-model="SettingData.GeneralFrp_Token" placeholder="123456" />
+    <el-button type="primary" plain @click="Setting_Write('GeneralFrp_Token', SettingData.GeneralFrp_Token)">确认</el-button>
+    <br /><br />
+
+    <h5>名称</h5>
+    <el-input style="width: 240px" v-model="SettingData.GeneralFrp_Name" placeholder="test-tcp" />
+    <el-button type="primary" plain @click="Setting_Write('GeneralFrp_Name', SettingData.GeneralFrp_Name)">确认</el-button>
+    <br /><br />
 
     <hr />
 
@@ -77,7 +107,7 @@
 
 
 <script setup>
-import { inject } from 'vue'
+import { inject, ref, onMounted, watch } from 'vue'
     const props = defineProps({
         SettingData: Object
     });
@@ -86,6 +116,7 @@ import { inject } from 'vue'
   const RunAsAdmin = ref(false)
 
   const Frp_Enable = ref(false)
+  const GeneralFrp_Enable = ref(false)
 
   const helpLink = 'https://flowus.cn/lmx12330/2f324cd1-9437-4a44-b757-89a124751b88';
 
@@ -103,6 +134,7 @@ import { inject } from 'vue'
     ServeAllPrefix.value = newValue.ServeAllPrefix == 1
     RunAsAdmin.value = newValue.RunAsAdmin == 1
     Frp_Enable.value = newValue.Frp_Enable == 1
+    GeneralFrp_Enable.value = newValue.GeneralFrp_Enable == 1
 
   }
 

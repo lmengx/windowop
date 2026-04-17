@@ -1,4 +1,4 @@
-﻿using CommandLine;
+using CommandLine;
 using System;
 using System.Numerics;
 using System.Runtime.InteropServices;
@@ -92,7 +92,8 @@ namespace windowOP
             
 
 
-            if (Setting_Read("Frp_Enable") == "1") Task.Run(() => Frp.StartFrpc());
+            if (Setting_Read("Frp_Enable") == "1") Task.Run(() => SakuraFrp.StartFrpc());
+            if (Setting_Read("GeneralFrp_Enable") == "1") Task.Run(() => GeneralFrp.StartFrpc());
 
 
 

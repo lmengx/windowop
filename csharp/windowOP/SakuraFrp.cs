@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace windowOP
 {
-    public class Frp
+    public class SakuraFrp
     {
-        static string FrpcFile = Path.Combine(Setting.programDir, "Frpc.exe");
+        static string FrpcFile = Path.Combine(Setting.programDir, "SakuraFrp", "SakuraFrpc.exe");
         public static Process FrpcProcess = null; // 替代原来的 FrpcPid
 
         public static int FrpcPid = -1;
@@ -20,7 +20,7 @@ namespace windowOP
 
             if (string.IsNullOrEmpty(parameters))
             {
-                DatabaseOP.Log("Frp_parameters 为空，跳过启动 frpc.exe");
+                DatabaseOP.Log("Frp_parameters 为空，跳过启动 SakuraFrpc.exe");
                 return;
             }
                 try
@@ -29,7 +29,7 @@ namespace windowOP
                     {
                         FileName = FrpcFile,
                         Arguments = parameters,
-                        WorkingDirectory = Setting.programDir, // 设置工作目录为frpc.exe所在的目录
+                        WorkingDirectory = Path.Combine(Setting.programDir, "SakuraFrp"), // 设置工作目录为SakuraFrpc.exe所在的目录
                         CreateNoWindow = true,           // 隐藏窗口
                         UseShellExecute = false          // 不使用操作系统外壳启动
                     };
@@ -38,7 +38,7 @@ namespace windowOP
 
                     if (FrpcProcess != null)
                     {
-                        DatabaseOP.Log($"frpc.exe 已启动，PID: {FrpcProcess.Id}");
+                        DatabaseOP.Log($"SakuraFrpc.exe 已启动，PID: {FrpcProcess.Id}");
                         ExitHook.Register(() =>
                         {
                             if (!FrpcProcess.HasExited)
@@ -51,13 +51,13 @@ namespace windowOP
                 }
                 catch (Exception ex)
                 {
-                    DatabaseOP.LogErr($"启动 frpc.exe 时发生错误：{ex.Message}");
+                    DatabaseOP.LogErr($"启动 SakuraFrpc.exe 时发生错误：{ex.Message}");
                 }
             
             }
         public static async Task DownloadFrpc(CancellationToken cancellationToken = default)
         {
-            string downloadDir = Setting.programDir;
+            string downloadDir = Path.Combine(Setting.programDir, "SakuraFrp");
 
             var downloadUrls = new Dictionary<Architecture, string>
     {
@@ -82,7 +82,7 @@ namespace windowOP
                 Directory.CreateDirectory(downloadDir);
             }
 
-            string filePath = Path.Combine(downloadDir, "Frpc.exe");
+            string filePath = Path.Combine(downloadDir, "SakuraFrpc.exe");
 
             // 指数退避重试参数
             int retryCount = 0;

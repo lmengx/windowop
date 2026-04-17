@@ -31,9 +31,12 @@
 </template>
 
 <script setup>
-    import { ref, onMounted, watch, inject } from 'vue';
+    import { ref, onMounted,onUnmounted, watch, inject } from 'vue';
+      import { useWebSocketStore } from '@/stores/websocketStore';
 
-  const SendMsg = inject("provideFuncSendWSMsg")
+  const websocketStore = useWebSocketStore()
+
+  const SendMsg = websocketStore.sendMessage
   const RunActions = inject("provideFuncRunActions")
   const receivedEvent = inject("provideReceivedMsg")
 
@@ -64,9 +67,31 @@
     }
 
     // 组件挂载后获取主列表
-    onMounted(() => {
-        GetTextFromUrl(MainListUrl);
-    });
+
+
+onMounted(() => {
+  const handler = (data) =>
+  {
+      receivedMessage(data);
+  }
+
+  websocketStore.registerMessageHandler(handler)
+  const handlerRef = { handler }
+
+  onUnmounted(() => {
+    websocketStore.unregisterMessageHandler(handlerRef.handler)
+  })
+
+  GetTextFromUrl(MainListUrl);
+})
+
+onUnmounted(() => {
+
+})
+
+
+
+
 
     // 处理接收到的消息
     function receivedMessage(eventData) {
