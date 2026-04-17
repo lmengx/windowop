@@ -1,0 +1,1 @@
+import{_ as a,o as t,c as l,ae as o}from"./chunks/framework.DFTT1zkb.js";const p=JSON.parse('{"title":"主要功能","description":"","frontmatter":{},"headers":[],"relativePath":"features.md","filePath":"features.md"}'),i={name:"features.md"};function n(s,r,e,g,h,u){return t(),l("div",null,[...r[0]||(r[0]=[o("",21)])])}const c=a(i,[["render",n]]);export{p as __pageData,c as default};
