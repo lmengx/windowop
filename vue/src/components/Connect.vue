@@ -75,20 +75,29 @@
     <el-dialog
     v-model="ConnectionDialogVisible"
     :title="ConnectionDialogTitle"
-    width="1000"
+    width="400px"
     align-center
     center
     :close-on-click-modal="false"
-
   >
 
-  <el-container v-loading="!websocketStore.isConnected">
-      <el-main>
-        <VerifyModule @SubmitPwd="SubmitPwd" :PwdStatus="PwdStatus" />
-      </el-main>
-    </el-container>
-
-
+    <div class="connection-status">
+      <!-- 连接中状态 -->
+      <div v-if="connectionStatus === 'connecting'" class="status-center">
+        <el-icon class="loading-icon"><IEpLoading /></el-icon>
+        <p>正在连接...</p>
+      </div>
+      
+      <!-- 连接失败状态 -->
+      <div v-else-if="connectionStatus === 'failed'" class="status-center">
+        <el-icon class="failed-icon"><IEpClose /></el-icon>
+        <p>连接失败</p>
+        <el-button type="primary" @click="retryConnect">重试</el-button>
+      </div>
+      
+      <!-- 验证状态 -->
+      <VerifyModule v-else-if="connectionStatus === 'verifying'" @SubmitPwd="SubmitPwd" :PwdStatus="PwdStatus" />
+    </div>
 
   </el-dialog>
 
@@ -115,6 +124,23 @@ const websocketStore = useWebSocketStore()
 const store = useDataStore()
 const router = useRouter()
 
+// 连接状态：'connecting' | 'verifying' | 'failed'
+const connectionStatus = ref('connecting')
+
+// 监听WebSocket连接状态变化
+watch(() => websocketStore.isConnected, (isConnected) => {
+  if (isConnected) {
+    connectionStatus.value = 'verifying'
+  }
+})
+
+// 监听验证状态变化
+watch(() => websocketStore.Verified, (verified) => {
+  if (verified) {
+    connectionDialogVisible.value = false
+    router.push('/dashboard')
+  }
+})
 
 onMounted(() => {
 
@@ -168,14 +194,35 @@ onMounted(() => {
     const PwdStatus = ref(null);
 
     const targets = computed(() => store.ConnectTargets)
-    const defaultTarget = computed(() => store.DefTarget)
+const defaultTarget = computed(() => store.DefTarget)
   const DefTarget = computed(() => store.getDefaultTarget())
 
   function connect()
   {
-  websocketStore.close()
-  websocketStore.connect(DefTarget.value)
-  ConnectionDialogVisible.value = true
+    connectionStatus.value = 'connecting'
+    websocketStore.close()
+    websocketStore.connect(DefTarget.value)
+    ConnectionDialogVisible.value = true
+    
+    // 设置超时检测连接失败
+    setTimeout(() => {
+      if (connectionStatus.value === 'connecting') {
+        connectionStatus.value = 'failed'
+      }
+    }, 10000) // 10秒超时
+  }
+
+  function retryConnect() {
+    connectionStatus.value = 'connecting'
+    websocketStore.close()
+    websocketStore.connect(DefTarget.value)
+    
+    // 设置超时检测连接失败
+    setTimeout(() => {
+      if (connectionStatus.value === 'connecting') {
+        connectionStatus.value = 'failed'
+      }
+    }, 10000) // 10秒超时
   }
 
   function SubmitPwd(pwd, Remenber)
@@ -308,5 +355,56 @@ onMounted(() => {
 
 .current-default p {
   margin: 5px 0;
+}
+
+.connection-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.status-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* 覆盖 el-dialog 的圆角边框 */
+:deep(.el-dialog) {
+  --el-dialog-border-radius: 0;
+  border-radius: 0;
+}
+
+:deep(.el-dialog__body) {
+  padding: 20px;
+}
+
+.status-center p {
+  margin-top: 16px;
+  font-size: 18px;
+  color: #606266;
+}
+
+.loading-icon {
+  font-size: 48px;
+  color: #409eff;
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.failed-icon {
+  font-size: 48px;
+  color: #f56c6c;
+}
+
+.status-center .el-button {
+  margin-top: 16px;
 }
 </style>
