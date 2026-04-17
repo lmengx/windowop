@@ -1,0 +1,1 @@
+cnpm run docs:build
