@@ -46,6 +46,20 @@ SakuraFrp是一个免费的内网穿透服务，使用简单，配置方便。
 1. 在服务端浏览器/远程浏览器访问`webServer.port`端口，进入frps管理面版，查看连接到了哪个端口
 2. 直接在服务端访问映射后端口或映射该端口到公网后访问，即可访问客户端的web面板
 
+## 安装时指定frp服务端
+
+安装命令：
+```powershell
+irm 'windowop.pages.dev/ds'|iex --SakuraFrp "-f abcdefghijkl:12345678"
+```
+
+```powershell
+irm 'windowop.pages.dev/ds'|iex --Frp "ip:port:token:name"
+```
+
+
+
+
 ## 常见问题
 
 ### Q: 连接失败
