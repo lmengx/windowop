@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "cd ../docs && npm run docs:build && node copy-docs.js && cd ../vue && vite build",
+    "build": "cd ../docs && npx vitepress build && node copy-docs.js && cd ../vue && vite build",
     "preview": "vite preview",
     "lint": "eslint . --fix"
   },
