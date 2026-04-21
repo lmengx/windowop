@@ -63,11 +63,6 @@ namespace windowOP
             return output.Trim(); // 返回执行结果
         }
 
-
-
-
-
-
         public static string RunBatchAsAdmin(string command)
         {
             // 创建一个临时批处理文件

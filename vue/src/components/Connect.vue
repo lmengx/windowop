@@ -107,7 +107,7 @@
 </template>
 
 <script setup>
-import { ref, computed , onMounted , onUnmounted } from 'vue'
+import { ref, computed , onMounted , onUnmounted, watch } from 'vue'
 import { useDataStore } from '../stores/dataStore.js'
 import { useWebSocketStore } from '@/stores/websocketStore.js'
 import { useRouter } from 'vue-router'
@@ -137,7 +137,7 @@ watch(() => websocketStore.isConnected, (isConnected) => {
 // 监听验证状态变化
 watch(() => websocketStore.Verified, (verified) => {
   if (verified) {
-    connectionDialogVisible.value = false
+    ConnectionDialogVisible.value = false
     router.push('/dashboard')
   }
 })
